@@ -10,7 +10,7 @@ function CartScreen (props) {
     const {cartItems} = cart;
 
     const productId = props.match.params.id;
-    const qty = props.location.search? Number(props.location.search.split("=")[1]) : 1;
+    const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
     const dispatch = useDispatch();
     const removeFromCartHandler = (productId) => {
         dispatch(removeFromCart(productId));
@@ -23,7 +23,7 @@ function CartScreen (props) {
     }, [])
 
     const checkoutHandler = () => {
-        props.history.push('/signin?redirect=shipping');
+        props.history.push("/signin?redirect=shipping");
     }
 
     return <div className="cart">
@@ -45,7 +45,7 @@ function CartScreen (props) {
                         </div>
                         :
                         cartItems.map(item =>
-                          <li>
+                            <li key={ Math.random().toString(36).substr(2,9)}>
                               <div className = "cart-image">
                                 <img src={item.image} alt="product" />
                               </div>
@@ -68,7 +68,7 @@ function CartScreen (props) {
                                   </div>
                               </div>
                               <div className = "cart-price">
-                                  {item.price}
+                                  ${item.price}
                               </div>
                           </li>  
                             )

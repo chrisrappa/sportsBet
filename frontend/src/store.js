@@ -4,11 +4,12 @@ import { productListReducer, productDetailsReducer, productSaveReducer, productD
 import { cartReducer } from './reducers/cartReducers';
 import Cookie from 'js-cookie';
 import {userRegisterReducer, userSigninReducer} from './reducers/userReducers';
+import { OrderCreateReducer } from './reducers/orderReducers';
 
 const cartItems = Cookie.getJSON("cartItems") || [];
 const userInfo = Cookie.getJSON("userInfo") || null;
 
-const initialState = { cart: {cartItems}, userSignin: {userInfo} };
+const initialState = { cart: {cartItems, shipping: {}, payment: {}}, userSignin: {userInfo} };
 const reducer = combineReducers({
     productList: productListReducer, 
     productDetails: productDetailsReducer,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
     cart: cartReducer,
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
+    orderCreate: OrderCreateReducer,
 })
 
 
