@@ -1,19 +1,22 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { createOrder } from '../actions/orderActions';
 import CheckoutSteps from '../components/CheckoutSteps';
+import { createOrder } from '../actions/orderActions';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 
-function PlaceOrderScreen (props) {
+function PlaceOrderScreen(props) {
 
     const cart =  useSelector(state => state.cart);
     const orderCreate = useSelector(state => state.orderCreate);
     const { loading, success, error, order } = orderCreate;
+    const orderDetails = useSelector((state) => state.orderDetails);
+    console.log(orderDetails);
 
-    const {cartItems, shipping, payment} = cart;
+    const { cartItems, shipping, payment } = cart;
     if(!shipping.address){
         props.history.push("/shipping")
-    }else if(!payment.paymentMethod){
+    } else if (!payment.paymentMethod) {
         props.history.push("/payment")
     }
 
@@ -21,9 +24,11 @@ function PlaceOrderScreen (props) {
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
     const taxPrice = 0.15 * itemsPrice;
     const totalPrice = itemsPrice + shippingPrice + taxPrice;
+
     const dispatch = useDispatch();
 
     const placeOrderHandler = () =>{
+        console.log("this is the placeOrderHandler")
         dispatch(createOrder({
             orderItems:
             cartItems, 
@@ -38,17 +43,14 @@ function PlaceOrderScreen (props) {
 
     useEffect(() => {
         if(success){
-            props.history.push("/order/" + order._id);
+            props.history.push(`/order/${order._id}`);
+            dispatch({ type: ORDER_CREATE_RESET })
         }
 
-    }, [success])
-
-    const checkoutHandler = () => {
-        props.history.push("/signin?redirect=shipping");
-    }
+    }, [dispatch, order, props.history, success]);
 
     return <div>
-        <CheckoutSteps Step1 Step2 Step3 Step4></CheckoutSteps>
+        <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
         <div className="placeorder">
             <div className="placeorder-info">
                 <div>
@@ -56,8 +58,8 @@ function PlaceOrderScreen (props) {
                         Shipping
                     </h3>
                     <div>
-                        {cart.shipping.address}, {cart.shipping.city},
-                        {cart.shipping.zipCode}, {cart.shipping.country},
+                        {cart.shipping.address}, {cart.shipping.city}, {cart.shipping.state}
+                        {cart.shipping.zipCode}, {cart.shipping.country}
                     </div>
                 </div>
                 <div>

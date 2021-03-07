@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const shippingSchema = {
     address: { type: String, required: true },
     city: { type: String, required: true  },
+    state: { type: String, required: true },
     zipCode: { type: String, required: true  },
     country: { type: String, required: true  },
 };
@@ -24,10 +25,16 @@ const orderItemSchema = new mongoose.Schema ({
 });
 
 const orderSchema = new mongoose.Schema({
-    // user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     orderItems: [orderItemSchema],
     shipping: shippingSchema,
     payment: paymentSchema,
+    paymentResult: {
+        id: String,
+        status: String,
+        update_time: String,
+        email_address: String,
+    },
     itemsPrice: { type: Number },
     taxPrice: { type: Number },
     shippingPrice: { type: Number },

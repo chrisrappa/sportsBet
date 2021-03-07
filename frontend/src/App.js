@@ -9,8 +9,14 @@ import { useSelector } from 'react-redux';
 import ShippingScreen from './Screens/ShippingScreen';
 import PaymentScreen from './Screens/PaymentScreen';
 import PlaceOrderScreen from './Screens/PlaceOrderScreen';
+import OrderScreen from './Screens/OrderScreen';
+import ProfileScreen from './Screens/ProfileScreen';
+import OrdersScreen from './Screens/OrdersScreen';
 
 function App() {
+
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
@@ -34,27 +40,44 @@ function App() {
           <Link to="/">Rappa Productions</Link>
         </div>
         <div className="header-links">
-          <a href="cart.ejs">Cart</a>
+          <Link to="/cart">
+            <span>Cart</span>
+            {cartItems.length > 0 && (
+                  <span className="badge">{cartItems.length}</span>
+                )}
+          </Link>
           {
             userInfo ? <Link to="/profile">{userInfo.name}</Link>:
             <Link to="/signin">Sign In</Link>
           }
+          { userInfo && userInfo.isAdmin && (
+            <div className="dropdown">
+              <a href="#">Admin</a>
+              <ul className="dropdown-content">
+                <li>
+                  <Link to="/orders">Orders</Link>
+                  <Link to="/products">Products</Link>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </header>
       <aside className="sidebar">
         <h3>Shopping Categories</h3>
         <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-        <ul>
+        <ul className="categories">
           <li>
-            <a href="/">Pants</a>
+            <Link to="/category/Pants">Pants</Link>
           </li>
           <li>
-            <a href="/">Shirts</a>
+            <Link to="/category/Shirts">Shirts</Link>
           </li>
         </ul>
       </aside>
       <main className="main">
         <div className="content" />
+          <Route path="/orders" exact={true} component={OrdersScreen} />
           <Route path="/products" exact={true} component={ProductsScreen} />
           <Route path="/shipping" exact={true} component={ShippingScreen} />
           <Route path="/payment" exact={true} component={PaymentScreen} />
@@ -62,8 +85,11 @@ function App() {
           <Route path="/" exact={true} component={HomeScreen} />
           <Route path="/product/:id" component={ProductScreen} />
           <Route path="/cart/:id"  component={CartScreen} />
+          <Route path="/category/:id"  component={HomeScreen} />
           <Route path="/signin" component={SigninScreen} />
           <Route path="/register" component={RegisterScreen} />
+          <Route path="/order/:id" component={OrderScreen} />
+          <Route path="/profile" component={ProfileScreen} />
       </main>
       <footer className="footer">
         All Rights Reserved

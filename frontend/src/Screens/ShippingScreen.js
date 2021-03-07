@@ -8,6 +8,7 @@ function ShippingScreen (props) {
 
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
+    const [state, setState] = useState('');
     const [zipCode, setZipcode] = useState('');
     const [country, setCountry] = useState('');
   
@@ -16,7 +17,10 @@ function ShippingScreen (props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveShipping({address, city, zipCode, country}));
+
+        //find a way to overwrite the information if the customer wants to change shipping address
+        
+        dispatch(saveShipping({address, city, state, zipCode, country}));
         props.history.push('payment');
     }
 
@@ -42,6 +46,12 @@ function ShippingScreen (props) {
                             City
                         </label>
                         <input type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)}></input>
+                    </li>
+                    <li>
+                        <label htmlFor="state">
+                            State
+                        </label>
+                        <input type="text" name="state" id="state" onChange={(e) => setState(e.target.value)}></input>
                     </li>
                     <li>
                         <label htmlFor="zipCode">

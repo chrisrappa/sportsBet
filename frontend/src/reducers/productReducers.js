@@ -15,7 +15,6 @@ import {
 } from "../constants/productConstants";
 
 function productListReducer(state = { products: [] }, action) {
-
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:
       return { loading: true, products: [] };
@@ -70,5 +69,13 @@ function productSaveReducer(state = { product: {} }, action) {
   }
 }
 
-export { productListReducer, productDetailsReducer, productSaveReducer, productDeleteReducer }
+
+
+export { 
+  productListReducer, 
+  productDetailsReducer, 
+  productSaveReducer, 
+  productDeleteReducer,
+
+}
 
