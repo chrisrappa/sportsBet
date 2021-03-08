@@ -1,6 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { listProducts, saveProduct, deleteProduct } from '../actions/productActions';
+import { Redirect } from 'react-router-dom';
+import HomeScreen from './HomeScreen';
+
 
 
 function ProductsScreen (props) {
@@ -25,10 +28,14 @@ function ProductsScreen (props) {
     const { loading: loadingDelete, success: successDelete, error: errorDelete } = productDelete;
 
     useEffect(() => {
-        if(successSave){
+        if(successSave || successDelete){
             setModalVisible(false);
+
+        } else {
+            //
         }
         dispatch(listProducts());
+        
         return () => {
           //
         };
