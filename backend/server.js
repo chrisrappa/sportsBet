@@ -6,7 +6,9 @@ import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 import bodyParser from 'body-parser';
 import path from 'path';
+import dotenv from 'dotenv';
 
+dotenv.config();
 
 
 const mongodbUrl = config.MONGODB_URL;
