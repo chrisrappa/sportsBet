@@ -6,9 +6,9 @@ import productRoute from './routes/productRoute';
 import orderRoute from './routes/orderRoute';
 import bodyParser from 'body-parser';
 import path from 'path';
-import dotenv from 'dotenv';
 
-dotenv.config();
+
+
 
 
 const mongodbUrl = config.MONGODB_URL;
@@ -35,6 +35,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
   });
 
-app.listen (process.env.PORT || 5000, () => {
+app.listen (config.PORT || 5000, () => {
     console.log ("Server started at http://localhost:5000")
 })
