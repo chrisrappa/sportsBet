@@ -6,7 +6,6 @@ import { addToCart, removeFromCart } from '../actions/cartActions';
 function CartScreen (props) {
 
     const cart =  useSelector(state => state.cart);
-
     const {cartItems} = cart;
 
     const productId = props.match.params.id;
@@ -20,7 +19,7 @@ function CartScreen (props) {
         if(productId){
             dispatch(addToCart(productId, qty));
         }
-    }, [])
+    }, [dispatch, productId, qty])
 
     const checkoutHandler = () => {
         props.history.push("/signin?redirect=shipping");
