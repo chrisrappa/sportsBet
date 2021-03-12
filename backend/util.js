@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import config from './config';
 
+
 export const getToken = (user) => {
     return jwt.sign(
       {
@@ -10,11 +11,12 @@ export const getToken = (user) => {
         isAdmin: user.isAdmin,
       },
       config.JWT_SECRET,
-      {
-        expiresIn: '30d',
-      }
+      // {
+      //   expiresIn: '30d',
+      // }
     );
   };
+
 
   export const isAuth = (req, res, next) => {
     const token = req.headers.authorization;

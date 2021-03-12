@@ -37,7 +37,7 @@ function App() {
           <button onClick={openMenu}>
             &#9776;
           </button>
-          <Link to="/">Rappa Productions</Link>
+          <Link to="/">Healthy Chef</Link>
         </div>
         <div className="header-links">
           <Link to="/cart">
@@ -56,7 +56,7 @@ function App() {
               <ul className="dropdown-content">
                 <li>
                   <Link to="/orders">Orders</Link>
-                  <Link to="/products">Productss</Link>
+                  <Link to="/products">Products</Link>
                 </li>
               </ul>
             </div>
@@ -64,7 +64,6 @@ function App() {
         </div>
       </header>
       <aside className="sidebar">
-        <h3>Shopping Categories</h3>
         <button className="sidebar-close-button" onClick={closeMenu}>x</button>
         <ul className="categories">
           <li>

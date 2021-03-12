@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import Cookie from 'js-cookie';
-import { TokenExpiredError } from 'jsonwebtoken';
+
 import {
     USER_SIGNIN_REQUEST,
     USER_SIGNIN_SUCCESS,
@@ -13,7 +13,7 @@ import {
     USER_UPDATE_SUCCESS,
     USER_UPDATE_REQUEST,
 } from '../constants/userConstants';
-import { userUpdateReducer } from '../reducers/userReducers';
+
 
 const signin = (email, password) => async (dispatch) => {
     dispatch({type: USER_SIGNIN_REQUEST, payload: {email, password}})

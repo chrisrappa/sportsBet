@@ -29,7 +29,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id', isAdmin, isAuth, async (req, res) => {
+router.put('/:id', isAuth, async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId);
     if(product){
@@ -52,7 +52,7 @@ router.put('/:id', isAdmin, isAuth, async (req, res) => {
     
 });
 
-router.delete('/:id', isAdmin, isAuth, async (req, res) => {
+router.delete('/:id', isAuth, async (req, res) => {
     const deletedProduct = await Product.findById(req.params.id);
     if(deletedProduct){
         await deletedProduct.remove();
@@ -63,7 +63,7 @@ router.delete('/:id', isAdmin, isAuth, async (req, res) => {
     
 });
 
-router.post('/', isAdmin, isAuth, async (req, res) => {
+router.post('/', isAuth, async (req, res) => {
     const product = new Product({
         name: req.body.name,
         price: req.body.price,
