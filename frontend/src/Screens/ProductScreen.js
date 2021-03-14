@@ -36,52 +36,49 @@ function ProductScreen (props) {
                 <img src={product.image} alt="product" />
             </div>
             <div className="details-info-action">
-            <div className="details-info">
-                <ul>
-                    <li>
-                        <h4>{product.name}</h4>
-                    </li>
-                    <li>
-                        {product.rating} Stars ({product.numReviews} Reviews)
-                    </li>
-                    <li>
-                        <b>${product.price}</b>
-                    </li>
-                    <li>
-                        Description:
-                        <div>
-                            {product.description}
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div className="details-action">
-                <ul>
-                    <li>
-                        Price: {product.price}
-                    </li>
-                    <li>
-                        Status: {product.countInStock > 0? "In Stock" : "Out Of Stock"}
-                    </li>
-                    <li>
-                        Qty: <select value={qty} onChange={(e) => {setQty(e.target.value)}}>
-                            {[...Array(product.countInStock).keys()].map(x =>
-                            <option key={x+1} value={x+1}>{x+1}</option>
-                                )}
-                        </select>
-                    </li>
-                    <li>
-                        {
-                        
-                        product.countInStock > 0 && 
-                        <button  onClick={handleAddToCart} className="button primary">Add to Cart</button>
+                <div className="details-info">
+                    <ul>
+                        <li>
+                            <h4>{product.name}</h4>
+                        </li>
+                        <li className="rating-price">
+                            <b>${product.price}</b>
+                            {product.rating} Stars ({product.numReviews} Reviews)
+                        </li>
+                        <li className="description">
+                            <div className="description-head">
+                                Description
+                            </div>
+                            
+                            <div>
+                                {product.description}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div className="details-action">
+                            <div>
+                            Status: {product.countInStock > 0? <div className="instock">In Stock</div> : "Out Of Stock"}
+                            </div>
+                            <div>
+                                <div>Qty:</div> <select value={qty} onChange={(e) => {setQty(e.target.value)}}>
+                                    {[...Array(product.countInStock).keys()].map(x =>
+                                    <option key={x+1} value={x+1}>{x+1}</option>
+                                        )}
+                                </select>
+                            </div>
+                            <div>
+                            {
+                            
+                            product.countInStock > 0 && 
+                            <button  onClick={handleAddToCart} className="button primary">Add to Cart</button>
 
-                        }
-                    </li>
-                </ul>
-            </div>
+                            }
+                            </div>
+                </div>
             </div>
         </div>
+
     
     )
     
