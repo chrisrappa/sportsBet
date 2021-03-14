@@ -206,8 +206,8 @@ a:active {
 
 .sidebar {
   position: fixed;
-  transform: translateX(-30rem);
-  width: 30rem;
+  transform: translateX(-35rem);
+  width: 35rem;
   background-color: #dbd69a;
   height: 100%;
   transition: all 0.5s;
