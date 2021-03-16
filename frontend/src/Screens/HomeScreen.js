@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { listProducts } from '../actions/productActions';
+
 
 function HomeScreen (props) {
 
@@ -33,6 +33,17 @@ function HomeScreen (props) {
 
     return (
     <>
+    <div className="jumbo">
+      <div className="main-img">
+        <img className="grow" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1615848655/jumbopicsmaller_fhfhjt.png"></img>
+      </div>
+      <div className="tagline">
+        <h1>Meal Prep.</h1>
+        <h1>Made Easy.</h1>
+        
+      </div>
+      
+    </div>
       {category && <h2>{category}</h2>}
       <ul className="filter">
         <li>
