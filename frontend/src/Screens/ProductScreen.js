@@ -25,7 +25,7 @@ function ProductScreen (props) {
 
     return <div>
         <div className="back-to-result">
-            <Link to="/">Back to Results</Link>
+            <Link to="/#products">Back to Results</Link>
         </div>
         {loading? <div>Loading...</div>:
         error? <div>{error}</div>: 

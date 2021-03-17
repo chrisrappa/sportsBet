@@ -12,6 +12,8 @@ import PlaceOrderScreen from './Screens/PlaceOrderScreen';
 import OrderScreen from './Screens/OrderScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import OrdersScreen from './Screens/OrdersScreen';
+import { useState } from 'react';
+
 
 function App() {
 
@@ -29,10 +31,22 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open");
   }
 
+  const [navScroll, setNavScroll] = useState(false);
+
+  const addShadow = () => {
+    if (window.scrollY >= 50){
+      setNavScroll(true);
+    } else {
+      setNavScroll(false);
+    }
+  }
+
+  window.addEventListener('scroll', addShadow);
+
   return (
   <BrowserRouter>
     <div className="grid-container">
-      <header className="header">
+      <header className={ navScroll ? "header active" : "header"}>
         <div className="brand">
           <button onClick={openMenu}>
             &#9776;

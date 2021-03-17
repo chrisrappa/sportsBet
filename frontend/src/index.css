@@ -26,13 +26,24 @@ body {
 }
 
 .header {
+  position: fixed;
   grid-area: header;
+  background-color: transparent;
   color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 0;
   height: 6rem;
+  z-index: 6;
+  width: 100%;
+  transition: all .3s ease-in-out; 
+}
+
+.header.active{
+  background-color: white;
+  box-shadow: 0 0 1rem gray;
+  transition: all .3s ease-in-out; 
 }
 
 button {
@@ -66,7 +77,7 @@ button:focus {
 
 .footer {
   grid-area: footer;
-  background-color: #ca6c55;
+  background-color: #63954b;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -107,13 +118,61 @@ a:active {
   background-color: #4b7b9a;
 }
 
+
+/* Effect Classes */
+
 .grow { 
-  transition: all .2s ease-in-out; 
+  transition: all .5s ease-in-out; 
 }
 
 .grow:hover { 
   transform: scale(1.1); 
 }
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-1%);
+  }
+}
+
+
+
+.fade-in {
+  animation: fadeIn ease 3s;
+  -webkit-animation: fadeIn ease 3s;
+  -moz-animation: fadeIn ease 3s;
+  -o-animation: fadeIn ease 3s;
+  -ms-animation: fadeIn ease 3s;
+  }
+  @keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-moz-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-webkit-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-o-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
+  
+  @-ms-keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
 
 /* Home Screen */
 
@@ -125,7 +184,14 @@ a:active {
   justify-content: space-evenly;
   align-items: center;
   box-shadow: 0rem 1.5rem 1rem rgba(128, 128, 128, 0.05);
-  border-radius: 5rem;
+  border-radius: 5rem 0;
+  background-image: linear-gradient(360deg, #8ad44d, #ffffff)
+}
+
+.jumbo::after{
+  content:'';
+ 
+  border: 10rem 10rem;
 }
 
 .jumbo img {
@@ -134,37 +200,63 @@ a:active {
 }
 
 .main-img {
-  background-color: #62954b70;
-  border-radius: 75%;
+  background-color: #2a531e33;
+  border-radius: 100% 50% 100% 50% / 100% 50% 100% 50%;
 }
+
 
 .jumbo h1 {
   font-family: Montserrat;
-  font-size: 7rem;
+  font-size: inherit;
   font-weight: 300;
   padding: 0;
   margin: 0;
+  color: inherit;
+  filter: drop-shadow(0.1rem 0.1rem 0.1rem gray)
 }
 
 .tagline {
+  font-size: 7rem;
+  color: white;
   text-align: center;
 }
 
+.taglinesub {
+  color: green;
+  font-size: 9rem;
+}
+
+.tagline img{
+  max-height: 7rem;
+  
+  animation: 2s ease-in 0s 1 slideInDown;
+}
+
+.order-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+}
+
+.order-steps img{
+  max-height: 80%;
+}
 
  .products {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  color: white;
+  color: black;
+  border-radius: 5rem 0 ;
+  box-shadow: 0rem -2rem 2rem rgba(128, 128, 128, 0.08);
+  padding-top: 3rem;
 }
 
 .products a{
-  color: white;
-}
-
-.products a:hover {
-  
+  color: #2a531e93;
+  font-weight: 400;
 }
 
 .products li {
@@ -184,11 +276,9 @@ a:active {
   align-items: center;
   height: 100%;
   border-radius: 2rem;
-  background-color: #e2992c;
-  padding-left: 5rem;
-  padding-right: 5rem;
   padding-bottom: 2rem;
-  box-shadow: 0.5rem 0.5rem 1rem #c0c0c0;
+  border: 0.15rem solid rgba(112, 228, 112, 0.178);
+  box-shadow: 0.25rem 0.25rem 0.55rem #c0c0c01e;
 }
 
 .product-name {
@@ -227,7 +317,29 @@ a:active {
   margin-bottom: 1rem;
 } 
 
+.add-to-cart{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  flex-direction: row;
+  align-items: flex-end;
+  font-family: Montserrat;
+}
 
+.add-to-cart button{
+  color: green;
+  transition: all .3s ease-in-out;
+}
+
+.add-to-cart button:hover{
+  background-color: green;
+  color: white;
+  transition: all .3s ease-in-out;
+}
+
+select option {
+  border-radius: 1rem;
+}
 
 /* Sidebar */
 
@@ -241,18 +353,21 @@ a:active {
 }
 
 .brand button:hover {
-  color: #dbd69a;
+  color: #63954b;
 }
 
 .sidebar {
   position: fixed;
   transform: translateX(-35rem);
   width: 35rem;
-  background-color: #dbd69a;
+  background-color: white;
   height: 100%;
   transition: all 0.5s;
-  z-index: 1;
+  z-index: 7;
   filter: drop-shadow(0rem 0rem 0.75rem gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebar.open {
@@ -261,12 +376,13 @@ a:active {
 
 .sidebar-close-button {
   border: none;
-  color: white;
+  color: #63954b;
   width: 5rem;
   height: 5rem;
   padding: 0.5rem;
   font-size: 5rem;
   font-family: Montserrat;
+  font-weight: 100;
   padding: 0;
   cursor: pointer;
   position: absolute;
@@ -275,7 +391,8 @@ a:active {
 } 
 
 .sidebar-close-button:hover{
-  color: #ca6c55;
+  -webkit-text-stroke: 0.15rem #63954b;
+  transition: all 1s ease-in-out;
 }
 
 .sidebar-close-button:focus{
@@ -286,8 +403,8 @@ a:active {
   padding-left: 2rem;
   font-size: 5rem;
   font-family: Montserrat;
-  font-weight: 700;
-  color: white;
+  font-weight: 300;
+  color: #63954b;
 }
 
 .categories li:first-child {
@@ -296,7 +413,10 @@ a:active {
 
 .categories a:hover {
   background-color: none;
-  color: #ca6c55;
+  color: #63954b;
+  -webkit-text-stroke: 0.15rem #63954b;
+  transform: scale(1.1); 
+  transition: all 0.2s ease-in-out;
 }
  
 .categories {
@@ -307,6 +427,7 @@ a:active {
 .categories a{
   display: flex;
   padding: 1rem;
+  transition: all 0.2s ease-in-out;
 }
 
 
@@ -325,7 +446,7 @@ a:active {
     padding-left: 2rem;
     margin-bottom: 4rem;
     margin-top: -4rem;
-    background-color: rgba(180, 35, 35, 0.842);
+    background-color: #bfd6b2;
     border: solid 1px gray;
     border-radius: 5rem;
   
@@ -457,16 +578,18 @@ border: 0.1rem #404040 solid;
 }
 
 .button.primary {
-  background-color:rgba(180, 35, 35, 0.842);
+  background-color: #63954b;
   border:1px solid white;
   color: white;
+  transition: 0.5s;
 }
 
 .button.primary:hover {
 
-  background-color: #ffcc64;
+  background-color: white;
   transition: 0.5s;
-  color: #722525;
+  color: #63954b;
+  border: 1px solid #63954b;
 }
 
 .button.secondary {
