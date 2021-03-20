@@ -91,6 +91,7 @@ function ProfileScreen(props) {
             </div>
         </div>
         <div className="profile-orders content-margin">
+            <div className="orders-header">Your Past Orders</div>
             {
                 loadingOrders ? <div>Loading...</div>:
                 errorOrders ? <div>{errorOrders}</div> :

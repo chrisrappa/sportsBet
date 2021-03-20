@@ -1,14 +1,38 @@
 import {Link} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from '../actions/productActions';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { HashLink } from 'react-router-hash-link';
+
+
+function useHover(){
+    const ref = useRef();
+    const [hovered, setHovered] = useState(false);
+
+    const enter = () => setHovered(true);
+    const leave = () => setHovered(false);
+
+    useEffect(() => {
+        ref.current.addEventListener('mouseenter', enter)
+        ref.current.addEventListener('mouseleave', leave)
+        return () => {
+            //
+        }
+    }, [])
+
+    return[ref, hovered];
+}
+
 
 function ProductScreen (props) {
 
+    const [ref, hovered] = useHover();
     const [qty, setQty] = useState(1);
     const productDetails = useSelector(state => state.productDetails);
     const { product, loading, error } = productDetails;
     const dispatch = useDispatch();
+
+    console.log(hovered);
 
     useEffect(() => {
         dispatch(detailsProduct(props.match.params.id));
@@ -23,9 +47,14 @@ function ProductScreen (props) {
 
         }
 
-    return <div>
+    return <div className="details-container">
         <div className="back-to-result">
-            <Link to="/#products">Back to Results</Link>
+            <HashLink to="/#products" ref={ref}>
+                {hovered ? 
+                <img src="https://res.cloudinary.com/djrbfvpit/image/upload/v1616265424/circle_left_hover_us7qqa.png"/>
+                : 
+                <img src="https://res.cloudinary.com/djrbfvpit/image/upload/v1616262644/circled-left-2_usxejf.png" />}
+            </HashLink>
         </div>
         {loading? <div>Loading...</div>:
         error? <div>{error}</div>: 
