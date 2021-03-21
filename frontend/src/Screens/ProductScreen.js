@@ -5,21 +5,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 
 
+
 function useHover(){
     const ref = useRef();
     const [hovered, setHovered] = useState(false);
 
     const enter = () => setHovered(true);
     const leave = () => setHovered(false);
-
+    
     useEffect(() => {
+ 
         ref.current.addEventListener('mouseenter', enter)
         ref.current.addEventListener('mouseleave', leave)
+
         return () => {
             //
         }
     }, [])
-
+    
     return[ref, hovered];
 }
 
@@ -50,10 +53,13 @@ function ProductScreen (props) {
     return <div className="details-container">
         <div className="back-to-result">
             <HashLink to="/#products" ref={ref}>
+                
                 {hovered ? 
                 <img src="https://res.cloudinary.com/djrbfvpit/image/upload/v1616265424/circle_left_hover_us7qqa.png"/>
                 : 
                 <img src="https://res.cloudinary.com/djrbfvpit/image/upload/v1616262644/circled-left-2_usxejf.png" />}
+
+                
             </HashLink>
         </div>
         {loading? <div>Loading...</div>:

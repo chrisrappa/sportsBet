@@ -106,7 +106,7 @@ function App() {
           <Route path="/placeorder" exact={true} component={PlaceOrderScreen} />
           <Route path="/" exact={true} component={HomeScreen} />
           <Route path="/product/:id" component={ProductScreen} />
-          <Route path="/cart/:id"  component={CartScreen} />
+          <Route path="/cart/:id?"  component={CartScreen} />
           <Route path="/category/:id"  component={HomeScreen} />
           <Route path="/signin" component={SigninScreen} />
           <Route path="/register" component={RegisterScreen} />

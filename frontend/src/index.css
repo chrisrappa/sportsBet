@@ -67,12 +67,24 @@ button:focus {
   padding-left: 1rem;
   font-family: Montserrat;
   font-weight: 500;
+  transition: all .2s ease-in-out;
+}
+
+.brand a:hover{
+  color: #63954b;
+  transition: all .2s ease-in-out;
 }
 
 .header-links a{
   color: black;
   text-decoration: none;
   padding: 1rem;
+  transition: all .2s ease-in-out;
+}
+
+.header-links a:hover{
+  color: #add49a;
+  transition: all .2s ease-in-out;
 }
 
 .main {
@@ -115,13 +127,10 @@ a:active {
   padding-right: 1.5rem;
   padding-left: 1.5rem;
   border-radius: 100%;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.226);
   margin: 1rem;
 }
 
-.badge:hover{
-  background-color: #4b7b9a;
-}
 
 
 /* Effect Classes */
@@ -448,8 +457,8 @@ select option {
 @media(min-width: 768px){
   .details{
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     margin-left: 5rem;
     margin-right: 5rem;
@@ -465,15 +474,13 @@ select option {
   
   }
 
-  .details div {
-    flex: 1;
-  }
+  
 }
 
 @media(max-width: 768px){
   .details {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
     margin-left: 15%;
@@ -496,24 +503,24 @@ select option {
 }
 
 .back-to-result img{
-  flex: 1;
+  flex: 1 0 auto;
   max-height: 10rem;
-  overflow: hidden;
   padding: 2rem;
 }
 
 .details-image{
-  flex: 1 1 10rem;
+  display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  flex: 1;
 }
 
 .details-image img{
-  max-width: 100%;
+  max-height: 70vh;
 }
 
 .details-info-action {
-  flex: 2 1 20rem;
+  flex: 3 1 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -649,7 +656,7 @@ select:focus {
   margin: 1rem;
   margin-top: 5rem;
   align-items: space-around;
-  height: 80%;
+  height: 90%;
   background-color: #bfd6b2;
   border-radius: 3rem;
   box-shadow: -5rem -3rem 0 rgba(147, 233, 97, 0.1);
@@ -669,17 +676,25 @@ select:focus {
 }
 
 .cart-action{
+  display: flex;
+  flex-direction: column;
   flex: 1 1 20rem;
   background-color: white;
   border: 1px solid #62954b67;
   border-radius: 3rem;
   padding: 1rem;
+  justify-content: space-between;
+  align-content: center;
 }
 
 .cart-action h3{
   font-family: Montserrat;
   font-weight: 300;
   color: black;
+}
+
+.cart-action button{
+  border-radius: 3rem;
 }
 
 .cart-list-container {
