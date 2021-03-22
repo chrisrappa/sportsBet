@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { signin } from '../actions/userActions';
+import { signin, register } from '../actions/userActions';
 
 function SigninScreen (props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
     const userSignin = useSelector(state => state.userSignin || {});
     const { loading, userInfo, error } = userSignin;
     const dispatch = useDispatch();
     const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
-
+    
+    function demoCreds(){
+        setEmail('demo@demo.com');
+        setPassword('demo');
+    }
 
     useEffect(() => {
         if(userInfo){
@@ -22,9 +27,10 @@ function SigninScreen (props) {
         };
       }, [userInfo]);
 
+
     const submitHandler = (e) => {
+        dispatch(signin(email, password)); 
         e.preventDefault();
-        dispatch(signin(email, password));
     }
 
     return <div className="form">
@@ -51,6 +57,9 @@ function SigninScreen (props) {
                 </li>
                 <li>
                     <button type="submit" className="button primary"> Sign In</button>
+                </li>
+                <li>
+                    <button type="submit" className="button primary" onClick={() => demoCreds()}> Demo </button>
                 </li>
                 <li>
                     First time visiting?

@@ -191,8 +191,11 @@ a:active {
 /* Home Screen */
 
 .jumbo {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+  flex: 1 1 auto;
   width: 100%;
   height: 100vh;
   justify-content: space-evenly;
@@ -202,15 +205,12 @@ a:active {
   background-image: linear-gradient(360deg, #8ad44d, #ffffff)
 }
 
-.jumbo::after{
-  content:'';
- 
-  border: 10rem 10rem;
-}
+
 
 .jumbo img {
-  flex: 2;
+  flex: 1 0 0;
   max-height: 60vh;
+  max-width: 100%;
 }
 
 .main-img {
@@ -229,32 +229,35 @@ a:active {
   filter: drop-shadow(0.1rem 0.1rem 0.1rem gray)
 }
 
+
 .tagline {
-  font-size: 7rem;
+  font-size: 5rem;
   color: white;
   text-align: center;
 }
 
 .taglinesub {
   color: green;
-  font-size: 9rem;
+  font-size: 7rem;
 }
 
 .tagline img{
   max-height: 7rem;
-  
   animation: 2s ease-in 0s 1 slideInDown;
 }
 
 .order-steps {
   display: flex;
+  flex: 1 1 0;
   justify-content: center;
   align-items: center;
   height: 40vh;
+  
 }
 
 .order-steps img{
   max-height: 80%;
+  max-width: 100%;
 }
 
  .products {
@@ -450,6 +453,7 @@ select option {
 .details-container {
   margin-top: 5rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
 }
@@ -480,17 +484,15 @@ select option {
 @media(max-width: 768px){
   .details {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
     flex-wrap: wrap;
-    margin-left: 15%;
-    margin-right: 15%;
     padding: 5rem;
     padding-right: 3rem;
     padding-left: 3rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     margin-top: -2rem;
-    background-color: rgba(180, 35, 35, 0.842);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: #bfd6b2;
     border: solid 1px gray;
     border-radius: 5rem;
   }
@@ -498,6 +500,16 @@ select option {
   .details-info ul, .details-action ul {
     padding-left: 0;
     margin-left: 0;
+  }
+
+  .details-container {
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .details-image img{
+    width: 25rem;
   }
 
 }
@@ -728,7 +740,7 @@ select:focus {
 }
 
 .cart-image{
-  flex: 1 1;
+  flex: 1 1 3rem;
 }
 
 .cart-name {
@@ -859,6 +871,16 @@ tbody>tr:nth-child(odd){
   margin-top: 2rem;
 }
 
+@media(max-width: 768px){
+  .placeorder {
+    flex-direction: column;
+  }
+
+  .placeorder-action {
+    margin: 1rem;
+  }
+}
+
 .placeorder-info {
   flex: 3 1 60rem;
 }
@@ -910,19 +932,22 @@ tbody>tr:nth-child(odd){
 .profile {
   display: flex;
   flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: flex-start;
 }
 
 .profile-info {
-  flex: 1 1 30rem;
+  flex: 1 1 auto;
 }
 
 .profile-orders {
-  flex: 3 1 60rem;
+  flex: 3 1 auto;
   margin-top: 2rem;
   border-radius: 0.5rem;
   padding: 2rem;
   border: 1px solid #abc4a04b;
   margin-right: 3rem;
+  max-width: 100%;
 }
 
 .orders-header {
