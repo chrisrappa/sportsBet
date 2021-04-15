@@ -81,6 +81,9 @@ function App() {
         <button className="sidebar-close-button" onClick={closeMenu}>x</button>
         <ul className="categories">
           <li>
+            <Link to="/">All</Link>
+          </li>
+          <li>
             <Link to="/category/Tofu">Tofu</Link>
           </li>
           <li>
