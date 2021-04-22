@@ -82,22 +82,22 @@ function App() {
         <button className="sidebar-close-button" onClick={closeMenu}>x</button>
         <ul className="categories" onClick={closeMenu}>
           <li>
-            <Link to="/" id="products">All</Link>
+            <Link to="/#products" onClick={closeMenu}>All</Link>
           </li>
           <li>
-            <Link to="/category/Tofu" id="products">Tofu</Link>
+            <Link to="/category/Tofu#products" onClick={closeMenu}>Tofu</Link>
           </li>
           <li>
-            <Link to="/category/Beef" id="products">Beef</Link>
+            <Link to="/category/Beef#products" onClick={closeMenu}>Beef</Link>
           </li>
           <li>
-            <Link to="/category/Vegetable" id="products">Vegetable</Link>
+            <Link to="/category/Vegetable#products" onClick={closeMenu}>Vegetable</Link>
           </li>
           <li>
-            <Link to="/category/Fish" id="products">Fish</Link>
+            <Link to="/category/Fish#products" onClick={closeMenu}>Fish</Link>
           </li>
           <li>
-            <Link to="/category/Chicken" id="products">Chicken</Link>
+            <Link to="/category/Chicken#products" onClick={closeMenu}>Chicken</Link>
           </li>
         </ul>
       </aside>
