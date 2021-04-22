@@ -131,6 +131,11 @@ a:active {
   margin: 1rem;
 }
 
+ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+}
+
 
 
 /* Effect Classes */
@@ -1004,3 +1009,67 @@ tbody>tr:nth-child(odd){
 }
 
 
+/* Stripe Stuff */
+
+.stripe-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.stripe-form{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.stripe-form ul{
+  width: 100%;
+}
+
+.email-form{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1rem;
+  width: 100%;
+}
+
+.stripe-pay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stripe-button{
+  width: 35%;
+  margin: 1rem;
+}
+
+.StripeElement {
+  height: 40px;
+  padding: 1rem 1.5rem;
+  max-width: 100%;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}

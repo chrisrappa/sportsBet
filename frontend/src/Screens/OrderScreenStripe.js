@@ -2,71 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { detailsOrder, payOrder } from '../actions/orderActions';
-import { PayPalButton } from 'react-paypal-button-v2';
-import Axios from 'axios';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import { ORDER_PAY_RESET } from '../constants/orderConstants';
+import  StripePayment from '../components/StripePayment';
 
-// Stripe Stuff
 
-import CardInput from '../components/CardInput';
-import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
-import axios from 'axios';
 
-// 
 
 
 function OrderScreen(props) {
 
-
-  // Stripe Stuff
-  const userSignin = useSelector(state => state.userSignin) 
-  const { userInfo } = userSignin; 
-
-  const email = useState('');
-
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const handleSubmit = async (event) => {
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
-    const res = await axios.post('http://localhost:5000/pay', {email: email});
-
-    const clientSecret = res.data['client_secret'];
-
-    const result = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          email: (userInfo.email),
-        },
-      },
-    });
-
-    if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
-    } else {
-      // The payment has been processed!
-      if (result.paymentIntent.status === 'succeeded') {
-        console.log('Money is in the bank!');
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
-      }
-    }
-  };
-
-
-  // 
   const orderId = props.match.params.id;
   const [sdkReady, setSdkReady] = useState(false);
 
@@ -77,18 +23,8 @@ function OrderScreen(props) {
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
   const dispatch = useDispatch();
 
+
   useEffect(() => {
-    const addPayPalScript = async () => {
-      const { data } = await Axios.get('/api/config/paypal');
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = `https://www.paypal.com/sdk/js?client-id=${data}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
     if (
       !order ||
       successPay ||
@@ -97,15 +33,8 @@ function OrderScreen(props) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(detailsOrder(orderId));
     } else {
-      if (!order.isPaid) {
-        if (!window.paypal) {
-          addPayPalScript();
-        } else {
-          setSdkReady(true);
-        }
-      }
-    }
-  }, [dispatch, orderId, sdkReady, successPay, order, successPay]);
+      setSdkReady(true);
+    }}, [dispatch, orderId, sdkReady, successPay, order, successPay]);
 
   const handleSuccessPayment = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
@@ -191,15 +120,6 @@ function OrderScreen(props) {
         </div>
         <div className="placeorder-action">
           <ul>
-            {/* Stripe Stuff */}
-            <li>
-            <CardInput />
-            <button onClick={handleSubmit}>
-            Pay
-            </button>
-            </li>
-
-            {/*  */}
             {!order.isPaid && (
             <li className="placeorder-actions-payment">
               {!sdkReady ? (
@@ -212,7 +132,8 @@ function OrderScreen(props) {
                 {loadingPay && (
                   <div>Loading...</div>
                 )}
-                <PayPalButton amount={order.totalPrice} onSuccess={handleSuccessPayment}></PayPalButton>
+                <StripePayment amount={order.totalPrice} />
+                {/* <PayPalButton amount={order.totalPrice} onSuccess={handleSuccessPayment}></PayPalButton> */}
                 
                 </>
               )}

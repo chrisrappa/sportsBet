@@ -13,6 +13,7 @@ import OrderScreen from './Screens/OrderScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import OrdersScreen from './Screens/OrdersScreen';
 import { useState } from 'react';
+import OrderScreenStripe from './Screens/OrderScreenStripe';
 
 
 function App() {
@@ -79,24 +80,24 @@ function App() {
       </header>
       <aside className="sidebar">
         <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-        <ul className="categories">
+        <ul className="categories" onClick={closeMenu}>
           <li>
-            <Link to="/">All</Link>
+            <Link to="/" id="products">All</Link>
           </li>
           <li>
-            <Link to="/category/Tofu">Tofu</Link>
+            <Link to="/category/Tofu" id="products">Tofu</Link>
           </li>
           <li>
-            <Link to="/category/Beef">Beef</Link>
+            <Link to="/category/Beef" id="products">Beef</Link>
           </li>
           <li>
-            <Link to="/category/Vegetable">Vegetable</Link>
+            <Link to="/category/Vegetable" id="products">Vegetable</Link>
           </li>
           <li>
-            <Link to="/category/Fish">Fish</Link>
+            <Link to="/category/Fish" id="products">Fish</Link>
           </li>
           <li>
-            <Link to="/category/Chicken">Chicken</Link>
+            <Link to="/category/Chicken" id="products">Chicken</Link>
           </li>
         </ul>
       </aside>
@@ -113,7 +114,7 @@ function App() {
           <Route path="/category/:id"  component={HomeScreen} />
           <Route path="/signin" component={SigninScreen} />
           <Route path="/register" component={RegisterScreen} />
-          <Route path="/order/:id" component={OrderScreen} />
+          <Route path="/order/:id" component={OrderScreenStripe} />
           <Route path="/profile" component={ProfileScreen} />
       </main>
       <footer className="footer">
