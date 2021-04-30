@@ -35,8 +35,6 @@ function ProductScreen (props) {
     const { product, loading, error } = productDetails;
     const dispatch = useDispatch();
 
-    console.log(hovered);
-
     useEffect(() => {
         dispatch(detailsProduct(props.match.params.id));
         return () => {

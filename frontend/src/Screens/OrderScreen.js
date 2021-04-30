@@ -26,44 +26,7 @@ function OrderScreen(props) {
 
   const email = useState('');
 
-  const stripe = useStripe();
-  const elements = useElements();
 
-  const handleSubmit = async (event) => {
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
-    const res = await axios.post('http://localhost:5000/pay', {email: email});
-
-    const clientSecret = res.data['client_secret'];
-
-    const result = await stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement(CardElement),
-        billing_details: {
-          email: (userInfo.email),
-        },
-      },
-    });
-
-    if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
-    } else {
-      // The payment has been processed!
-      if (result.paymentIntent.status === 'succeeded') {
-        console.log('Money is in the bank!');
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
-      }
-    }
-  };
 
 
   // 
@@ -191,15 +154,6 @@ function OrderScreen(props) {
         </div>
         <div className="placeorder-action">
           <ul>
-            {/* Stripe Stuff */}
-            <li>
-            <CardInput />
-            <button onClick={handleSubmit}>
-            Pay
-            </button>
-            </li>
-
-            {/*  */}
             {!order.isPaid && (
             <li className="placeorder-actions-payment">
               {!sdkReady ? (

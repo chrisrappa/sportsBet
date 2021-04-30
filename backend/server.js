@@ -8,6 +8,8 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 
+import Order from './models/orderModel';
+
 const app = express();
 
 app.use(cors())
@@ -26,7 +28,7 @@ const mongodbUrl = config.MONGODB_URL;
 const endpointSecret = "whsec_AaHzAyhLdL4sPkRpSClEtCECoW4p4OnO";
 const fulfillOrder = (session) => {
   // TODO: fill me in
-  console.log("Fulfilling order", session);
+  // console.log("Fulfilling order", session);
 }
 
 mongoose.connect(mongodbUrl, {
@@ -43,19 +45,39 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
 });
 
-app.post('/pay', async (req, res) => {
-  const {email} = req.body;
-  console.log(email);
-  const paymentIntent = await stripe.paymentIntents.create({
-      amount: 5000,
-      currency: 'usd',
-      // Verify your integration in this guide by including this parameter
-      metadata: {integration_check: 'accept_a_payment'},
-      receipt_email: email,
-    });
+// Stripe Stuff to be refactored to orderRoutes
 
-    res.json({'client_secret': paymentIntent['client_secret']})
-})
+app.get("/", async (req, res) => {
+  const orders = await Order.find({}).populate('user');
+  res.send(orders);
+});
+
+
+app.post('/:id/pay', async (req, res) => {
+  const order = await Order.findById(req.params.id);
+  const {email} = req.body;
+  const stripeAmount = (order.totalPrice * 100);
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: `${stripeAmount}`,
+    currency: 'usd',
+    // Verify your integration in this guide by including this parameter
+    metadata: {integration_check: 'accept_a_payment'},
+    receipt_email: email,
+  });
+
+
+  if (order){
+    order.isPaid = true;
+    order.paidAt = Date.now();
+    const updatedOrder = await order.save();
+    res.send({message: 'Order Paid.', order: updatedOrder, 'client_secret': paymentIntent['client_secret']});
+    console.log(paymentIntent);
+
+  } else {
+    res.status(404).send({message: 'Order not found'});
+  }
+});
+
   
 app.post('/sub', async (req, res) => {
   const {email, payment_method} = req.body;
@@ -102,12 +124,12 @@ app.post(
 
     const createOrder = (session) => {
       // TODO: fill me in
-      console.log("Creating order", session);
+      // console.log("Creating order", session);
     }
     
     const emailCustomerAboutFailedPayment = (session) => {
       // TODO: fill me in
-      console.log("Emailing customer", session);
+      // console.log("Emailing customer", session);
     }
 
     switch (event.type) {
@@ -153,6 +175,7 @@ app.post(
   }
 );
 
+// 
 
 app.listen (config.PORT || 5000, () => {
     console.log (`Server started at PORT:${config.PORT}`)

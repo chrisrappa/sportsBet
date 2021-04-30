@@ -2,15 +2,12 @@ import CardInput from '../components/CardInput';
 import {useStripe, useElements, CardElement} from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
 
 function StripePayment(){
 
   const [email, setEmail] = useState('');
 
-  const orderPay = useSelector((state) => state.orderPay);
-  const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -47,52 +44,52 @@ function StripePayment(){
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
         console.log('Money is in the bank!');
-        return(successPay);
       }
     }
   };
 
   const handleSubmitSub = async (event) => {
-        if (!stripe || !elements) {
-          // Stripe.js has not yet loaded.
-          // Make sure to disable form submission until Stripe.js has loaded.
-          return;
-        }
-    
-        const result = await stripe.createPaymentMethod({
-          type: 'card',
-          card: elements.getElement(CardElement),
-          billing_details: {
-            email: email,
-          },
-        });
-    
-        if (result.error) {
-          console.log(result.error.message);
-        } else {
-          const res = await axios.post('http://localhost:5000/sub', {'payment_method': result.paymentMethod.id, 'email': email});
-          // eslint-disable-next-line camelcase
-          const {client_secret, status} = res.data;
-    
-          if (status === 'requires_action') {
-            stripe.confirmCardPayment(client_secret).then(function(result) {
-              if (result.error) {
-                console.log('There was an issue!');
-                console.log(result.error);
-                // Display error message in your UI.
-                // The card was declined (i.e. insufficient funds, card has expired, etc)
-              } else {
-                console.log('You got the money!');
-              }
-            });
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
+
+    const result = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement),
+      billing_details: {
+        email: email,
+      },
+    });
+
+    if (result.error) {
+      console.log(result.error.message);
+    } else {
+      const res = await axios.post('http://localhost:5000/sub', {'payment_method': result.paymentMethod.id, 'email': email});
+      // eslint-disable-next-line camelcase
+      const {client_secret, status} = res.data;
+
+      if (status === 'requires_action') {
+        stripe.confirmCardPayment(client_secret).then(function(result) {
+          if (result.error) {
+            console.log('There was an issue!');
+            console.log(result.error);
+            // Display error message in your UI.
+            // The card was declined (i.e. insufficient funds, card has expired, etc)
           } else {
-            return(successPay);
-            // No additional information was needed
-            // Show a success message to your customer
+            console.log('You got the money!');
           }
-        }
-      };
-    
+        });
+      } else {
+        console.log("payment success");
+        return (this.props.handleSubmitSub);     
+        // No additional information was needed
+        // Show a success message to your customer
+      }
+    }
+  };
+
 
 
   useEffect(() => {

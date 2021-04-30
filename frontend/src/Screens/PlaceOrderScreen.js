@@ -11,7 +11,6 @@ function PlaceOrderScreen(props) {
     const orderCreate = useSelector(state => state.orderCreate);
     const { loading, success, error, order } = orderCreate;
     const orderDetails = useSelector((state) => state.orderDetails);
-    console.log(orderDetails);
 
     const { cartItems, shipping, payment } = cart;
     if(!shipping.address){
@@ -28,7 +27,6 @@ function PlaceOrderScreen(props) {
     const dispatch = useDispatch();
 
     const placeOrderHandler = () =>{
-        console.log("this is the placeOrderHandler")
         dispatch(createOrder({
             orderItems:
             cartItems, 
