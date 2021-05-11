@@ -100,8 +100,17 @@ app.post('/sub', async (req, res) => {
   const status = subscription['latest_invoice']['payment_intent']['status'] 
   const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
 
-  res.json({'client_secret': client_secret, 'status': status});
+  const newSub = new Sub({
+    subId: (subscription.id),
+    customer: (subscription.customer),
+    items: (subscription.items),
+    plan: (subscription.plan)
+  });
+  const newSubCreated = await newSub.save();
 
+  res.json({'client_secret': client_secret, 'status': status, message: "New Sub", data: newSubCreated});
+  console.log(newSub);
+  console.log(status)
 });
 
 app.post(
