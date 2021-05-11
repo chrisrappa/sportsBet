@@ -7,6 +7,7 @@ import orderRoute from './routes/orderRoute';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
+import Sub from './models/subModel';
 
 import Order from './models/orderModel';
 
@@ -92,7 +93,7 @@ app.post('/sub', async (req, res) => {
 
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{ price: 'price_1IgFG1Ghivqy3UvBvzCpQOSh' }],
+    items: [{ price: 'price_1Iq1EHGhivqy3UvBPxCdKIdF' }],
     expand: ['latest_invoice.payment_intent']
   });
 
@@ -100,7 +101,8 @@ app.post('/sub', async (req, res) => {
   const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
 
   res.json({'client_secret': client_secret, 'status': status});
-})
+
+});
 
 app.post(
   "/webhook",

@@ -67,7 +67,7 @@ function OrderScreen(props) {
     }
   };
 
-  const handleSubmitSub = async (event) => {
+  const handleSubmitSub = async () => {
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
