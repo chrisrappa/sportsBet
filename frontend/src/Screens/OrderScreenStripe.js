@@ -32,11 +32,13 @@ function OrderScreen(props) {
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successPay, error: errorPay } = orderPay;
   const dispatch = useDispatch();
-  
+
+
   // Stripe Payment Stuff
+  const [stripeId, setStripeId] = useState('');
 
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event)  => {
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
@@ -85,7 +87,13 @@ function OrderScreen(props) {
     if (result.error) {
       console.log(result.error.message);
     } else {
-      const res = await axios.post('http://localhost:5000/sub', {'payment_method': result.paymentMethod.id, 'email': email});
+      const res = await axios.post('http://localhost:5000/sub',  
+      {
+        'payment_method': result.paymentMethod.id,
+        'email': email,
+        'stripeId': stripeId
+      });
+      
       // eslint-disable-next-line camelcase
       const {client_secret, status} = res.data;
 
@@ -109,7 +117,6 @@ function OrderScreen(props) {
     }
   };
 
-
   // End Stripe Payment Stuff
 
 
@@ -124,6 +131,7 @@ function OrderScreen(props) {
       dispatch(detailsOrder(orderId));
     } else {
       setSdkReady(true);
+      setStripeId(order.stripeID);
     }}, [dispatch, orderId, sdkReady, successPay, order]);
 
   const handleSuccessPayment = (paymentResult) => {
@@ -133,10 +141,6 @@ function OrderScreen(props) {
   const handleSuccessSub = (paymentResult) => {
     dispatch(payOrder(order, paymentResult));
   }
-
-
-
-
 
   return loading ? (
     <LoadingBox />
@@ -248,7 +252,7 @@ function OrderScreen(props) {
                     <button className="stripe-button button primary" onClick={handleSubmit}>
                       Pay
                     </button>
-                    <button className="stripe-button button primary" onClick={handleSubmitSub}>
+                    <button className="stripe-button button primary" onClick={() => handleSubmitSub(stripeId)}>
                       Subscribe
                     </button>
                   </div>

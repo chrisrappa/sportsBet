@@ -8,6 +8,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
 import Sub from './models/subModel';
+import Product from './models/productModel';
 
 import Order from './models/orderModel';
 
@@ -79,10 +80,10 @@ app.post('/:id/pay', async (req, res) => {
   }
 });
 
-  
-app.post('/sub', async (req, res) => {
-  const {email, payment_method} = req.body;
 
+app.post('/sub', async (req, res) => {
+  const {email, payment_method, stripeId} = req.body;
+  console.log(stripeId);
   const customer = await stripe.customers.create({
     payment_method: payment_method,
     email: email,
@@ -93,9 +94,10 @@ app.post('/sub', async (req, res) => {
 
   const subscription = await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{ price: 'price_1Iq1EHGhivqy3UvBPxCdKIdF' }],
+    items: [{ price: (`${stripeId}`) }],
     expand: ['latest_invoice.payment_intent']
   });
+
 
   const status = subscription['latest_invoice']['payment_intent']['status'] 
   const client_secret = subscription['latest_invoice']['payment_intent']['client_secret']
@@ -109,8 +111,6 @@ app.post('/sub', async (req, res) => {
   const newSubCreated = await newSub.save();
 
   res.json({'client_secret': client_secret, 'status': status, message: "New Sub", data: newSubCreated});
-  console.log(newSub);
-  console.log(status)
 });
 
 app.post(

@@ -23,6 +23,7 @@ function PlaceOrderScreen(props) {
     const shippingPrice = itemsPrice > 100 ? 0 : 10;
     const taxPrice = 0.15 * itemsPrice;
     const totalPrice = itemsPrice + shippingPrice + taxPrice;
+    const stripeID = cartItems[0].stripeID;
 
     const dispatch = useDispatch();
 
@@ -35,7 +36,8 @@ function PlaceOrderScreen(props) {
             itemsPrice, 
             shippingPrice, 
             taxPrice, 
-            totalPrice
+            totalPrice,
+            stripeID
         }))
     }
 

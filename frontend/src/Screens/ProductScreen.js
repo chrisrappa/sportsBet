@@ -27,6 +27,7 @@ function useHover(){
 }
 
 
+
 function ProductScreen (props) {
 
     const [ref, hovered] = useHover();
@@ -47,6 +48,8 @@ function ProductScreen (props) {
           props.history.push("/cart/" + props.match.params.id + "?qty=" + qty) 
 
         }
+
+
 
     return <div className="details-container">
         <div className="back-to-result">

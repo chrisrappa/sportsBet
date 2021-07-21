@@ -41,6 +41,7 @@ router.put('/:id', async (req, res) => {
         product.category = req.body.category;
         product.countInStock = req.body.countInStock;
         product.description = req.body.description;
+        product.stripeID = req.body.stripeID;
 
         const updatedProduct = await product.save();
         if(updatedProduct){
@@ -74,6 +75,7 @@ router.post('/', async (req, res) => {
         description: req.body.description,
         rating: req.body.rating,
         numReviews: req.body.numReviews,
+        stripeID: req.body.stripeID,
     });
 
     const newProduct = await product.save();

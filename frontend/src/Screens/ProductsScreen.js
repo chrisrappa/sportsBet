@@ -17,6 +17,7 @@ function ProductsScreen (props) {
     const [category, setCategory] = useState('');
     const [countInStock, setCountInStock] = useState('');
     const [description, setDescription] = useState('');
+    const [stripeID, setStripeID] = useState('');
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList)
     const {loading, products, error} = productList;
@@ -50,6 +51,7 @@ function ProductsScreen (props) {
         setBrand(product.brand);
         setCategory(product.category);
         setCountInStock(product.countInStock);
+        setStripeID(product.stripeID);
     }
 
 
@@ -63,7 +65,8 @@ function ProductsScreen (props) {
             brand, 
             category, 
             countInStock, 
-            description
+            description,
+            stripeID
         })
         );
 
@@ -164,6 +167,16 @@ function ProductsScreen (props) {
                             value={description} 
                             id="description" 
                             onChange={(e) => setDescription(e.target.value)}> 
+                            </textarea>
+                        </li>
+                        <li>
+                            <label htmlFor="stripeID">Stripe ID</label>
+                            <textarea 
+                            name="description"
+                            placeholder="Required"
+                            value={stripeID} 
+                            id="stripeID" 
+                            onChange={(e) => setStripeID(e.target.value)}> 
                             </textarea>
                         </li>
                         <li>

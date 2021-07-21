@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema({
     description: { type: String, required: true},
     rating: { type: Number, default: 0, required: true},
     numReviews: { type: Number, default: 0, required: true},
-    stripeID: { type: Number, required: true}
+    stripeID: { type: String, required: false}
 });
 
 const productModel = mongoose.model('Product', productSchema);
