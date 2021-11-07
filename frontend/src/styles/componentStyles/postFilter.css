@@ -1,0 +1,15 @@
+.post-filter {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.filter {
+  background-color: rgba(231, 230, 230, 0.603);
+}
+
+.upload {
+  font-weight: 600;
+  background-color: #f5c329;
+  width: 45%;
+}

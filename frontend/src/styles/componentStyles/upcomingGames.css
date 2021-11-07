@@ -1,0 +1,40 @@
+.upcoming-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.upcoming-sports {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 1rem;
+  border-bottom: 0.15rem solid rgba(128, 128, 128, 0.212);
+}
+
+
+
+.upcoming-day {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+}
+
+.upcoming-day-space {
+  flex: 3;
+}
+
+.upcoming-day-text {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  padding: 0.05rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 1px solid black;
+  border-radius: 0.75rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+

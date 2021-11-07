@@ -1,4 +1,8 @@
-
+@import './screenStyles/homeScreen.css';
+@import './componentStyles/postComponent.css';
+@import './componentStyles/postFilter.css';
+@import './componentStyles/upcomingGames.css';
+@import './componentStyles/sidebar.css';
 
 #root {
   height: 100%;
