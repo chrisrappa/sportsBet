@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import { signin, register } from '../actions/userActions';
+import { signin } from '../actions/userActions';
 
 function SigninScreen (props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [name, setName] = useState('');
     const userSignin = useSelector(state => state.userSignin || {});
     const { loading, userInfo, error } = userSignin;
     const dispatch = useDispatch();
@@ -25,7 +24,7 @@ function SigninScreen (props) {
         return () => {
           //
         };
-      }, [userInfo]);
+      }, [userInfo, props, redirect]);
 
 
     const submitHandler = (e) => {

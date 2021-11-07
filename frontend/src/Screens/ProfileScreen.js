@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout, update } from '../actions/userActions';
-import { listMyOrders } from '../actions/orderActions';
+import { listMyPosts } from '../actions/postActions';
 
 function ProfileScreen(props) {
 
@@ -30,11 +30,11 @@ function ProfileScreen(props) {
     const userUpdate = useSelector(state => state.userUpdate);
     const { loading, success, error } = userUpdate;
 
-    const myOrderList = useSelector(state => state.myOrderList);
-    const { loading: loadingOrders, orders, error: errorOrders } = myOrderList;
+    const myPostList = useSelector(state => state.myPostList);
+    const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
 
-    console.log(myOrderList);
-    console.log(orders);
+    console.log(myPostList);
+    console.log(posts);
     
     useEffect(() => {
         if(userInfo){
@@ -42,11 +42,11 @@ function ProfileScreen(props) {
             setName(userInfo.name);
             setPassword(userInfo.password);
         }
-        dispatch(listMyOrders());
+        dispatch(listMyPosts());
         return () => {
             
         }
-    }, [dispatch])
+    }, [dispatch, userInfo])
 
     return <div className="profile">
         <div className="profile-info">
@@ -83,18 +83,18 @@ function ProfileScreen(props) {
                             <button onClick={submitHandler} type="submit" className="button primary full-width"> Update </button>
                         </li>
                         <li>
-                            <button type="button" onClick={handleLogout} type="submit" className="button secondary full-width"> Logout </button>
+                            <button onClick={handleLogout} type="submit" className="button secondary full-width"> Logout </button>
                         </li>
                         
                     </ul>
                 </form>
             </div>
         </div>
-        <div className="profile-orders content-margin">
-            <div className="orders-header">Your Past Orders</div>
+        <div className="profile-posts content-margin">
+            <div className="posts-header">Your Past posts</div>
             {
-                loadingOrders ? <div>Loading...</div>:
-                errorOrders ? <div>{errorOrders}</div> :
+                loadingPosts ? <div>Loading...</div>:
+                errorPosts ? <div>{errorPosts}</div> :
                 <table className="table">
                     <thead>
                         <tr>
@@ -106,13 +106,13 @@ function ProfileScreen(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => <tr key={order._id}>
-                            <td>{order._id}</td>
-                            <td>{order.createdAt.substring(0,10)}</td>
-                            <td>{order.totalPrice}</td>
-                            <td>{order.isPaid}</td>
+                        {posts.map(post => <tr key={post._id}>
+                            <td>{post._id}</td>
+                            <td>{post.createdAt.substring(0,10)}</td>
+                            <td>{post.totalPrice}</td>
+                            <td>{post.isPaid}</td>
                             <td>
-                                <Link to={"/order/" + order._id}>DETAILS</Link>
+                                <Link to={"/post/" + post._id}>DETAILS</Link>
                             </td>
                         </tr>)}
                     </tbody>

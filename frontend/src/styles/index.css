@@ -1,0 +1,27 @@
+
+
+#root {
+  height: 100%;
+}
+
+body {
+  font: 1.6rem Helvetica;
+  height: 90vh;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: Montserrat;
+  font-weight: 500;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100%;
+}
