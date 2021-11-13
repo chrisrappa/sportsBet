@@ -1,0 +1,16 @@
+.profile-content-container {
+  display: flex;
+  flex-direction: row;
+  /* margin-top: 1rem; */
+}
+
+.profile-user-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-user-info h1 {
+  padding-left: 1rem;
+}

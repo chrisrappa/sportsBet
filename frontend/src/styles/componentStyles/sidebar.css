@@ -1,6 +1,15 @@
 .sidebar-container {
 
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 
+}
+
+.sidebar-ad {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }

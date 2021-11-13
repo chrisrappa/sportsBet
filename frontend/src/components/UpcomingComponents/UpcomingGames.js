@@ -6,13 +6,6 @@ export default function UpcomingGames() {
       <div className = 'upcoming-header'>
         <h3>Upcoming Games</h3>
       </div>
-      <div className = 'upcoming-sports'>
-        <p>Soccer</p>
-        <p>Baseball</p>
-        <p>BasketBall</p>
-        <p>Boxing</p>
-        <p>Cricket</p>
-      </div>
       <div className = 'upcoming-day'>
         <div className = 'upcoming-day-text'>
           <p>Today</p>

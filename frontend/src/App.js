@@ -1,9 +1,11 @@
 import { BrowserRouter, Route } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen';
-import SigninScreen from './Screens/SigninScreen';
-import RegisterScreen from './Screens/RegisterScreen';
 import ProfileScreen from './Screens/ProfileScreen';
 import Navbar from './components/Navbar';
+import PredictionsScreen from './Screens/PredictionsScreen';
+import UpcomingScreen from './Screens/UpcomingScreen';
+import Register from './components/RegisterSignIn/Register';
+import SignIn from './components/RegisterSignIn/SignIn';
 // import { useSelector } from 'react-redux';
 // import { useState } from 'react';
 
@@ -21,9 +23,11 @@ function App() {
         <div className="content" />
           <Route path="/" exact={true} component={HomeScreen} />
           <Route path="/category/:id"  component={HomeScreen} />
-          <Route path="/signin" component={SigninScreen} />
-          <Route path="/register" component={RegisterScreen} />
+          <Route path="/signin" component={SignIn} />
+          <Route path="/register" component={Register} />
           <Route path="/profile" component={ProfileScreen} />
+          <Route path="/upcoming" component={UpcomingScreen} />
+          <Route path="/predictions" component={PredictionsScreen} />
       </main>
       <footer className = 'footer'>
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import Post from '../components/Post';
-import PostFilter from '../components/PostFilter';
-import Sidebar from '../components/Sidebar';
+import Post from '../components/PostComponents/Post';
+import PostFilter from '../components/PostComponents/PostFilter';
+import Sidebar from '../components/SidebarComponents/Sidebar';
 
 function HomeScreen (){
 

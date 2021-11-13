@@ -1,98 +1,64 @@
-//made all this
+// import { useEffect, useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { logout, update } from '../actions/userActions';
+// import { listMyPosts } from '../actions/postActions';
 
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout, update } from '../actions/userActions';
-import { listMyPosts } from '../actions/postActions';
+import Post from "../components/PostComponents/Post";
+import ProfileNav from "../components/ProfileComponents/ProfileNav";
+import Sidebar from "../components/SidebarComponents/Sidebar";
 
 function ProfileScreen(props) {
 
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    // const [name, setName] = useState('');
+    // const [password, setPassword] = useState('');
+    // const [email, setEmail] = useState('');
 
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
-    const userSignin = useSelector(state => state.userSignin) 
-    const { userInfo } = userSignin;  
+    // const userSignin = useSelector(state => state.userSignin) 
+    // const { userInfo } = userSignin;  
 
-    const handleLogout = () =>{
-        dispatch(logout());
-        props.history.push("/signin");
-    }
+    // const handleLogout = () =>{
+    //     dispatch(logout());
+    //     props.history.push("/signin");
+    // }
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        dispatch(update({ userId: userInfo._id, email, name, password}));
-    }
+    // const submitHandler = (e) => {
+    //     e.preventDefault();
+    //     dispatch(update({ userId: userInfo._id, email, name, password}));
+    // }
 
-    const userUpdate = useSelector(state => state.userUpdate);
-    const { loading, success, error } = userUpdate;
+    // const userUpdate = useSelector(state => state.userUpdate);
+    // const { loading, success, error } = userUpdate;
 
-    const myPostList = useSelector(state => state.myPostList);
-    const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
+    // const myPostList = useSelector(state => state.myPostList);
+    // const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
 
-    console.log(myPostList);
-    console.log(posts);
+    // console.log(myPostList);
+    // console.log(posts);
     
-    useEffect(() => {
-        if(userInfo){
-            setEmail(userInfo.email);
-            setName(userInfo.name);
-            setPassword(userInfo.password);
-        }
-        dispatch(listMyPosts());
-        return () => {
+    // useEffect(() => {
+    //     if(userInfo){
+    //         setEmail(userInfo.email);
+    //         setName(userInfo.name);
+    //         setPassword(userInfo.password);
+    //     }
+    //     dispatch(listMyPosts());
+    //     return () => {
             
-        }
-    }, [dispatch, userInfo])
+    //     }
+    // }, [dispatch, userInfo])
 
-    return <div className="profile">
-        <div className="profile-info">
-            <div className="form">
-                <form onSubmit={submitHandler}>
-                    <ul className="form-container">
-                        <li>
-                            <h2>User Profile</h2>
-                        </li>
-                        <li>
-                            {loading && <div>Loading...</div>}
-                            {error && <div>{error}</div>}
-                            {success && <div>Profile Saved Successfully</div>}
-                        </li>
-                        <li>
-                            <label htmlFor="name">
-                                Name
-                            </label>
-                            <input value={name} type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}></input>
-                        </li>
-                        <li>
-                            <label htmlFor="email">
-                                Email
-                            </label>
-                            <input value={email} type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}></input>
-                        </li>
-                        <li>
-                            <label htmlFor="password">
-                                Password
-                            </label>
-                            <input value={password} type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}></input>
-                        </li>
-                        <li>
-                            <button onClick={submitHandler} type="submit" className="button primary full-width"> Update </button>
-                        </li>
-                        <li>
-                            <button onClick={handleLogout} type="submit" className="button secondary full-width"> Logout </button>
-                        </li>
-                        
-                    </ul>
-                </form>
-            </div>
-        </div>
-        <div className="profile-posts content-margin">
-            <div className="posts-header">Your Past posts</div>
-            {
+  return(
+    <div className="">
+      <div className = 'profile-nav-container'>
+        <ProfileNav />
+      </div>
+      <div className = 'profile-content-container'>
+        <div className="post">
+          <Post />
+            {/* {
                 loadingPosts ? <div>Loading...</div>:
                 errorPosts ? <div>{errorPosts}</div> :
                 <table className="table">
@@ -117,9 +83,14 @@ function ProfileScreen(props) {
                         </tr>)}
                     </tbody>
                 </table>
-            }
+            } */}
         </div>
+        <div className = 'sidebar'>
+            <Sidebar />
+        </div>
+      </div>
     </div>
+  )
 }
 
 export default ProfileScreen;

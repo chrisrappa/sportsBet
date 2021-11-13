@@ -1,11 +1,11 @@
-.upcoming-side-container {
+.predictions-side-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin-top: 1rem;
 }
 
-.upcoming-side-sports {
+.predictions-side-sports {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -14,17 +14,17 @@
   margin-top: 1rem;
 }
 
-.upcoming-side-day {
+.predictions-side-day {
   display: flex;
   flex-direction: row;
   margin-top: 1rem;
 }
 
-.upcoming-side-day-space {
+.predictions-side-day-space {
   flex: 3;
 }
 
-.upcoming-side-day-text {
+.predictions-side-day-text {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -38,18 +38,28 @@
   padding-bottom: 0.5rem;
 }
 
-/* Upcoming-side Info Component */
+/* predictions Info Component */
 
-.upcoming-side-time {
-  padding: 1rem;
+.predictions-side-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 1;
   border-right: 0.25rem solid #f5c329;
   height: 100%;
 }
 
-.upcoming-side-game {
+.predictions-side-average {
+  
+}
+
+.predictions-side-game {
   margin-top: 1rem;
   margin-bottom: 0.05rem;
-  height: 6rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  height: 8rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -60,7 +70,7 @@
   border-radius: 0.5rem;
 }
 
-.upcoming-side-info {
+.predictions-side-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -69,14 +79,36 @@
   flex-grow: 3;
 }
 
-.upcoming-side-teams {
+.providers {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #1f2937;
+  justify-content: space-around;
+  width: 100%
+}
+
+.team-one-odds {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.team-two-odds {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.predictions-side-teams {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  margin-top: 1.95rem;
   border-radius: 0.25rem;
-  color: white;
+  color: black;
 }
 
 .second-result {
@@ -84,12 +116,24 @@
   color: #1f2937;
 }
 
-.upcoming-side-teams img {
+.predictions-side-teams img {
   max-width: 1.25rem;
   max-height: 1.25rem;
 }
 
-.upcoming-side-team-one {
+.predictions-side-team-one {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem 0rem 1rem;
+}
+
+.predictions-side-at {
+
+}
+
+.predictions-side-team-two {
   flex: 1;
   display: flex;
   justify-content: space-between;
@@ -97,18 +141,6 @@
   padding: 0.5rem;
 }
 
-.upcoming-side-at {
-
-}
-
-.upcoming-side-team-two {
-  flex: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-}
-
-.upcoming-side-team-name {
+.predictions-side-team-name {
   padding: 0.5rem;
 }
