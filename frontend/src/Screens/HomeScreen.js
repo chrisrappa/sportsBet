@@ -8,6 +8,12 @@ import Sidebar from '../components/SidebarComponents/Sidebar';
 
 function HomeScreen (){
 
+  const upVotes = useSelector(state => state.upVotes);
+  const {upvotes} = upVotes;
+  const downVotes = useSelector(state => state.downVotes);
+  const {downvotes} = downVotes;
+  console.log(downvotes);
+
   const postList = useSelector(state => state.postList);
   const {posts, loading, error} = postList;
 
@@ -39,8 +45,8 @@ function HomeScreen (){
               image = {post.image}
               category = {post.category}
               description = {post.description}
-              upvotes = {post.upvotes}
-              downvotes = {post.downvotes}
+              upvotes = {upvotes}
+              downvotes = {downvotes}
               //We'll need to pass in filter props too
             />
             ))

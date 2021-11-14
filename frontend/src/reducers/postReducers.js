@@ -1,6 +1,8 @@
 import { 
   POST_CREATE_FAIL, POST_CREATE_REQUEST, POST_CREATE_SUCCESS, POST_CREATE_RESET,
   POST_LIST_REQUEST, POST_LIST_SUCCESS, POST_LIST_FAIL,
+  POST_UPVOTE_REQUEST, POST_UPVOTE_SUCCESS, POST_UPVOTE_FAIL,
+  POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL
   // POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS, POST_DETAILS_FAIL,
   // MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
   // POST_DELETE_REQUEST, POST_DELETE_SUCCESS, POST_DELETE_FAIL,
@@ -28,6 +30,30 @@ export function postListReducer(state = { posts: [] }, action) {
     case POST_LIST_SUCCESS:
       return { loading: false, posts: action.payload };
     case POST_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
+
+export function upVoteReducer(state = {}, action) {
+  switch (action.type) {
+    case POST_UPVOTE_REQUEST:
+      return { loading: true };
+    case POST_UPVOTE_SUCCESS:
+      return { loading: false, upvotes: action.payload };
+    case POST_UPVOTE_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
+
+export function downVoteReducer(state = {}, action) {
+  switch (action.type) {
+    case POST_DOWNVOTE_REQUEST:
+      return { loading: true };
+    case POST_DOWNVOTE_SUCCESS:
+      return { loading: false, downvotes: action.payload };
+    case POST_DOWNVOTE_FAIL:
       return { loading: false, error: action.payload };
     default: return state;
   }

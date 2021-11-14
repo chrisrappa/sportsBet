@@ -1,15 +1,25 @@
 import Comments from "./Comments";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp, faArrowAltCircleDown, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
-// import { useDispatch } from 'react-redux';
-
+import { downVotes, upVotes } from "../../actions/postActions";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 export default function Post(props) {
 
-  // const dispatch = useDispatch();
+  var [upvote, setUpvote] = useState(0);
+  var [downvote, setDownvote] = useState(0);
 
-  const handleVote = () => {
-    console.log('Vote Increased by 1')
+  const dispatch = useDispatch();
+
+  const handleUpvote = () => {
+    setUpvote(upvote += 1)
+    dispatch(upVotes(upvote));
+  }
+
+  const handleDownvote = () => {
+    setDownvote(downvote += 1)
+    dispatch(downVotes(downvote));
   }
 
   return (
@@ -26,11 +36,11 @@ export default function Post(props) {
       </div>
       <div className = 'post-metrics'>
         <div className = 'post-votes'>
-          <button className = 'post-buttons' onClick = {handleVote}>
+          <button className = 'post-buttons' onClick = {handleUpvote}>
             <FontAwesomeIcon icon = { faArrowAltCircleUp } />
             <h5>{props.upvotes}</h5>
           </button>
-          <div className = 'post-buttons'>
+          <div className = 'post-buttons' onClick = {handleDownvote}>
             <FontAwesomeIcon icon = { faArrowAltCircleDown } />
             <h5>{props.downvotes}</h5>
           </div>

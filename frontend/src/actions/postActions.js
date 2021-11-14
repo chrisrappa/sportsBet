@@ -2,6 +2,8 @@ import axios from 'axios';
 import { 
   POST_CREATE_FAIL, POST_CREATE_REQUEST, POST_CREATE_SUCCESS,
   POST_LIST_REQUEST, POST_LIST_SUCCESS, POST_LIST_FAIL,
+  POST_UPVOTE_REQUEST, POST_UPVOTE_SUCCESS, POST_UPVOTE_FAIL,
+  POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL
   // POST_DETAILS_FAIL, POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS,
   // MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
   // POST_DELETE_SUCCESS, POST_DELETE_REQUEST, POST_DELETE_FAIL,
@@ -38,15 +40,23 @@ export const listPosts = () => async (dispatch) => {
   }
 };
 
-export const updateVote = () => async (dispatch) => {
-  
+export const upVotes = (vote) => async (dispatch) => {
   try {
-    dispatch({ type: POST_LIST_REQUEST });
-    const { data } = await axios.get('/api/posts');
-    dispatch({ type: POST_LIST_SUCCESS, payload: data });
-    
+    dispatch({ type: POST_UPVOTE_REQUEST });
+    const data  = vote;
+    dispatch({ type: POST_UPVOTE_SUCCESS, payload: data });
   } catch (error) {
-    dispatch({ type: POST_LIST_FAIL, payload: error.message });
+    dispatch({ type: POST_UPVOTE_FAIL, payload: error.message });
+  }
+};
+
+export const downVotes = (vote) => async (dispatch) => {
+  try {
+    dispatch({ type: POST_DOWNVOTE_REQUEST });
+    const data  = vote;
+    dispatch({ type: POST_DOWNVOTE_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: POST_DOWNVOTE_FAIL, payload: error.message });
   }
 };
 

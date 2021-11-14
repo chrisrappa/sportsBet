@@ -7,8 +7,10 @@ import {
   userUpdateReducer
 } from './reducers/userReducers';
 import { 
+  downVoteReducer,
   postCreateReducer, 
   postListReducer, 
+  upVoteReducer,
   // postDetailsReducer, 
   // myPostListReducer, 
   // postDeleteReducer 
@@ -16,8 +18,9 @@ import {
 
 const userInfo = Cookie.getJSON("userInfo") || null;
 console.log(userInfo);
+
 const initialState = {
-    userSignin: { userInfo }
+  userSignin: { userInfo }
   };
 
 const reducer = combineReducers({
@@ -26,6 +29,8 @@ const reducer = combineReducers({
     userUpdate: userUpdateReducer,
     postCreate: postCreateReducer,
     postList: postListReducer,
+    upVotes: upVoteReducer,
+    downVotes: downVoteReducer
     // postDetails: postDetailsReducer,
     // myPostList: myPostListReducer,
     // postDelete: postDeleteReducer,
