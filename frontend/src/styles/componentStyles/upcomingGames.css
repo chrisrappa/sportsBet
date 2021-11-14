@@ -67,6 +67,7 @@
   align-items: center;
   height: 100%;
   flex-grow: 3;
+  font-size: 0.65rem;
 }
 
 .upcoming-side-teams {
