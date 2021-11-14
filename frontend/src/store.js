@@ -5,7 +5,7 @@ import {userRegisterReducer, userSigninReducer, userUpdateReducer} from './reduc
 import { postCreateReducer, postDetailsReducer, myPostListReducer, postListReducer, postDeleteReducer } from './reducers/postReducers';
 
 const userInfo = Cookie.getJSON("userInfo") || null;
-
+console.log(userInfo);
 const initialState = {
     userSignin: { userInfo }
   };

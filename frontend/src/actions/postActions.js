@@ -1,11 +1,11 @@
-import Axios from 'axios';
+import axios from 'axios';
 import {
   POST_CREATE_FAIL,
   POST_CREATE_REQUEST,
   POST_CREATE_SUCCESS,
-  POST_DETAILS_FAIL,
-  POST_DETAILS_REQUEST,
-  POST_DETAILS_SUCCESS,
+  // POST_DETAILS_FAIL,
+  // POST_DETAILS_REQUEST,
+  // POST_DETAILS_SUCCESS,
   MY_POST_LIST_REQUEST,
   MY_POST_LIST_SUCCESS,
   MY_POST_LIST_FAIL,
@@ -18,47 +18,41 @@ import {
 
 } from '../constants/postConstants';
 
-export const createPOST = (post) => async (dispatch, getState) => {
-  dispatch({ type: POST_CREATE_REQUEST, payload: post });
+export const createPost = (post) => async (dispatch, getState) => {
   try {
-    const { userSignin: { userInfo }} = getState();
-    const { data: { data: newPost } } = await Axios.post('/api/POSTs', post, {
+    dispatch({type: POST_CREATE_REQUEST, payload: post})
+    const { userSignin: { userInfo } } = getState();
+    const {data} = await axios.post('/api/posts', post, {
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        'Authorization' : 'Bearer ' + userInfo.token,
       },
     });
-    
-    dispatch({ type: POST_CREATE_SUCCESS, payload: newPost });
-    localStorage.removeItem('cartItems');
+    console.log("Post successfully created!")
+    dispatch({type: POST_CREATE_SUCCESS, payload: data})
+      
   } catch (error) {
-    dispatch({
-      type: POST_CREATE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
+      dispatch({type: POST_CREATE_FAIL, payload: error.message})
   }
 };
 
-export const detailsPost = (postId) => async (dispatch, getState) => {
-  dispatch({ type: POST_DETAILS_REQUEST, payload: postId });
-  const {
-    userSignin: { userInfo },
-  } = getState();
-  try {
-    const { data } = await Axios.get(`/api/POSTs/${postId}`, {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
-    dispatch({ type: POST_DETAILS_SUCCESS, payload: data });
-  } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message;
-    dispatch({ type: POST_DETAILS_FAIL, payload: message });
-  }
-};
+// export const detailsPost = (postId) => async (dispatch, getState) => {
+//   dispatch({ type: POST_DETAILS_REQUEST, payload: postId });
+//   const {
+//     userSignin: { userInfo },
+//   } = getState();
+//   try {
+//     const { data } = await Axios.get(`/api/POSTs/${postId}`, {
+//       headers: { Authorization: `Bearer ${userInfo.token}` },
+//     });
+//     dispatch({ type: POST_DETAILS_SUCCESS, payload: data });
+//   } catch (error) {
+//     const message =
+//       error.response && error.response.data.message
+//         ? error.response.data.message
+//         : error.message;
+//     dispatch({ type: POST_DETAILS_FAIL, payload: message });
+//   }
+// };
 
 export const listMyPosts = () => async (dispatch, getState) => {
   
@@ -66,7 +60,7 @@ export const listMyPosts = () => async (dispatch, getState) => {
     dispatch({ type:  MY_POST_LIST_REQUEST });
   const { userSignin: { userInfo } } = getState();
     
-    const { data } = await Axios.get('/api/posts/mine', {
+    const { data } = await axios.get('/api/posts/mine', {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: MY_POST_LIST_SUCCESS, payload: data });
@@ -79,26 +73,19 @@ export const listMyPosts = () => async (dispatch, getState) => {
   }
 };
 
-export const listPosts = () => async (dispatch, getState) => {
+export const listPosts = () => async (dispatch) => {
   
   try {
     dispatch({ type: POST_LIST_REQUEST });
-  const { userSignin: { userInfo } } = getState();
-    
-    const { data } = await Axios.get('/api/POSTs', {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
+    const { data } = await axios.get('/api/posts');
     dispatch({ type: POST_LIST_SUCCESS, payload: data });
+    
   } catch (error) {
-    const message =
-      error.response && error.response.data.message
-        ? error.response.data.message
-        : error.message;
-    dispatch({ type: POST_LIST_FAIL, payload: message });
+    dispatch({ type: POST_LIST_FAIL, payload: error.message });
   }
 };
 
-export const deletePOST = (postId) => async (
+export const deletePost = (postId) => async (
   dispatch,
   getState
 ) => {
@@ -107,7 +94,7 @@ export const deletePOST = (postId) => async (
     userSignin: { userInfo },
   } = getState();
   try {
-    const { data } = await Axios.delete('/api/POSTs/' + postId, {
+    const { data } = await axios.delete('/api/posts/' + postId, {
       headers: { Authorization: `Bearer ${userInfo.token}` },
     });
     dispatch({ type: POST_DELETE_SUCCESS, payload: data });

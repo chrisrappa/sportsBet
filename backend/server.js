@@ -3,7 +3,7 @@ import config from './config';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
-import orderRoute from './routes/orderRoute';
+import postRoute from './routes/postRoute';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
-app.use('/api/orders', orderRoute);
+app.use('/api/posts', postRoute);
 
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 

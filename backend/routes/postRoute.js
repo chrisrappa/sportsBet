@@ -1,48 +1,77 @@
 import express from 'express';
 import Post from '../models/postModel';
-import { isAuth, isAdmin } from '../util.js';
+// import { isAuth, isAdmin } from '../util';
 
 const router = express.Router();
 
-router.get("/", isAuth, async (req, res) => {
-  const posts = await Post.find({}).populate('user');
-  res.send(posts);
-});
 
-router.get("/mine", isAuth, async (req, res) => {
-  const posts = await Post.find({user: req.user._id});
-  res.send(posts);
-});
-
-
-router.get("/:id", isAuth, async (req,res) => {
-  const post = await Post.findOne({_id: req.params.id});
-  if(post){
-    res.send(post);
-  } else {
-    res.status(404).send("Post Not Found");
-  }
+router.get('/', async (req, res) => {
+    const category = req.query.category ? {category: req.query.category} : {};
+    const searchKeyword = req.query.searchKeyword ? {
+      name: {
+          $regex: req.query.searchKeyword,
+          $options: 'i'
+      }
+    } : {};
+    const sortOrder = { _id: -1 };
+    const posts = await Post.find({...category, ...searchKeyword}).sort(sortOrder);
+    res.send(posts);
 })
 
-router.delete("/:id", isAuth, isAdmin, async (req, res) => {
-  const post = await Post.findOne({ _id: req.params.id });
-  if (post) {
-    const deletedPost = await post.remove();
-    res.send(deletedPost);
-  } else {
-    res.status(404).send("Post Not Found.")
-  }
+router.get('/:id', async (req, res) => {
+    const post = await Post.findOne({ _id: req.params.id });
+    if(post) {
+        res.send(post);
+    } else {
+        res.status(404).send({message: 'Post Not Found.'});
+    }
 });
 
-router.post("/", isAuth, async (req, res) => {
-    const newPost = new Post({
-      user: req.user._id,
-      postItems: req.body.postItems,
-    });
-    const newPostCreated = await newPost.save();
-    res.status(201).send({ message: "New Post Created", data: newPostCreated });
-  });
+router.put('/:id', async (req, res) => {
+  const postId = req.params.id;
+  const post = await Post.findById(postId);
+  if(post){
+    post.title = req.body.title;
+    post.image = req.body.image;
+    post.category = req.body.category;
+    post.description = req.body.description;
 
+    const updatedPost = await post.save();
+    if(updatedPost){
+      return res.status(200).send({message: 'Post Updated', data: updatedPost});
+    }
+  }
+
+  return res.status(500).send({message: 'Error in Updating Post'});
+});
+
+router.delete('/:id', async (req, res) => {
+    const deletedPost = await Post.findById(req.params.id);
+    if(deletedPost){
+        await deletedPost.remove();
+        res.send({message: 'Post Deleted'})
+    } else {
+        res.send('Error in Deletion')
+    }
+    
+});
+
+router.post('/', async (req, res) => {
+    const post = new Post({
+      title: req.body.title,
+      image: req.body.image,
+      category: req.body.category,
+      description: req.body.description,
+      upvotes: req.body.upvotes,
+      downvotes: req.body.downvotes
+    });
+
+    const newPost = await post.save();
+    if(newPost){
+        return res.status(201).send({message: 'New Post Created', data: newPost});
+    }
+    return res.status(500).send({message: 'Error in Creating Post'});
+});
 
 
 export default router;

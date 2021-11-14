@@ -1,9 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect, useDispatch } from 'react';
+import { signin } from '../../actions/userActions';
 
 export default function SignIn() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(signin(email, password));
+    
+  }, [dispatch, email, password])
 
   return (
     <div className = 'signin-container'>

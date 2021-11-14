@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { register } from '../../actions/userActions';
 
 export default function Register() {
 
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -9,18 +12,45 @@ export default function Register() {
   const [gender, setGender] = useState('');
   const [zipCode, setZipCode] = useState ('');
 
+  const userRegister = useSelector(state => state.userRegister || {});
+  const { userInfo } = userRegister;
+
+  const dispatch = useDispatch();
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      register(
+        username,
+        email, 
+        password, 
+        name,
+        dob,
+        gender,
+        zipCode
+      )
+    )
+    console.log(userInfo);
+  }
+
   return (
     <div className = 'register-container'>
       <div className = 'register-img' />
       <div className = 'register-form'>
-        <form onSubmit = ''>
+        <form onSubmit = {submitHandler}>
           <ul className="form-container">
             <li>
                 <h2>Become A Member</h2>
             </li>
             <li>
+                <label htmlFor="username">
+                  Username
+                </label>
+                <input type="username" name="username" id="username" onChange={(e) => setUsername(e.target.value)} className = 'h-full py-0 pl-2 pr-7  bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+            </li>
+            <li>
                 <label htmlFor="email">
-                  Username or Email
+                  Email
                 </label>
                 <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} className = 'h-full py-0 pl-2 pr-7  bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
@@ -31,31 +61,31 @@ export default function Register() {
                 <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} className = 'h-full py-0 pl-2 pr-7  bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
             <li>
-                <label htmlFor="password">
+                <label htmlFor="name">
                   Full Name
                 </label>
-                <input type="password" name="password" id="password" onChange={(e) => setName(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
             <li>
-                <label htmlFor="password">
+                <label htmlFor="dob">
                   Date of Birth
                 </label>
-                <input type="password" name="password" id="password" onChange={(e) => setDob(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                <input type="dob" name="dob" id="dob" onChange={(e) => setDob(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
             <li>
-                <label htmlFor="password">
+                <label htmlFor="gender">
                   Gender
                 </label>
-                <input type="password" name="password" id="password" onChange={(e) => setGender(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                <input type="gender" name="gender" id="gender" onChange={(e) => setGender(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
             <li>
-                <label htmlFor="password">
+                <label htmlFor="zipCode">
                   ZipCode
                 </label>
-                <input type="password" name="password" id="password" onChange={(e) => setZipCode(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                <input type="zipCode" name="zipCode" id="zipCode" onChange={(e) => setZipCode(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
             </li>
             <li>
-                <button type="submit" className="button primary"> Sign In</button>
+                <button type="submit" className="button primary"> Register</button>
             </li>
             <li>
               Already have an account?

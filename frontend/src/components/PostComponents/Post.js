@@ -2,7 +2,9 @@ import Comments from "./Comments";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp, faArrowAltCircleDown, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
 
-export default function Post() {
+
+export default function Post(props) {
+
   return (
     <div className = 'post-container'>
       <div className = 'post-info'>
@@ -10,20 +12,20 @@ export default function Post() {
         <p>2hrs Ago</p>
       </div>
       <div className = 'post-header'>
-        <h1>Post Header</h1>
+        <h1>{props.title}</h1>
       </div>
       <div className = 'post-img'>
-        <img src = 'https://res.cloudinary.com/djrbfvpit/image/upload/v1636237484/sportsBook/WIN_20210807_18_52_24_Pro_hv6t3k.jpg' alt = '' />
+        <img src = {props.image} alt = '' />
       </div>
       <div className = 'post-metrics'>
         <div className = 'post-votes'>
           <div className = 'post-buttons'>
             <FontAwesomeIcon icon = { faArrowAltCircleUp } />
-            <h5>200</h5>
+            <h5>{props.upvotes}</h5>
           </div>
           <div className = 'post-buttons'>
             <FontAwesomeIcon icon = { faArrowAltCircleDown } />
-            <h5>200</h5>
+            <h5>{props.downvotes}</h5>
           </div>
           <div className = 'post-buttons'>
             <FontAwesomeIcon icon = { faComment } />
@@ -37,6 +39,9 @@ export default function Post() {
           </div>
         </div>
         
+      </div>
+      <div>
+        <p>{props.description}</p>
       </div>
       <div>
         <Comments />

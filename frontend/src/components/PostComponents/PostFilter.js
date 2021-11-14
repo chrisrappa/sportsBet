@@ -19,11 +19,12 @@ export default function PostFilter() {
             <h5>Rising</h5>
           </div>
         </div>
+        
         <div className = 'post-share'>
-          <div className = 'post-buttons upload'>
+          <a href = '/create' className = 'post-buttons upload'>
             {/* <FontAwesomeIcon icon = { faShare } /> */}
             <h5>Upload Meme</h5>
-          </div>
+          </a>
         </div>
       </div>
     </div>
