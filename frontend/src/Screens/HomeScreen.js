@@ -29,20 +29,28 @@ function HomeScreen (){
         {/* Probably factor filter props here */}
         
 
-        {posts ? posts.map((post) => (
+        {loading ? <div><h1>Loading...</h1></div>
+        : 
+          (posts ? posts.map((post) => (
 
-          <Post
-            key = {post._id}
-            title = {post.title}
-            image = {post.image}
-            category = {post.category}
-            description = {post.description}
-            upvotes = {post.upvotes}
-            downvotes = {post.downvotes}
-            //We'll need to pass in filter props too
-          />
-          ))
-        : <div><h1>No Posts Yet</h1></div>}
+            <Post
+              key = {post._id}
+              title = {post.title}
+              image = {post.image}
+              category = {post.category}
+              description = {post.description}
+              upvotes = {post.upvotes}
+              downvotes = {post.downvotes}
+              //We'll need to pass in filter props too
+            />
+            ))
+            : 
+              (error ? <div><h1>There was a problem!</h1></div> 
+              : <div><h1>No Posts Yet</h1></div>
+              )
+          )
+        }
+        
       </div>
       <div className = 'sidebar'>
         <Sidebar />

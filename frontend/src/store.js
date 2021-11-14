@@ -1,8 +1,18 @@
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import thunk from 'redux-thunk';
 import Cookie from 'js-cookie';
-import {userRegisterReducer, userSigninReducer, userUpdateReducer} from './reducers/userReducers';
-import { postCreateReducer, postDetailsReducer, myPostListReducer, postListReducer, postDeleteReducer } from './reducers/postReducers';
+import {
+  userRegisterReducer, 
+  userSigninReducer, 
+  userUpdateReducer
+} from './reducers/userReducers';
+import { 
+  postCreateReducer, 
+  postListReducer, 
+  // postDetailsReducer, 
+  // myPostListReducer, 
+  // postDeleteReducer 
+} from './reducers/postReducers';
 
 const userInfo = Cookie.getJSON("userInfo") || null;
 console.log(userInfo);
@@ -15,10 +25,10 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     userUpdate: userUpdateReducer,
     postCreate: postCreateReducer,
-    postDetails: postDetailsReducer,
-    myPostList: myPostListReducer,
     postList: postListReducer,
-    postDelete: postDeleteReducer,
+    // postDetails: postDetailsReducer,
+    // myPostList: myPostListReducer,
+    // postDelete: postDeleteReducer,
 })
 
 
