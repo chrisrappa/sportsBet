@@ -8,12 +8,6 @@ import Sidebar from '../components/SidebarComponents/Sidebar';
 
 function HomeScreen (){
 
-  const upVotes = useSelector(state => state.upVotes);
-  const {upvotes} = upVotes;
-  const downVotes = useSelector(state => state.downVotes);
-  const {downvotes} = downVotes;
-  console.log(downvotes);
-
   const postList = useSelector(state => state.postList);
   const {posts, loading, error} = postList;
 
@@ -36,6 +30,7 @@ function HomeScreen (){
         
 
         {loading ? <div><h1>Loading...</h1></div>
+
         : 
           (posts ? posts.map((post) => (
 
@@ -45,15 +40,18 @@ function HomeScreen (){
               image = {post.image}
               category = {post.category}
               description = {post.description}
-              upvotes = {upvotes}
-              downvotes = {downvotes}
+              upvotes = {post.upvotes}
+              downvotes = {post.downvotes}
+              id = {post._id}
               //We'll need to pass in filter props too
             />
+            
             ))
             : 
-              (error ? <div><h1>There was a problem!</h1></div> 
-              : <div><h1>No Posts Yet</h1></div>
-              )
+            (error ? <div><h1>There was a problem!</h1></div> 
+            : <div><h1>No Posts Yet</h1></div>
+            )
+
           )
         }
         

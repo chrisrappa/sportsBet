@@ -7,19 +7,19 @@ import { useState } from "react";
 
 export default function Post(props) {
 
-  var [upvote, setUpvote] = useState(0);
-  var [downvote, setDownvote] = useState(0);
-
+  var [upvote, setUpvote] = useState(props.upvotes);
+  var [downvote, setDownvote] = useState(props.downvotes);
+  const postId = props.id;
   const dispatch = useDispatch();
 
   const handleUpvote = () => {
-    setUpvote(upvote += 1)
-    dispatch(upVotes(upvote));
+    setUpvote(upvote += 1);
+    dispatch(upVotes(upvote, postId));
   }
 
   const handleDownvote = () => {
     setDownvote(downvote += 1)
-    dispatch(downVotes(downvote));
+    dispatch(downVotes(downvote, postId));
   }
 
   return (
@@ -38,11 +38,11 @@ export default function Post(props) {
         <div className = 'post-votes'>
           <button className = 'post-buttons' onClick = {handleUpvote}>
             <FontAwesomeIcon icon = { faArrowAltCircleUp } />
-            <h5>{props.upvotes}</h5>
+            <h5>{upvote}</h5>
           </button>
           <div className = 'post-buttons' onClick = {handleDownvote}>
             <FontAwesomeIcon icon = { faArrowAltCircleDown } />
-            <h5>{props.downvotes}</h5>
+            <h5>{downvote}</h5>
           </div>
           <div className = 'post-buttons'>
             <FontAwesomeIcon icon = { faComment } />

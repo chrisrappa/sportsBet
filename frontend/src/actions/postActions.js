@@ -34,31 +34,32 @@ export const listPosts = () => async (dispatch) => {
     dispatch({ type: POST_LIST_REQUEST });
     const { data } = await axios.get('/api/posts');
     dispatch({ type: POST_LIST_SUCCESS, payload: data });
-    
   } catch (error) {
     dispatch({ type: POST_LIST_FAIL, payload: error.message });
   }
 };
 
-export const upVotes = (vote) => async (dispatch) => {
+export const upVotes = (upvote, postId) => async (dispatch) => {
   try {
-    dispatch({ type: POST_UPVOTE_REQUEST });
-    const data  = vote;
-    dispatch({ type: POST_UPVOTE_SUCCESS, payload: data });
+    dispatch({ type: POST_UPVOTE_REQUEST, payload: upvote });
+    const data = await axios.put('/api/posts/' + postId, {"type": "upvotes", "upvote": upvote});
+    dispatch({ type: POST_UPVOTE_SUCCESS, payload: data.data.data.upvotes });
   } catch (error) {
     dispatch({ type: POST_UPVOTE_FAIL, payload: error.message });
   }
 };
 
-export const downVotes = (vote) => async (dispatch) => {
+export const downVotes = (downvote, postId) => async (dispatch) => {
   try {
-    dispatch({ type: POST_DOWNVOTE_REQUEST });
-    const data  = vote;
-    dispatch({ type: POST_DOWNVOTE_SUCCESS, payload: data });
+    dispatch({ type: POST_DOWNVOTE_REQUEST, payload: downvote });
+    const data = await axios.put('/api/posts/' + postId, {"type": "downvotes", "downvote": downvote});
+    dispatch({ type: POST_DOWNVOTE_SUCCESS, payload: data.data.data.downvotes });
   } catch (error) {
     dispatch({ type: POST_DOWNVOTE_FAIL, payload: error.message });
   }
 };
+
+
 
 // export const detailsPost = (postId) => async (dispatch, getState) => {
 //   dispatch({ type: POST_DETAILS_REQUEST, payload: postId });

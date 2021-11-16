@@ -30,30 +30,29 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const postId = req.params.id;
   const post = await Post.findById(postId);
-  if(post){
-    post.title = req.body.title;
-    post.image = req.body.image;
-    post.category = req.body.category;
-    post.description = req.body.description;
 
-    const updatedPost = await post.save();
-    if(updatedPost){
-      return res.status(200).send({message: 'Post Updated', data: updatedPost});
-    }
+  switch(req.body.type){
+    case "upvotes" : 
+      post.upvotes = req.body.upvote;
+      break;
+    case "downvotes" :
+      post.downvotes = req.body.downvote;
+      break;
+    case "posts" :
+      post.title = req.body.title;
+      post.image = req.body.image;
+      post.category = req.body.category;
+      post.description = req.body.description;
+      break;
+    default: return;
+  }
+  
+  const updatedPost = await post.save();
+  if(updatedPost){
+    return res.status(200).send({message: 'Post Updated', data: updatedPost});
   }
 
   return res.status(500).send({message: 'Error in Updating Post'});
-});
-
-router.delete('/:id', async (req, res) => {
-    const deletedPost = await Post.findById(req.params.id);
-    if(deletedPost){
-        await deletedPost.remove();
-        res.send({message: 'Post Deleted'})
-    } else {
-        res.send('Error in Deletion')
-    }
-    
 });
 
 router.post('/', async (req, res) => {
