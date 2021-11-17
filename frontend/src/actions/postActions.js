@@ -14,10 +14,9 @@ export const createPost = (post) => async (dispatch, getState) => {
   try {
     dispatch({type: POST_CREATE_REQUEST, payload: post})
     const { userSignin: { userInfo } } = getState();
-    const name = userInfo.username;
-    // console.log(userInfo);
+    const postingData = {post, userInfo};
 
-    const {data} = await axios.post('/api/posts', post, name
+    const {data} = await axios.post('/api/posts', postingData
       // {
       //   headers: {
       //     'Authorization' : 'Bearer ' + userInfo.token,

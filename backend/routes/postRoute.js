@@ -58,23 +58,23 @@ router.put('/:id', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const post = new Post({
-      title: req.body.title,
-      image: req.body.image,
-      category: req.body.category,
-      description: req.body.description,
-      upvotes: req.body.upvotes,
-      downvotes: req.body.downvotes,
-      time: Date.now(),
-      username: req.body.username
-    });
 
-    console.log(post);
-    const newPost = await post.save();
-    if(newPost){
-        return res.status(201).send({message: 'New Post Created', data: newPost});
-    }
-    return res.status(500).send({message: 'Error in Creating Post'});
+  const post = new Post({
+    title: req.body.post.title,
+    image: req.body.post.image,
+    category: req.body.post.category,
+    description: req.body.post.description,
+    upvotes: req.body.post.upvotes,
+    downvotes: req.body.post.downvotes,
+    time: Date.now(),
+    username: req.body.userInfo.name
+  });
+
+  const newPost = await post.save();
+  if(newPost){
+      return res.status(201).send({message: 'New Post Created', data: newPost});
+  }
+  return res.status(500).send({message: 'Error in Creating Post'});
 });
 
 
