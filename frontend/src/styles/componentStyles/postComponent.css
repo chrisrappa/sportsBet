@@ -87,3 +87,10 @@
   padding-top: 1rem;
   font-size: 1rem;
 }
+
+.post-description {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 1.15rem;
+}

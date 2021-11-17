@@ -58,7 +58,7 @@ export default function Post(props) {
         </div>
         
       </div>
-      <div>
+      <div className = 'post-description'>
         <p>{props.description}</p>
       </div>
       <div>
