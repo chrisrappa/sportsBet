@@ -7,7 +7,9 @@ const postSchema = new mongoose.Schema({
     category: { type: String, required: false},
     description: { type: String, required: false},
     upvotes: { type: Number, default: 0, required: false},
-    downvotes: { type: Number, default: 0, required: false}
+    downvotes: { type: Number, default: 0, required: false},
+    time: { type: Date, required: false},
+    username: { type: String, required: false }
 });
 
 const postModel = mongoose.model('Post', postSchema);

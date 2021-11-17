@@ -1,23 +1,35 @@
-import { useState, useEffect, useDispatch } from 'react';
+import { useState, useEffect } from 'react';
 import { signin } from '../../actions/userActions';
+import { useDispatch, useSelector } from 'react-redux';
 
-export default function SignIn() {
+export default function SignIn(props) {
+
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } =  userSignin;
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
 
   useEffect(() => {
-    dispatch(signin(email, password));
+    if(userInfo){
+      props.history.push(redirect);
+    }
     
-  }, [dispatch, email, password])
+  }, [userInfo, props.history, redirect])
+
+  const submitHandler = (e) => {
+    dispatch(signin(email, password)); 
+    e.preventDefault();
+}
 
   return (
     <div className = 'signin-container'>
       <div className = 'signin-img' />
       <div className = 'signin-form'>
-        <form onSubmit = ''>
+        <form onSubmit = {submitHandler}>
           <ul className="form-container">
             <li>
                 <h2>Log-In</h2>

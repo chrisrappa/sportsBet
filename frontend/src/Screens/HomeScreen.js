@@ -6,10 +6,13 @@ import Post from '../components/PostComponents/Post';
 import PostFilter from '../components/PostComponents/PostFilter';
 import Sidebar from '../components/SidebarComponents/Sidebar';
 
-function HomeScreen (){
+function HomeScreen() {
 
   const postList = useSelector(state => state.postList);
   const {posts, loading, error} = postList;
+
+  // const userSignin = useSelector(state => state.userSignin);
+  // const { userInfo } =  userSignin;
 
   const dispatch = useDispatch();
 
@@ -43,6 +46,8 @@ function HomeScreen (){
               upvotes = {post.upvotes}
               downvotes = {post.downvotes}
               id = {post._id}
+              username = {post.username}
+              time = {post.time}
               //We'll need to pass in filter props too
             />
             

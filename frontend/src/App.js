@@ -7,14 +7,11 @@ import UpcomingScreen from './Screens/UpcomingScreen';
 import Register from './components/RegisterSignIn/Register';
 import SignIn from './components/RegisterSignIn/SignIn';
 import CreatePostScreen from './Screens/CreatePostScreen';
-// import { useSelector } from 'react-redux';
+
 // import { useState } from 'react';
 
 
 function App() {
-
-  // const userSignin = useSelector(state => state.userSignin);
-  // const { userInfo } =  userSignin;
 
   return (
   <BrowserRouter>

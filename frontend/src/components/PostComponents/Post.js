@@ -22,11 +22,12 @@ export default function Post(props) {
     dispatch(downVotes(downvote, postId));
   }
 
+
   return (
     <div className = 'post-container'>
       <div className = 'post-info'>
-        <p>Posted by username</p>
-        <p>2hrs Ago</p>
+        <p>Posted by {props.username}</p>
+        <p>{props.time}</p>
       </div>
       <div className = 'post-header'>
         <h1>{props.title}</h1>

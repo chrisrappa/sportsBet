@@ -1,0 +1,66 @@
+.main-create-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.create-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  flex: 3;
+  width: 100%;
+}
+
+.create  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create .post-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create button {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  max-width: 30%;
+  font-size: 1.75rem;
+  border: 1px solid #adadad5b;
+  border-radius: 0.15rem;
+  transition: all 0.15s ease-in-out;
+}
+
+.create button:hover {
+  background-color: #f5c22956;
+  transition: all 0.15s ease-in-out;
+  border: 1px solid #adadad5b;
+  border-radius: 0.15rem;
+}
+
+.create li input {
+  border: 1px solid #d9dfe7;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.create li textarea {
+  border: 1px solid #adadad;
+  border-radius: 0.25rem;
+  min-height: 7rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+.create label {
+  margin-bottom: 0.5rem;
+}

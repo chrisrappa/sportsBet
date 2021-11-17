@@ -4,7 +4,6 @@ import Post from '../models/postModel';
 
 const router = express.Router();
 
-
 router.get('/', async (req, res) => {
     const category = req.query.category ? {category: req.query.category} : {};
     const searchKeyword = req.query.searchKeyword ? {
@@ -62,9 +61,12 @@ router.post('/', async (req, res) => {
       category: req.body.category,
       description: req.body.description,
       upvotes: req.body.upvotes,
-      downvotes: req.body.downvotes
+      downvotes: req.body.downvotes,
+      time: Date.now(),
+      username: req.body.username
     });
 
+    console.log(post);
     const newPost = await post.save();
     if(newPost){
         return res.status(201).send({message: 'New Post Created', data: newPost});

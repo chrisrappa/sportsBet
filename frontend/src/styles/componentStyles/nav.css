@@ -1,0 +1,10 @@
+.register {
+  align-items: center;
+  color: black;
+  background-color: #f5c329;
+  font-size: 1rem;
+}
+
+.login {
+  align-items: center;
+}

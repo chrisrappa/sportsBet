@@ -3,17 +3,21 @@ import {
   POST_CREATE_FAIL, POST_CREATE_REQUEST, POST_CREATE_SUCCESS,
   POST_LIST_REQUEST, POST_LIST_SUCCESS, POST_LIST_FAIL,
   POST_UPVOTE_REQUEST, POST_UPVOTE_SUCCESS, POST_UPVOTE_FAIL,
-  POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL
+  POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL, 
   // POST_DETAILS_FAIL, POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS,
   // MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
   // POST_DELETE_SUCCESS, POST_DELETE_REQUEST, POST_DELETE_FAIL,
 } from '../constants/postConstants';
 
 export const createPost = (post) => async (dispatch, getState) => {
+  
   try {
     dispatch({type: POST_CREATE_REQUEST, payload: post})
-    // const { userSignin: { userInfo } } = getState();
-    const {data} = await axios.post('/api/posts', post, 
+    const { userSignin: { userInfo } } = getState();
+    const name = userInfo.username;
+    // console.log(userInfo);
+
+    const {data} = await axios.post('/api/posts', post, name
       // {
       //   headers: {
       //     'Authorization' : 'Bearer ' + userInfo.token,

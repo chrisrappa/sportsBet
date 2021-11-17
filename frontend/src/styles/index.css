@@ -10,6 +10,8 @@
 @import './componentStyles/signin.css';
 @import './componentStyles/register.css';
 @import './screenStyles/predictions.css';
+@import './componentStyles/nav.css';
+@import './componentStyles/createPost.css';
 
 #root {
   height: 100%;

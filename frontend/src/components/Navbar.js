@@ -1,6 +1,17 @@
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../actions/userActions";
 
 
 function Navbar() {
+
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } =  userSignin;
+
+  const dispatch = useDispatch();
+
+  const submitHandler = () => {
+    dispatch(logout())
+  }
 
   return (
     <div>
@@ -49,26 +60,72 @@ function Navbar() {
               </div>
             </div>
           </div>
-          <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            {/* <!-- Profile dropdown --> */}
-            <div className=" ml-3 relative">
-              <div>
-                <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  <span className="sr-only"></span>
-                  <a href='/profile'>
-                    <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+
+          {/* <!-- Profile dropdown --> */}
+          { userInfo ? 
+            // Work out profile picture laterz
+
+            // <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            //   <div className=" ml-3 relative">
+            //     <div>
+            //       <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+            //         <span className="sr-only"></span>
+            //         <a href='/profile'>
+            //           <img className="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+            //         </a>
+            //       </button>
+            //     </div>
+            //   </div>
+
+              <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className=" ml-3 relative">
+                <div>
+                  <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <span className="sr-only"></span>
+                    <a href='/profile'>
+                      <h1 className = 'text-white text-lg'>{userInfo.name}</h1>
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div className=" ml-3 relative">
+                <div>
+                  <button onClick = {submitHandler} type="button" className="text-white flex m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    Log Out
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            : 
+
+            <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className=" ml-3 relative">
+                <div>
+                  <button type="button" className="login text-white flex w-28 h-9 justify-center align-bottom m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                    <a href = '/signin'>
+                      <h3>
+                        Login
+                      </h3>
+                    </a>
+                  </button>
+                </div>
+              </div>
+              
+              <div className=" ml-3 relative">
+                <div>
+                  <a href = '/register'>
+                    <button type="button" className="register flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                      Register
+                    </button>
                   </a>
-                </button>
+                </div>
               </div>
             </div>
-            <div className=" ml-3 relative">
-              <div>
-                <button type="button" className="text-white flex m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                  Log Out
-                </button>
-              </div>
-            </div>
-          </div>
+
+          }
+            
         </div>
       </div>
 

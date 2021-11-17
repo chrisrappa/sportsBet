@@ -2,20 +2,40 @@ import express from 'express';
 import User from '../models/userModel';
 import { getToken } from '../util';
 
-
-
 const router = express.Router();
+
+router.get('/:id', async (req, res) => {
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.password = req.body.password || user.password;
+    res.send({
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      // isAdmin: user.isAdmin,
+      // token: getToken(updatedUser),
+    });
+  } else {
+    res.status(404).send({ message: 'User Not Found' });
+  }
+});
 
 router.put('/:id', async (req, res) => {
     const userId = req.params.id;
     const user = await User.findById(userId);
     if (user) {
+      user.username = req.body.username || user.username;
       user.name = req.body.name || user.name;
       user.email = req.body.email || user.email;
       user.password = req.body.password || user.password;
       const updatedUser = await user.save();
       res.send({
         _id: updatedUser.id,
+        username: updatedUser.username,
         name: updatedUser.name,
         email: updatedUser.email,
         isAdmin: updatedUser.isAdmin,
@@ -36,10 +56,11 @@ router.post("/signin", async (req, res) => {
     if(signinUser){
         res.send({
             _id: signinUser.id,
+            username: signinUser.username,
             name: signinUser.name,
             email: signinUser.email,
-            isAdmin: signinUser.isAdmin,
-            token: getToken(signinUser),
+            // isAdmin: signinUser.isAdmin,
+            // token: getToken(signinUser),
         });
 
 
@@ -65,6 +86,7 @@ router.post("/register", async (req, res) => {
     if(newUser){
       res.send({
           _id: newUser.id,
+          username: newUser.username,
           name: newUser.name,
           email: newUser.email,
           // isAdmin: newUser.isAdmin,

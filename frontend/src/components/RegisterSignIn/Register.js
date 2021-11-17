@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
 
-export default function Register() {
+export default function Register(props) {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -16,6 +16,14 @@ export default function Register() {
   const { userInfo } = userRegister;
 
   const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
+
+  useEffect(() => {
+    if(userInfo){
+      props.history.push(redirect);
+    }
+    
+  }, [userInfo, redirect, props.history])
 
   const submitHandler = (e) => {
     e.preventDefault();
