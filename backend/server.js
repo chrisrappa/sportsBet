@@ -2,7 +2,6 @@ import express from 'express';
 import config from './config';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
-import productRoute from './routes/productRoute';
 import postRoute from './routes/postRoute';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -16,7 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
-app.use("/api/products", productRoute);
 app.use('/api/posts', postRoute);
 
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
@@ -29,14 +27,10 @@ mongoose.connect(mongodbUrl, {
     useCreateIndex: true
 }).catch(error => console.log(error.reason));
 
-app.get('/api/config/paypal', (req, res) => {
-  res.send(config.PAYPAL_CLIENT_ID);
-});
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
 });
-
 
 
 app.listen (config.PORT || 5000, () => {
