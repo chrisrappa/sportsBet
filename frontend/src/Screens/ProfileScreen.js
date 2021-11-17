@@ -1,8 +1,8 @@
-// import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { listMyPosts } from '../actions/postActions';
+import { useDispatch, useSelector } from 'react-redux';
 // import { Link } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
 // import { logout, update } from '../actions/userActions';
-// import { listMyPosts } from '../actions/postActions';
 
 import Post from "../components/PostComponents/Post";
 import ProfileNav from "../components/ProfileComponents/ProfileNav";
@@ -10,19 +10,14 @@ import Sidebar from "../components/SidebarComponents/Sidebar";
 
 function ProfileScreen(props) {
 
-    // const [name, setName] = useState('');
-    // const [password, setPassword] = useState('');
-    // const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-    // const userSignin = useSelector(state => state.userSignin) 
-    // const { userInfo } = userSignin;  
-
-    // const handleLogout = () =>{
-    //     dispatch(logout());
-    //     props.history.push("/signin");
-    // }
+    const userSignin = useSelector(state => state.userSignin) 
+    const { userInfo } = userSignin;  
 
     // const submitHandler = (e) => {
     //     e.preventDefault();
@@ -32,58 +27,54 @@ function ProfileScreen(props) {
     // const userUpdate = useSelector(state => state.userUpdate);
     // const { loading, success, error } = userUpdate;
 
-    // const myPostList = useSelector(state => state.myPostList);
-    // const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
-
-    // console.log(myPostList);
-    // console.log(posts);
+    const myPostList = useSelector(state => state.myPostList);
+    const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
     
-    // useEffect(() => {
-    //     if(userInfo){
-    //         setEmail(userInfo.email);
-    //         setName(userInfo.name);
-    //         setPassword(userInfo.password);
-    //     }
-    //     dispatch(listMyPosts());
-    //     return () => {
+    useEffect(() => {
+        if(userInfo){
+          setEmail(userInfo.email);
+          setName(userInfo.name);
+          setPassword(userInfo.password);
+        }
+        dispatch(listMyPosts());
+        return () => {
             
-    //     }
-    // }, [dispatch, userInfo])
+        }
+    }, [dispatch])
 
   return(
     <div className="">
       <div className = 'profile-nav-container'>
-        <ProfileNav />
+        <ProfileNav username = {userInfo.name} />
       </div>
       <div className = 'profile-content-container'>
         <div className="post">
-          <Post />
-            {/* {
-                loadingPosts ? <div>Loading...</div>:
-                errorPosts ? <div>{errorPosts}</div> :
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>DATE</th>
-                            <th>TOTAL</th>
-                            <th>PAID</th>
-                            <th>ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {posts.map(post => <tr key={post._id}>
-                            <td>{post._id}</td>
-                            <td>{post.createdAt.substring(0,10)}</td>
-                            <td>{post.totalPrice}</td>
-                            <td>{post.isPaid}</td>
-                            <td>
-                                <Link to={"/post/" + post._id}>DETAILS</Link>
-                            </td>
-                        </tr>)}
-                    </tbody>
-                </table>
-            } */}
+          {
+            loadingPosts ? <div><h1>Loading...</h1></div> :
+            errorPosts ? <div><h1>There was a problem!</h1></div> :
+
+            (posts ? posts.map((post) => (
+
+              <Post
+                key = {post._id}
+                title = {post.title}
+                image = {post.image}
+                category = {post.category}
+                description = {post.description}
+                upvotes = {post.upvotes}
+                downvotes = {post.downvotes}
+                id = {post._id}
+                username = {post.username}
+                time = {post.time}
+                //We'll need to pass in filter props too
+              />
+
+            ))
+
+            : <div><h1>No Posts Yet</h1></div>
+
+            )
+          }
         </div>
         <div className = 'sidebar'>
             <Sidebar />

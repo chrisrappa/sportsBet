@@ -11,13 +11,12 @@ import {
   postCreateReducer, 
   postListReducer, 
   upVoteReducer,
+  myPostListReducer, 
   // postDetailsReducer, 
-  // myPostListReducer, 
   // postDeleteReducer 
 } from './reducers/postReducers';
 
 const userInfo = Cookie.getJSON("userInfo") || null;
-console.log(userInfo);
 
 const initialState = {
   userSignin: { userInfo }
@@ -30,9 +29,9 @@ const reducer = combineReducers({
     postCreate: postCreateReducer,
     postList: postListReducer,
     upVotes: upVoteReducer,
-    downVotes: downVoteReducer
+    downVotes: downVoteReducer,
+    myPostList: myPostListReducer,
     // postDetails: postDetailsReducer,
-    // myPostList: myPostListReducer,
     // postDelete: postDeleteReducer,
 })
 

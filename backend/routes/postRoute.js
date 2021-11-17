@@ -20,6 +20,12 @@ router.get('/', async (req, res) => {
     res.send(posts);
 })
 
+router.get("/mine/:name", async (req, res) => {
+  const posts = await Post.find({username: req.params.name});
+  res.send(posts);
+});
+
+
 router.get('/:id', async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id });
     if(post) {

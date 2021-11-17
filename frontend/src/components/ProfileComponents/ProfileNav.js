@@ -1,4 +1,4 @@
-export default function ProfileNav() {
+export default function ProfileNav(props) {
   return (
     <div>
       <nav className="bg-white shadow-md h-20 z-10">
@@ -10,7 +10,7 @@ export default function ProfileNav() {
                   <span className="sr-only">Open user menu</span>
                   <img className="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
                 </button>
-                <h1>Username</h1>
+                <h1>{props.username}</h1>
               </div>
             </div>
             <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
