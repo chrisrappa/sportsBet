@@ -32,8 +32,6 @@ export default function CreatePost () {
       })
     );
 
-    history.push('/');
-
   };
 
   return(
