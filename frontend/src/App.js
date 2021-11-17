@@ -20,7 +20,6 @@ function App() {
       <main className = 'main'>
         <div className="content" />
           <Route path="/" exact={true} component={HomeScreen} />
-          <Route path="/category/:id"  component={HomeScreen} />
           <Route path="/signin" component={SignIn} />
           <Route path="/register" component={Register} />
           <Route path="/profile" component={ProfileScreen} />

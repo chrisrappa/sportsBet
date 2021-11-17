@@ -5,15 +5,18 @@ import Post from '../models/postModel';
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const category = req.query.category ? {category: req.query.category} : {};
-    const searchKeyword = req.query.searchKeyword ? {
-      name: {
-          $regex: req.query.searchKeyword,
-          $options: 'i'
-      }
-    } : {};
-    const sortOrder = { _id: -1 };
-    const posts = await Post.find({...category, ...searchKeyword}).sort(sortOrder);
+    // const category = req.query.category ? {category: req.query.category} : {};
+    // const searchKeyword = req.query.searchKeyword ? {
+    //   name: {
+    //       $regex: req.query.searchKeyword,
+    //       $options: 'i'
+    //   }
+    // } : {};
+    // const sortOrder = { _id: -1 };
+    const posts = await Post.find(
+      // {...category, ...searchKeyword}
+      )
+      // .sort(sortOrder);
     res.send(posts);
 })
 

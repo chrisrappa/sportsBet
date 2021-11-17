@@ -56,7 +56,6 @@ function HomeScreen() {
             (error ? <div><h1>There was a problem!</h1></div> 
             : <div><h1>No Posts Yet</h1></div>
             )
-
           )
         }
         
