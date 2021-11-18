@@ -2,10 +2,14 @@ import Comments from "./Comments";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp, faArrowAltCircleDown, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
 import { downVotes, upVotes } from "../../actions/postActions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 export default function Post(props) {
+
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } =  userSignin;
+  console.log(userInfo);
 
   var [upvote, setUpvote] = useState(props.upvotes);
   var [downvote, setDownvote] = useState(props.downvotes);

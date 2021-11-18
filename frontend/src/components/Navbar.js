@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import  Signin  from './RegisterSignIn/SignIn';
 import  Register  from './RegisterSignIn/Register';
-import { useState, useEffect } from "react";
-import { useHistory } from 'react-router';
+import { useState } from "react";
+
 
 function Navbar(props) {
 
@@ -14,7 +14,6 @@ function Navbar(props) {
   const [signin, setSignin] = useState(false);
 
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const submitHandler = () => {
     dispatch(logout())
@@ -29,15 +28,6 @@ function Navbar(props) {
     setRegister(!register);
     setSignin(false);
   }
-
-  useEffect(() => {
-    if(userInfo){
-      setRegister(false);
-      setSignin(false);
-      history.push('/');
-    }
-   
-  }, [history, userInfo])
 
 
   return (

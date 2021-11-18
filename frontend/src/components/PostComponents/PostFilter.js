@@ -1,7 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFireAlt, faStar, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
+import { useSelector } from 'react-redux';
 
 export default function PostFilter() {
+
+  const userSignin = useSelector(state => state.userSignin);
+  const { userInfo } =  userSignin;
+
   return (
     <div className = 'post-filter'>
       <div className = 'post-metrics'>
@@ -20,12 +25,19 @@ export default function PostFilter() {
           </div>
         </div>
         
-        <div className = 'post-share'>
-          <a href = '/create' className = 'post-buttons upload'>
-            {/* <FontAwesomeIcon icon = { faShare } /> */}
-            <h5>Upload Meme</h5>
-          </a>
-        </div>
+        { userInfo 
+        
+          ?
+            <div className = 'post-share'>
+              <a href = '/create' className = 'post-buttons upload'>
+                {/* <FontAwesomeIcon icon = { faShare } /> */}
+                <h5>Upload Meme</h5>
+              </a>
+            </div>
+
+          : null
+        }
+        
       </div>
     </div>
   )

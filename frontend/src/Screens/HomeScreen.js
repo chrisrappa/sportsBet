@@ -35,27 +35,30 @@ function HomeScreen() {
         {loading ? <div><h1>Loading...</h1></div>
 
         : 
-          (posts ? posts.map((post) => (
-
-            <Post
-              key = {post._id}
-              title = {post.title}
-              image = {post.image}
-              category = {post.category}
-              description = {post.description}
-              upvotes = {post.upvotes}
-              downvotes = {post.downvotes}
-              id = {post._id}
-              username = {post.username}
-              time = {post.time}
-              //We'll need to pass in filter props too
-            />
+          ( posts 
             
-            ))
+            ? 
+              posts.map((post) => (
+              <Post
+                key = {post._id}
+                title = {post.title}
+                image = {post.image}
+                category = {post.category}
+                description = {post.description}
+                upvotes = {post.upvotes}
+                downvotes = {post.downvotes}
+                id = {post._id}
+                username = {post.username}
+                time = {post.time}
+                //We'll need to pass in filter props too
+              />
+              ))
+
             : 
-            (error ? <div><h1>There was a problem!</h1></div> 
-            : <div><h1>No Posts Yet</h1></div>
-            )
+            
+              (error ? <div><h1>There was a problem!</h1></div> 
+              : <div><h1>No Posts Yet</h1></div>
+              )
           )
         }
         

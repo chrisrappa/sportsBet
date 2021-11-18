@@ -17,10 +17,14 @@ export default function CreatePost () {
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
-  const username = userInfo.name;
+
+  const [username, setUsername] = useState('');
 
   const submitHandler = (e) => {
       e.preventDefault();
+      if(userInfo){
+        setUsername(userInfo.name)
+      }
       dispatch(createPost({
           title, 
           image, 
@@ -33,64 +37,77 @@ export default function CreatePost () {
   };
 
   return(
-    <div className="form create">
-      <div className="post-header">
-          <h3>Create Post</h3>
-      </div>
-      <form onSubmit={submitHandler}>
-        <ul className="form-container">
-          <li>
-            {loadingCreate && <div>Loading...</div>}
-            {errorCreate && <div>{errorCreate}</div>}
-          </li>
-          <li>
-            <label htmlFor="title">Title</label>
-            <input 
-            type="text"
-            placeholder="Required" 
-            name="title"
-            value={title} 
-            id="title" 
-            onChange={(e) => setTitle(e.target.value)}>
-            </input>
-          </li>
-          <li>
-            <label htmlFor="image">Image</label>
-            <input 
-            type="text"
-            placeholder="Required" 
-            name="image"
-            value={image} 
-            id="image" 
-            onChange={(e) => setImage(e.target.value)}>
-            </input>
-          </li>
-          <li>
-            <label htmlFor="category">Category</label>
-            <input 
-            type="text" 
-            placeholder="Required"
-            name="category"
-            value={category} 
-            id="category" 
-            onChange={(e) => setCategory(e.target.value)}>
-            </input>
-          </li>
-          <li>
-              <label htmlFor="description">Description</label>
-              <textarea 
-              name="description"
-              placeholder="Required"
-              value={description} 
-              id="description" 
-              onChange={(e) => setDescription(e.target.value)}> 
-              </textarea>
-          </li>
-          <li>
-            <button type="submit" className="button primary">Create</button>
-          </li>
-        </ul>
-      </form>
-    </div>
+    <>
+      { userInfo 
+      
+        ?
+          <div className="form create">
+            <div className="post-header">
+                <h3>Create Post</h3>
+            </div>
+            <form onSubmit={submitHandler}>
+              <ul className="form-container">
+                <li>
+                  {loadingCreate && <div>Loading...</div>}
+                  {errorCreate && <div>{errorCreate}</div>}
+                </li>
+                <li>
+                  <label htmlFor="title">Title</label>
+                  <input 
+                  type="text"
+                  placeholder="Required" 
+                  name="title"
+                  value={title} 
+                  id="title" 
+                  onChange={(e) => setTitle(e.target.value)}>
+                  </input>
+                </li>
+                <li>
+                  <label htmlFor="image">Image</label>
+                  <input 
+                  type="text"
+                  placeholder="Required" 
+                  name="image"
+                  value={image} 
+                  id="image" 
+                  onChange={(e) => setImage(e.target.value)}>
+                  </input>
+                </li>
+                <li>
+                  <label htmlFor="category">Category</label>
+                  <input 
+                  type="text" 
+                  placeholder="Required"
+                  name="category"
+                  value={category} 
+                  id="category" 
+                  onChange={(e) => setCategory(e.target.value)}>
+                  </input>
+                </li>
+                <li>
+                    <label htmlFor="description">Description</label>
+                    <textarea 
+                    name="description"
+                    placeholder="Required"
+                    value={description} 
+                    id="description" 
+                    onChange={(e) => setDescription(e.target.value)}> 
+                    </textarea>
+                </li>
+                <li>
+                  <button type="submit" className="button primary">Create</button>
+                </li>
+              </ul>
+            </form>
+          </div>
+      
+        :
+
+        <div className="form create">
+          <h1 className="post-header">You must be signed in to upload a meme</h1>
+        </div>
+      }
+        
+    </>
   )
 }
