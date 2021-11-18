@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { listMyPosts } from '../actions/postActions';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
-// import { logout, update } from '../actions/userActions';
-
 import Post from "../components/PostComponents/Post";
 import ProfileNav from "../components/ProfileComponents/ProfileNav";
 import Sidebar from "../components/SidebarComponents/Sidebar";
+// import { Link } from 'react-router-dom';
+// import { logout, update } from '../actions/userActions';
 
 function ProfileScreen(props) {
-
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
 
     const dispatch = useDispatch();
 
     const userSignin = useSelector(state => state.userSignin) 
     const { userInfo } = userSignin;  
+
+    const myPostList = useSelector(state => state.myPostList);
+    const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
+
+    const currentDate = new Date();
+    const timeStamp = currentDate.getTime();
+    console.log(timeStamp);
 
     // const submitHandler = (e) => {
     //     e.preventDefault();
@@ -27,15 +29,8 @@ function ProfileScreen(props) {
     // const userUpdate = useSelector(state => state.userUpdate);
     // const { loading, success, error } = userUpdate;
 
-    const myPostList = useSelector(state => state.myPostList);
-    const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
-    
     useEffect(() => {
-        if(userInfo){
-          setEmail(userInfo.email);
-          setName(userInfo.name);
-          setPassword(userInfo.password);
-        }
+        
         dispatch(listMyPosts());
         return () => {
             

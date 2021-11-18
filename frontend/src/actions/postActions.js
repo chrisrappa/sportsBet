@@ -65,9 +65,9 @@ export const downVotes = (downvote, postId) => async (dispatch) => {
 export const listMyPosts = () => async (dispatch, getState) => {
   try {
     dispatch({ type:  MY_POST_LIST_REQUEST });
-    
+
     const { userSignin: { userInfo } } = getState();
-    const { data } = await axios.get('/api/posts/mine/' + `${userInfo.name}`);
+    const { data } = await axios.get('/api/posts/mine/' + userInfo.name);
     dispatch({ type: MY_POST_LIST_SUCCESS, payload: data });
   } catch (error) {
     const message =
