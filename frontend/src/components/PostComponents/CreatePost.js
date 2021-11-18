@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import { createPost } from '../../actions/postActions';
-// import { useHistory } from 'react-router';
+
 
 export default function CreatePost () {
 
@@ -11,7 +11,6 @@ export default function CreatePost () {
   const [description, setDescription] = useState('');
 
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   const postCreate = useSelector((state) => state.postCreate || {});
   const { loading: loadingCreate, error: errorCreate } = postCreate;
@@ -19,7 +18,6 @@ export default function CreatePost () {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
   const username = userInfo.name;
-
 
   const submitHandler = (e) => {
       e.preventDefault();
