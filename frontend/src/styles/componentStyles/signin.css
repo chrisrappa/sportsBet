@@ -13,8 +13,8 @@
   background-size: cover;
   background-position: center;
   background-image: url('https://res.cloudinary.com/djrbfvpit/image/upload/v1636481653/sportsBook/soccer-ball_brdhad.jpg');
-  height: 100%;
-  flex: 1;
+  height: 40rem;
+  flex: 1.5;
 }
 
 .signin-form {

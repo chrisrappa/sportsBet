@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { signin } from '../../actions/userActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 export default function SignIn(props) {
 
@@ -11,14 +12,15 @@ export default function SignIn(props) {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
-  const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
+  const history = useHistory();
+  // const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
 
   useEffect(() => {
     if(userInfo){
-      props.history.push(redirect);
+      history.push('/');
     }
     
-  }, [userInfo, props.history, redirect])
+  }, [userInfo, history])
 
   const submitHandler = (e) => {
     dispatch(signin(email, password)); 

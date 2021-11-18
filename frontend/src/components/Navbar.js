@@ -1,17 +1,44 @@
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
+import  Signin  from './RegisterSignIn/SignIn';
+import  Register  from './RegisterSignIn/Register';
+import { useState, useEffect } from "react";
+import { useHistory } from 'react-router';
 
-
-function Navbar() {
+function Navbar(props) {
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
 
+  const [register, setRegister] = useState(false);
+  const [signin, setSignin] = useState(false);
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const submitHandler = () => {
     dispatch(logout())
   }
+
+  const signinPopup = () => {
+    setRegister(false);
+    setSignin(!signin);
+  }
+
+  const registerPopup = () => {
+    setRegister(!register);
+    setSignin(false);
+  }
+
+  useEffect(() => {
+    if(userInfo){
+      setRegister(false);
+      setSignin(false);
+      history.push('/');
+    }
+   
+  }, [history, userInfo])
+
 
   return (
     <div>
@@ -100,32 +127,55 @@ function Navbar() {
 
             : 
 
-            <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <div className=" ml-3 relative">
-                <div>
-                  <button type="button" className="login text-white flex w-28 h-9 justify-center align-bottom m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <a href = '/signin'>
-                      <h3>
-                        Login
-                      </h3>
-                    </a>
-                  </button>
-                </div>
-              </div>
-              
-              <div className=" ml-3 relative">
-                <div>
-                  <a href = '/register'>
-                    <button type="button" className="register flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                      Register
+              <div className="absolute justify-between inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div className=" ml-3 relative">
+                  <div>
+                    <button type="button" onClick = {signinPopup} className="login text-white flex w-28 h-9 justify-center align-bottom m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        <h3>
+                          Login
+                        </h3>
                     </button>
-                  </a>
+                  </div>
+                </div>
+                <div className=" ml-3 relative">
+                  <div>
+                      <button type="button" onClick = {registerPopup} className="register flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        Register
+                      </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            }
 
-          }
+            <aside className="register-signin-popup"> 
+            { register
+
+             ? 
+                <div className = "register-popup">
+                  <button onClick = {registerPopup} className = 'exit-register'>X</button>
+                  <div className = 'register-container'>
+                    <div className = 'register-img' />
+                    <Register />
+                  </div>
+                </div> 
+              : 
+
+              signin 
+              
+              ? 
+                <div className = "signin-popup">
+                  <button onClick = {signinPopup} className = 'exit-register'>X</button>
+                  <Signin />
+                </div> 
+              
+              : null
+          
+            }
+          
             
+            
+            
+          </aside>
         </div>
       </div>
 

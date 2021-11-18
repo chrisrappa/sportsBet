@@ -8,3 +8,55 @@
 .login {
   align-items: center;
 }
+
+.register-signin-popup {
+  display: block;
+  position: absolute;
+  width: 75rem;
+  transform: translateY(50%);
+  border-radius: 0.5rem;
+}
+
+.register-popup {
+  z-index: 50;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+}
+
+.register-container {
+  background-color: white;
+}
+
+.register-img {
+  display: flex;
+  flex: 1.5;
+  align-items: stretch;
+  background-color: orange;
+  height: 65rem;
+}
+
+.signin-popup {
+  z-index: -1;
+  background-color: white;
+  box-shadow: 0.25rem 0.25rem 2rem rgba(170, 169, 169, 0.404);
+  border-radius: 0.5rem;
+  background-image: inherit;
+}
+
+.exit-register {
+  z-index: 5;
+  width: 100%;
+  text-align: right;
+  position: inherit;
+  font-size: 2rem;
+  padding-right: 1rem;
+  color: rgb(119, 119, 119);
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.close {
+  transform: translateX(-35);
+}

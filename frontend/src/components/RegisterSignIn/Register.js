@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
+import { useHistory } from 'react-router';
 
 export default function Register(props) {
 
@@ -16,14 +17,15 @@ export default function Register(props) {
   const { userInfo } = userRegister;
 
   const dispatch = useDispatch();
-  const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
+  const history = useHistory();
+  // const redirect = props.location.search ? props.location.search.split("=")[1]: '/';
 
   useEffect(() => {
     if(userInfo){
-      props.history.push(redirect);
+      history.push('/');
     }
     
-  }, [userInfo, redirect, props.history])
+  }, [userInfo, history])
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -42,8 +44,6 @@ export default function Register(props) {
   }
 
   return (
-    <div className = 'register-container'>
-      <div className = 'register-img' />
       <div className = 'register-form'>
         <form onSubmit = {submitHandler}>
           <ul className="form-container">
@@ -104,6 +104,6 @@ export default function Register(props) {
           </ul>
         </form>
       </div>
-    </div>
+
   )
 }
