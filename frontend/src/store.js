@@ -4,7 +4,7 @@ import Cookie from 'js-cookie';
 import {
   userRegisterReducer, 
   userSigninReducer, 
-  userUpdateReducer
+  userUpdateReducer,
 } from './reducers/userReducers';
 import { 
   downVoteReducer,
@@ -20,7 +20,8 @@ const userInfo = Cookie.getJSON("userInfo") || null;
 
 const initialState = {
   userSignin: { userInfo }
-  };
+};
+
 
 const reducer = combineReducers({
     userSignin: userSigninReducer,
@@ -34,6 +35,7 @@ const reducer = combineReducers({
     // postDetails: postDetailsReducer,
     // postDelete: postDeleteReducer,
 })
+
 
 
 

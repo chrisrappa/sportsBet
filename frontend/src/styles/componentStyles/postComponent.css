@@ -73,6 +73,23 @@
   cursor: pointer;
 }
 
+.post-buttons .post-buttons-clicked {
+  background-color: yellow;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 2.5rem;
+  padding-left: 2.5rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
 .post-buttons h5{
   padding-left: 0.5rem;
 }

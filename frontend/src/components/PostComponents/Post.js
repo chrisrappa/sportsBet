@@ -1,30 +1,73 @@
 import Comments from "./Comments";
+import Cookie from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleUp, faArrowAltCircleDown, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
 import { downVotes, upVotes } from "../../actions/postActions";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector} from "react-redux";
+import { useState, useEffect } from "react";
+import { vote } from "../../actions/userActions";
 
 export default function Post(props) {
 
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
-  console.log(userInfo);
 
   var [upvote, setUpvote] = useState(props.upvotes);
   var [downvote, setDownvote] = useState(props.downvotes);
+  const [currentUserInfo, setCurrentUserInfo] = useState({});
+
   const postId = props.id;
   const dispatch = useDispatch();
+ 
 
   const handleUpvote = () => {
-    setUpvote(upvote += 1);
-    dispatch(upVotes(upvote, postId));
+    if(userInfo){
+      const userId = userInfo._id;
+    
+      if(currentUserInfo.postUpvotes.length === 0){
+        setUpvote(upvote += 1);
+        dispatch(upVotes(upvote, postId));
+        dispatch(vote(userId, postId, 'upvote'));
+      } 
+
+      if (currentUserInfo.postUpvotes.filter(e => e.postId === postId).length > 0) {
+        setUpvote(upvote);
+        console.log('Post already upvoted');
+      } else {
+        setUpvote(upvote += 1);
+        dispatch(upVotes(upvote, postId));
+        dispatch(vote(userId, postId, 'upvote'));
+      }
+       
+    }
+      
   }
 
   const handleDownvote = () => {
-    setDownvote(downvote += 1)
-    dispatch(downVotes(downvote, postId));
+    if(userInfo){
+      const userId = userInfo._id;
+
+      if(currentUserInfo.postDownvotes.length === 0){
+        setDownvote(downvote += 1);
+        dispatch(downVotes(downvote, postId));
+        dispatch(vote(userId, postId, 'downvote'));
+      } 
+
+      if (currentUserInfo.postDownvotes.filter(e => e.postId === postId).length > 0) {
+        setDownvote(downvote);
+        console.log('Post already downvoted');
+      } else {
+        setDownvote(downvote += 1);
+        dispatch(downVotes(downvote, postId));
+        dispatch(vote(userId, postId, 'downvote'));
+      }
+    }
+    
   }
+
+  useEffect(() => {
+    setCurrentUserInfo(Cookie.getJSON("userInfo"));
+  }, [currentUserInfo])
 
 
   return (

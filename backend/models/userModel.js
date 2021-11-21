@@ -9,6 +9,9 @@ const userSchema = new mongoose.Schema({
   dob: { type: String, required: false},
   gender: { type: String, required: false},
   zipCode: { type: String, required: false},
+  postUpvotes: {type: Array, required: false},
+  postDownvotes: {type: Array, required: false},
+  postComments: {type: Array, required: false},
   isAdmin: { type: Boolean, required: true , default: false },
 });
 
