@@ -4,7 +4,7 @@ import {
 } from '../constants/sportsAPIConstants';
 import axios from 'axios';
 
-export const upcomingGamesApi = (leagueNum, seasonYear, sportType) => async (dispatch) => {
+export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls) => async (dispatch) => {
 
   dispatch({type: UPCOMING_GAMES_REQUEST});
 
@@ -18,7 +18,7 @@ export const upcomingGamesApi = (leagueNum, seasonYear, sportType) => async (dis
 
     var games = [];
 
-    for(let i = 0; i < 10; i++){
+    for(let i = 0; i < numCalls; i++){
       const json = (data.response[i]);
       games.push(json);
     }
