@@ -6,9 +6,9 @@ import { useDispatch } from "react-redux";
 
 export default function UpcomingScreen() {
 
-  const [sportType, setSportType] = useState('baseball');
-  const [league, setLeague] = useState('1');
-  const [season, setSeason] = useState('2022');
+  const [sportType, setSportType] = useState('basketball');
+  const [league, setLeague] = useState('12');
+  const [season, setSeason] = useState('2021-2022');
   const dispatch = useDispatch();
 
   useEffect(() => {
