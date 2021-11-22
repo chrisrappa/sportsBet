@@ -7,9 +7,9 @@ export default function UpcomingGamesSide() {
 
   const upcomingGames = useSelector(state => state.upcomingGames);
   const { games, loading, error } = upcomingGames;
-  const [sportType, setSportType] = useState('baseball');
-  const [league, setLeague] = useState('1');
-  const [season, setSeason] = useState('2022');
+  const [sportType, setSportType] = useState('basketball');
+  const [league, setLeague] = useState('12');
+  const [season, setSeason] = useState('2021-2022');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export default function UpcomingGamesSide() {
     }
   }, [dispatch, league, sportType])
 
+  console.log(games);
   return (
     <div className = 'upcoming-side-container'>
       <div className = 'upcoming-side-header'>
@@ -66,10 +67,10 @@ export default function UpcomingGamesSide() {
 
       :
 
-      games 
+      games !== undefined 
 
       ?
-
+      
       <div>
       {games.map((game) => (
         <UpcomingInfoSide 
