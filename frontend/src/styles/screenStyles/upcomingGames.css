@@ -16,10 +16,12 @@
 
 .upcoming-popular {
   padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.upcoming-all {
-  padding-top: 2.5rem;
+.upcoming-popular button{
+  padding: 0.25rem;
 }
 
 .upcoming-container {
@@ -117,9 +119,10 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  background-color: #1f2937;
+  background-color: #f9fbff;
   border-radius: 0.25rem;
-  color: white;
+  color: black;
+  box-shadow: rgba(128, 128, 128, 0.315) 0.1rem 0.25rem 0.5rem;
 }
 
 .second-result {

@@ -3,6 +3,7 @@ import config from './config';
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
 import postRoute from './routes/postRoute';
+import sportsApi from './routes/sportsApi';
 import bodyParser from 'body-parser';
 import path from 'path';
 import cors from 'cors';
@@ -14,8 +15,9 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
-app.use("/api/users", userRoute);
+app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
+app.use('/api/sportsApi', sportsApi);
 
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 
