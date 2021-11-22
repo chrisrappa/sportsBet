@@ -67,7 +67,7 @@ export default function UpcomingGamesSide() {
 
       :
 
-      games !== undefined 
+      games[0] !== undefined 
 
       ?
       

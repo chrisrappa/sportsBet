@@ -23,7 +23,6 @@ export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls) => 
       games.push(json);
     }
 
-
     dispatch({type: UPCOMING_GAMES_SUCCESS, payload: games});
   } 
   

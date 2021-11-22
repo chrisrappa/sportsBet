@@ -9,6 +9,7 @@ export default function UpcomingGames(props) {
   const { games, loading, error } = upcomingGames;
 
 
+  console.log(games);
 
   return (
     <>
@@ -39,7 +40,7 @@ export default function UpcomingGames(props) {
 
           :
 
-          games 
+          games[0] !== undefined 
 
           ?
 
