@@ -1,29 +1,29 @@
 import {
   UPCOMING_GAMES_REQUEST, UPCOMING_GAMES_SUCCESS, UPCOMING_GAMES_FAIL,
-  // GAME_PREDICTIONS_REQUEST, GAME_PREDICTIONS_SUCCESS, GAME_PREDICTIONS_FAIL
+  GAME_PREDICTIONS_REQUEST, GAME_PREDICTIONS_SUCCESS, GAME_PREDICTIONS_FAIL
 } from '../constants/sportsAPIConstants';
 import axios from 'axios';
 
-export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls) => async (dispatch) => {
+export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
 
   dispatch({type: UPCOMING_GAMES_REQUEST});
 
   try {
-    const params = `${sportType}/${leagueNum}/${seasonYear}`;
+    const params = `${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
     const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
       { 
         mode: 'cors' 
       }
     );
 
-    var games = [];
+    var objsToArray = [];
 
     for(let i = 0; i < numCalls; i++){
       const json = (data.response[i]);
-      games.push(json);
+      objsToArray.push(json);
     }
 
-    dispatch({type: UPCOMING_GAMES_SUCCESS, payload: games});
+    dispatch({type: UPCOMING_GAMES_SUCCESS, payload: objsToArray});
   } 
   
   catch (error) {
@@ -32,28 +32,31 @@ export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls) => 
 
 }
 
-// export const gamePredictions = (leagueNum, seasonYear, sportType) => async (dispatch) => {
+export const gamePredictionsApi = (leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
 
-//   dispatch({type: GAME_PREDICTIONS_REQUEST});
-//   const apiKey = '3f0e7a4b1daa7be241ac12e59e43f8a5';
-//   const url = `https://v1.${sportType}.api-sports.io/games?league=${leagueNum}&season=${seasonYear}`;
+  dispatch({type: GAME_PREDICTIONS_REQUEST});
+  const params = `${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
 
-//   try {
-//     const { data } = await axios.get(`${url}`, 
-//       {
-//         headers:
-//         {
-//           Authorization: apiKey
-//         }
+  try {
+    const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
+      { 
+        mode: 'cors' 
+      }
+    );
 
-//       }
-//     );
+    console.log(data);
+    var objsToArray = [];
 
-//     dispatch({type: GAME_PREDICTIONS_SUCCESS, payload: data});
-//   } 
+    for(let i = 0; i < numCalls; i++){
+      const json = (data.response[i]);
+      objsToArray.push(json);
+    }
+
+    dispatch({type: GAME_PREDICTIONS_SUCCESS, payload: objsToArray});
+  } 
   
-//   catch (error) {
-//     dispatch({type: GAME_PREDICTIONS_FAIL, payload: error.message});
-//   }
+  catch (error) {
+    dispatch({type: GAME_PREDICTIONS_FAIL, payload: error.message});
+  }
 
-// }
+}

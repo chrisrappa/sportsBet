@@ -13,13 +13,12 @@ export default function UpcomingGamesSide() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 2));
+    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 2, 'games'));
     return () => {
     //
     }
-  }, [dispatch, league, sportType])
+  }, [dispatch, league, sportType, season])
 
-  console.log(games);
   return (
     <div className = 'upcoming-side-container'>
       <div className = 'upcoming-side-header'>

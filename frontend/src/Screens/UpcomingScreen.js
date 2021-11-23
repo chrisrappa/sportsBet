@@ -12,11 +12,11 @@ export default function UpcomingScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 10));
+    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 10, 'games'));
     return () => {
     //
     }
-  }, [dispatch, league, sportType])
+  }, [dispatch, league, sportType, season])
   
 
   return (

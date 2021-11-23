@@ -1,6 +1,7 @@
 import Predictions from "../components/PredictionsComponents/Predictions";
 
 export default function PredictionsScreen() {
+
   return (
     <div className = 'upcoming-main'>
       <div className = 'upcoming-links'>
@@ -21,6 +22,7 @@ export default function PredictionsScreen() {
           <p>NBA</p>
         </div>
       </div>
+      
       <Predictions />
     </div>
   )

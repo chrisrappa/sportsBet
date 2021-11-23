@@ -1,6 +1,27 @@
+import { useEffect } from "react";
+import { useState } from "react";
+import { gamePredictionsApi } from "../../actions/sportsAPIActions";
+import { useDispatch, useSelector } from "react-redux";
 import PredictionsInfo from './PredictionsInfo';
 
 export default function Predictions() {
+
+  const [sportType, setSportType] = useState('baseball');
+  const [league, setLeague] = useState('1');
+  const [season, setSeason] = useState('2022');
+  const dispatch = useDispatch();
+
+  const gamePredictions = useSelector(state => state.gamePredictions);
+  const {predictions, loading, error} = gamePredictions;
+
+  useEffect(() => {
+    dispatch(gamePredictionsApi(`${league}`, `${season}`, `${sportType}`, 10, 'odds'));
+
+    return () => {
+    //
+    }
+  }, [dispatch, league, sportType, season])
+
   return (
     <div className = 'upcoming-container'>
       <div className = 'upcoming-header'>
@@ -12,7 +33,42 @@ export default function Predictions() {
         </div>
         <div className = 'upcoming-day-space'></div>
       </div>
-      <PredictionsInfo />
+      { loading 
+
+        ?
+
+        (<div><h1>Loading...</h1></div>)
+
+        :
+
+        error 
+
+        ? 
+
+        (<div><h1>{error}</h1></div>)
+
+        :
+
+        predictions
+
+        ?
+
+        <div>
+        {
+          predictions.map((prediction) => (
+            console.log(prediction)
+            // <PredictionsInfo />
+
+          ))
+
+        }
+        </div>
+
+        :
+
+        <div><h1>No Predictions Available</h1></div>
+        }
+      
     </div>
   )
 }

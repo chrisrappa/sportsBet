@@ -1,4 +1,4 @@
-export default function PredictionsInfo() {
+export default function PredictionsInfo(props) {
   return (
     <>
       <div className = 'predictions-game'>
@@ -22,15 +22,7 @@ export default function PredictionsInfo() {
         </div>
         <div className = 'predictions-info'>
           <div className = 'providers'>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
-            <h1>provider</h1>
+            <h1>{props.name}</h1>
           </div>
           <div className = 'team-one-odds'>
             <h5>+105</h5>

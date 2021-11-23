@@ -15,7 +15,7 @@ import {
   // postDetailsReducer, 
   // postDeleteReducer 
 } from './reducers/postReducers';
-import { upcomingGamesReducer } from './reducers/sportsAPIReducers';
+import { gamePredictionsReducer, upcomingGamesReducer } from './reducers/sportsAPIReducers';
 
 const userInfo = Cookie.getJSON("userInfo") || null;
 
@@ -34,6 +34,7 @@ const reducer = combineReducers({
     downVotes: downVoteReducer,
     myPostList: myPostListReducer,
     upcomingGames: upcomingGamesReducer,
+    gamePredictions: gamePredictionsReducer
     // postDetails: postDetailsReducer,
     // postDelete: postDeleteReducer,
 })
