@@ -16,10 +16,13 @@ export default function Post(props) {
   var [downvote, setDownvote] = useState(props.downvotes);
   const [currentUserInfo, setCurrentUserInfo] = useState({});
 
+  useEffect(() => {
+    setCurrentUserInfo(Cookie.getJSON("userInfo"));
+  }, [currentUserInfo])
+
   const postId = props.id;
   const dispatch = useDispatch();
  
-
   const handleUpvote = () => {
     if(userInfo){
       const userId = userInfo._id;
@@ -32,7 +35,6 @@ export default function Post(props) {
 
       if (currentUserInfo.postUpvotes.filter(e => e.postId === postId).length > 0) {
         setUpvote(upvote);
-        console.log('Post already upvoted');
       } else {
         setUpvote(upvote += 1);
         dispatch(upVotes(upvote, postId));
@@ -55,7 +57,6 @@ export default function Post(props) {
 
       if (currentUserInfo.postDownvotes.filter(e => e.postId === postId).length > 0) {
         setDownvote(downvote);
-        console.log('Post already downvoted');
       } else {
         setDownvote(downvote += 1);
         dispatch(downVotes(downvote, postId));
@@ -64,10 +65,6 @@ export default function Post(props) {
     }
     
   }
-
-  useEffect(() => {
-    setCurrentUserInfo(Cookie.getJSON("userInfo"));
-  }, [currentUserInfo])
 
 
   return (
@@ -94,7 +91,7 @@ export default function Post(props) {
           </div>
           <div className = 'post-buttons'>
             <FontAwesomeIcon icon = { faComment } />
-            <h5>200</h5>
+            <h5>{props.numComments}</h5>
           </div>
         </div>
         <div className = 'post-share'>
@@ -108,9 +105,11 @@ export default function Post(props) {
       <div className = 'post-description'>
         <p>{props.description}</p>
       </div>
-      <div>
-        <Comments />
+
+      <div className = 'post-comments'>
+        <Comments postId = {postId} commentArray = {props.comments} />
       </div>
+      
     </div>
   )
 }

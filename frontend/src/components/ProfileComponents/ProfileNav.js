@@ -17,8 +17,6 @@ export default function ProfileNav(props) {
               <div className="hidden sm:block sm:ml-6">
                 <div className="flex space-x-4">
                   <button className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium" aria-current="page">Latest Posts</button>
-
-                  <button className="text-gray-400 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-md font-medium">Best Posts</button>
                 </div>
               </div>
             </div>

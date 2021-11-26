@@ -6,9 +6,15 @@ import PredictionsInfo from './PredictionsInfo';
 
 export default function Predictions() {
 
-  const [sportType, setSportType] = useState('basketball');
-  const [league, setLeague] = useState('12');
-  const [season, setSeason] = useState('2021-2022');
+  const [sportType, 
+    // setSportType
+  ] = useState('basketball');
+  const [league,
+    //  setLeague
+    ] = useState('12');
+  const [season,
+    //  setSeason
+    ] = useState('2021-2022');
   const dispatch = useDispatch();
 
   const gamePredictions = useSelector(state => state.gamePredictions);

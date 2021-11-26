@@ -17,18 +17,6 @@ function ProfileScreen(props) {
     const myPostList = useSelector(state => state.myPostList);
     const { loading: loadingPosts, posts, error: errorPosts } = myPostList;
 
-    const currentDate = new Date();
-    const timeStamp = currentDate.getTime();
-    console.log(timeStamp);
-
-    // const submitHandler = (e) => {
-    //     e.preventDefault();
-    //     dispatch(update({ userId: userInfo._id, email, name, password}));
-    // }
-
-    // const userUpdate = useSelector(state => state.userUpdate);
-    // const { loading, success, error } = userUpdate;
-
     useEffect(() => {
         
         dispatch(listMyPosts());

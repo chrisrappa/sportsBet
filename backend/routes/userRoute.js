@@ -125,6 +125,9 @@ router.post("/register", async (req, res) => {
         username: newUser.username,
         name: newUser.name,
         email: newUser.email,
+        postUpvotes: [],
+        postDownvotes: [],
+        postComments: []
         // isAdmin: newUser.isAdmin,
         // token: getToken(newUser),
     })

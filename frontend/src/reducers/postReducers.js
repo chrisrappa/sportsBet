@@ -3,6 +3,7 @@ import {
   POST_LIST_REQUEST, POST_LIST_SUCCESS, POST_LIST_FAIL,
   POST_UPVOTE_REQUEST, POST_UPVOTE_SUCCESS, POST_UPVOTE_FAIL,
   POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL,
+  POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS, POST_COMMENT_FAIL,
   MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
   // POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS, POST_DETAILS_FAIL,
   // POST_DELETE_REQUEST, POST_DELETE_SUCCESS, POST_DELETE_FAIL,
@@ -54,6 +55,18 @@ export function downVoteReducer(state = {}, action) {
     case POST_DOWNVOTE_SUCCESS:
       return { loading: false, downvotes: action.payload };
     case POST_DOWNVOTE_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
+
+export function commentReducer(state = {comments: []}, action) {
+  switch (action.type) {
+    case POST_COMMENT_REQUEST:
+      return { loading: true };
+    case POST_COMMENT_SUCCESS:
+      return { loading: false, comments: action.payload };
+    case POST_COMMENT_FAIL:
       return { loading: false, error: action.payload };
     default: return state;
   }

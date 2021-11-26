@@ -29,6 +29,7 @@ router.get("/mine/:name", async (req, res) => {
 router.get('/:id', async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id });
     if(post) {
+      console.log(post);
         res.send(post);
     } else {
         res.status(404).send({message: 'Post Not Found.'});
@@ -45,6 +46,12 @@ router.put('/:id', async (req, res) => {
       break;
     case "downvotes" :
       post.downvotes = req.body.downvote;
+      break;
+
+    // Added this for comments
+    case "comments" :
+      post.comments.push(req.body.comment);
+      post.numComments = post.comments.length;
       break;
     case "posts" :
       post.title = req.body.title;
@@ -73,7 +80,9 @@ router.post('/', async (req, res) => {
     upvotes: req.body.post.upvotes,
     downvotes: req.body.post.downvotes,
     time: Date.now(),
-    username: req.body.userInfo.name
+    username: req.body.userInfo.name,
+    comments: [],
+    numComments: 0
   });
 
   const newPost = await post.save();

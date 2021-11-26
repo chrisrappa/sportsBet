@@ -22,7 +22,8 @@ function HomeScreen() {
     return () => {
         //
     }
-}, [dispatch]);
+  }, [dispatch]);
+
 
   return (
     <div className = 'home-container'>
@@ -50,6 +51,8 @@ function HomeScreen() {
                 id = {post._id}
                 username = {post.username}
                 time = {post.time}
+                comments = {post.comments}
+                numComments = {post.numComments}
                 //We'll need to pass in filter props too
               />
               ))

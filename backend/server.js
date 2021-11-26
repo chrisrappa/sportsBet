@@ -19,7 +19,7 @@ app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
 app.use('/api/sportsApi', sportsApi);
 
-app.use(express.static(path.join(__dirname, '/../frontend/build')));
+// app.use(express.static(path.join(__dirname, '/../frontend/build')));
 
 const mongodbUrl = config.MONGODB_URL;
 
@@ -30,9 +30,9 @@ mongoose.connect(mongodbUrl, {
 }).catch(error => console.log(error.reason));
 
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
-});
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
+// });
 
 
 app.listen (config.PORT || 5000, () => {

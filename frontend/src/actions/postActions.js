@@ -5,6 +5,7 @@ import {
   POST_UPVOTE_REQUEST, POST_UPVOTE_SUCCESS, POST_UPVOTE_FAIL,
   POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL, 
   MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
+  POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS, POST_COMMENT_FAIL,
   // POST_DETAILS_FAIL, POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS,
   // POST_DELETE_SUCCESS, POST_DELETE_REQUEST, POST_DELETE_FAIL,
 } from '../constants/postConstants';
@@ -59,6 +60,20 @@ export const downVotes = (downvote, postId) => async (dispatch) => {
     dispatch({ type: POST_DOWNVOTE_SUCCESS, payload: data.data.data.downvotes });
   } catch (error) {
     dispatch({ type: POST_DOWNVOTE_FAIL, payload: error.message });
+  }
+};
+
+// Added this for comments
+export const addComments = (comment, postId) => async (dispatch) => {
+  console.log(comment);
+  console.log('we made it to add comments');
+  try {
+    dispatch({ type: POST_COMMENT_REQUEST, payload: comment });
+    const data = await axios.put('/api/posts/' + postId, {"type": "comments", "comment": comment});
+    console.log(data);
+    dispatch({ type: POST_COMMENT_SUCCESS, payload: data.data.data.comments });
+  } catch (error) {
+    dispatch({ type: POST_COMMENT_FAIL, payload: error.message });
   }
 };
 

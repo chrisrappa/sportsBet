@@ -12,6 +12,7 @@ import {
   postListReducer, 
   upVoteReducer,
   myPostListReducer, 
+  commentReducer,
   // postDetailsReducer, 
   // postDeleteReducer 
 } from './reducers/postReducers';
@@ -34,7 +35,8 @@ const reducer = combineReducers({
     downVotes: downVoteReducer,
     myPostList: myPostListReducer,
     upcomingGames: upcomingGamesReducer,
-    gamePredictions: gamePredictionsReducer
+    gamePredictions: gamePredictionsReducer,
+    comments: commentReducer,
     // postDetails: postDetailsReducer,
     // postDelete: postDeleteReducer,
 })

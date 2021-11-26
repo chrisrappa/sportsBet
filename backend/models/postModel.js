@@ -8,6 +8,8 @@ const postSchema = new mongoose.Schema({
     description: { type: String, required: false},
     upvotes: { type: Number, default: 0, required: false},
     downvotes: { type: Number, default: 0, required: false},
+    comments: { type: Array, default: [], required: false},
+    numComments: { type: Number, default: 0},
     time: { type: Date, required: false},
     username: { type: String, required: false }
 });
