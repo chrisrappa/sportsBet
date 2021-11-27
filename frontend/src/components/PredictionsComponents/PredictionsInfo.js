@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 export default function PredictionsInfo(props) {
 
@@ -17,16 +18,27 @@ export default function PredictionsInfo(props) {
   for(let i = 0; i < bets.length; i++){
 
     // Lots of different kinds of bets, we only want index 3 which is home/away bet
-    let firstArray = bets[i].filter(bet => bet.id === 2);
+    let filteredByBets = bets[i].filter(bet => bet.id === 2);
+    let homeAwayValues;
 
-    // Isolate values array from bets array
-    const homeAwayValues = firstArray[0].values;
+    // Check to see if we get an actual value back
+    if(filteredByBets.length !== 0){
 
-    // Filter the values in to home teams and away teams, then push to their own member variables
+      // Isolate values array from bets array
+      homeAwayValues = filteredByBets[0].values;
+
+    } else {
+
+      // If the value we get back is an empty array...
+      homeAwayValues = [{value: 'Home', odd: '0.00'},{value: 'Away', odd: '0.00'}]
+    }
+    
+    // Filter the values in to }home teams and away teams, then push to their own member variables
     const homeValues = homeAwayValues.filter(team => team.value === "Home" );
     const awayValues = homeAwayValues.filter(team => team.value === "Away" );
     homeOdds.push(homeValues[0]);
     awayOdds.push(awayValues[0]);
+    
   }
 
   return (

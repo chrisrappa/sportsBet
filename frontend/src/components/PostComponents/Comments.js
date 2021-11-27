@@ -29,7 +29,7 @@ export default function Comments(props) {
       
         ?
       
-        comments.map((comment) => (
+        comments.slice(0, 2).map((comment) => (
           <div className = 'user-comment'>
             <p className = 'comment-by'>{comment.user.userInfo.username}</p>
             <p className = 'comment-text'>{comment.comment}</p>
@@ -41,13 +41,23 @@ export default function Comments(props) {
         <div><h3>No comments yet...</h3></div>
       }
 
-      <form onSubmit = {() => addComment()}>
-        <input onChange = {(e) => setUserComment(e.target.value)} placeholder = "Add comment..." type="comment" name="commnet" id="comment" className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
-        <div className = 'comment-btn-container'>
+      { userInfo
+      
+        ?
+      
+          <form onSubmit = {() => addComment()}>
+            <input onChange = {(e) => setUserComment(e.target.value)} placeholder = "Add comment..." type="comment" name="commnet" id="comment" className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+            <div className = 'comment-btn-container'>
+              <div></div>
+              <button type = 'submit' className="button primary">Submit</button>
+            </div>
+          </form>
+      
+        :
+
           <div></div>
-          <button type = 'submit' className="button primary">Submit</button>
-        </div>
-      </form>
+      }
+      
     </div>
   )
 }

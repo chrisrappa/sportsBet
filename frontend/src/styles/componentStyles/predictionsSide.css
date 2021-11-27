@@ -57,9 +57,9 @@
 .predictions-side-game {
   margin-top: 1rem;
   margin-bottom: 0.05rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
   padding-top: 0.5rem;
-  height: 8rem;
+  height: 9rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

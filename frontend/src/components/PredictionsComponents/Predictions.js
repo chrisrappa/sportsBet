@@ -22,11 +22,7 @@ export default function Predictions() {
 
   useEffect(() => {
     dispatch(gamePredictionsApi(`${league}`, `${season}`, `${sportType}`, 10, 'odds'));
-
-    return () => {
-    //
-    }
-  }, [dispatch, league, sportType, season])
+  }, [])
 
   return (
     <div className = 'upcoming-container'>
@@ -55,7 +51,7 @@ export default function Predictions() {
 
         :
 
-        predictions
+        predictions 
 
         ?
 

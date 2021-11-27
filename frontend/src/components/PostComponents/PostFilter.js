@@ -10,7 +10,7 @@ export default function PostFilter() {
   return (
     <div className = 'post-filter'>
       <div className = 'post-metrics'>
-        <div className = 'post-votes'>
+        {/* <div className = 'post-votes'>
           <div className = 'post-buttons filter'>
             <FontAwesomeIcon icon = { faFireAlt } />
             <h5>Hot</h5>
@@ -23,7 +23,7 @@ export default function PostFilter() {
             <FontAwesomeIcon icon = { faLevelUpAlt } />
             <h5>Rising</h5>
           </div>
-        </div>
+        </div> */}
         
         { userInfo 
         
