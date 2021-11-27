@@ -10,6 +10,7 @@ export default function PostFilter() {
   return (
     <div className = 'post-filter'>
       <div className = 'post-metrics'>
+      <div></div>
         {/* <div className = 'post-votes'>
           <div className = 'post-buttons filter'>
             <FontAwesomeIcon icon = { faFireAlt } />
