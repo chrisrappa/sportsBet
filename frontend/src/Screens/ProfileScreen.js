@@ -49,6 +49,9 @@ function ProfileScreen(props) {
                 id = {post._id}
                 username = {post.username}
                 time = {post.time}
+                comments = {post.comments}
+                numComments = {post.numComments}
+                displayedComments = { 3 }
                 //We'll need to pass in filter props too
               />
 
