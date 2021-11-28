@@ -22,7 +22,7 @@ export default function Predictions() {
 
   useEffect(() => {
     dispatch(gamePredictionsApi(`${league}`, `${season}`, `${sportType}`, 10, 'odds'));
-  }, [])
+  }, [dispatch, league, season, sportType])
 
   return (
     <div className = 'upcoming-container'>

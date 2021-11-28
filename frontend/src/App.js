@@ -7,6 +7,7 @@ import UpcomingScreen from './Screens/UpcomingScreen';
 import Register from './components/RegisterSignIn/Register';
 import SignIn from './components/RegisterSignIn/SignIn';
 import CreatePostScreen from './Screens/CreatePostScreen';
+import InnerPostScreen from './Screens/InnerPostScreen';
 
 // import { useState } from 'react';
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile" component={ProfileScreen} />
           <Route path="/upcoming" component={UpcomingScreen} />
           <Route path="/predictions" component={PredictionsScreen} />
+          <Route path="/post/:id" component={InnerPostScreen} />
           <Route path="/create" component={CreatePostScreen} />
       </main>
       <footer className = 'footer'>

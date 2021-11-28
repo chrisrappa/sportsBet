@@ -53,6 +53,7 @@ function HomeScreen() {
                 time = {post.time}
                 comments = {post.comments}
                 numComments = {post.numComments}
+                displayedComments = { 3 }
                 //We'll need to pass in filter props too
               />
               ))

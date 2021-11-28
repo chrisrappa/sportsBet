@@ -22,7 +22,7 @@ export default function PredictionsSide() {
 
   useEffect(() => {
     dispatch(gamePredictionsApi(`${league}`, `${season}`, `${sportType}`, 2, 'odds'));
-  }, [])
+  }, [dispatch, league, season, sportType])
 
   return (
     <div className = 'predictions-side-container'>
@@ -30,11 +30,7 @@ export default function PredictionsSide() {
       <h3>Predictions</h3>
     </div>
     <div className = 'predictions-side-sports'>
-      <p>Soccer</p>
-      <p>Baseball</p>
-      <p>BasketBall</p>
-      <p>Boxing</p>
-      <p>Cricket</p>
+      <p>NBA</p>
     </div>
     <div className = 'predictions-side-day'>
       <div className = 'predictions-side-day-text'>
@@ -47,34 +43,34 @@ export default function PredictionsSide() {
 
       ?
 
-      (<div><h1>Loading...</h1></div>)
+        (<div><h1>Loading...</h1></div>)
 
       :
 
-      error 
+       error 
 
       ? 
 
-      (<div><h1>{error}</h1></div>)
+        (<div><h1>{error}</h1></div>)
 
       :
 
-      predictions 
+        predictions 
 
       ?
 
-      <div>
-      {
-        predictions.map((prediction) => (
-          <PredictionsInfoSide prediction = {prediction} />
-        ))
+        <div>
+          {
+            predictions.map((prediction) => (
+              <PredictionsInfoSide prediction = {prediction} />
+            ))
 
-      }
-      </div>
+          }
+        </div>
 
       :
 
-      <div><h1>No Predictions Available</h1></div>
+        <div><h1>No Predictions Available</h1></div>
       }
 
     </div>

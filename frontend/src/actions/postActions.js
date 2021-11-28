@@ -6,7 +6,7 @@ import {
   POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL, 
   MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
   POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS, POST_COMMENT_FAIL,
-  // POST_DETAILS_FAIL, POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS,
+  POST_DETAILS_FAIL, POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS,
   // POST_DELETE_SUCCESS, POST_DELETE_REQUEST, POST_DELETE_FAIL,
 } from '../constants/postConstants';
 
@@ -63,7 +63,6 @@ export const downVotes = (downvote, postId) => async (dispatch) => {
   }
 };
 
-// Added this for comments
 export const addComments = (comment, postId) => async (dispatch) => {
   console.log(comment);
   console.log('we made it to add comments');
@@ -94,24 +93,15 @@ export const listMyPosts = () => async (dispatch, getState) => {
 };
 
 
-// export const detailsPost = (postId) => async (dispatch, getState) => {
-//   dispatch({ type: POST_DETAILS_REQUEST, payload: postId });
-//   const {
-//     userSignin: { userInfo },
-//   } = getState();
-//   try {
-//     const { data } = await Axios.get(`/api/POSTs/${postId}`, {
-//       headers: { Authorization: `Bearer ${userInfo.token}` },
-//     });
-//     dispatch({ type: POST_DETAILS_SUCCESS, payload: data });
-//   } catch (error) {
-//     const message =
-//       error.response && error.response.data.message
-//         ? error.response.data.message
-//         : error.message;
-//     dispatch({ type: POST_DETAILS_FAIL, payload: message });
-//   }
-// };
+export const detailsPost = (postId) => async (dispatch) => {
+  dispatch({ type: POST_DETAILS_REQUEST, payload: postId });
+  try {
+    const { data } = await axios.get(`/api/posts/${postId}`);
+    dispatch({ type: POST_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: POST_DETAILS_FAIL, payload: error.message });
+  }
+};
 
 
 // export const deletePost = (postId) => async (

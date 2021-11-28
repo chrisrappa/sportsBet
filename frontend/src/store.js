@@ -13,7 +13,7 @@ import {
   upVoteReducer,
   myPostListReducer, 
   commentReducer,
-  // postDetailsReducer, 
+  postDetailsReducer, 
   // postDeleteReducer 
 } from './reducers/postReducers';
 import { gamePredictionsReducer, upcomingGamesReducer } from './reducers/sportsAPIReducers';
@@ -37,7 +37,7 @@ const reducer = combineReducers({
     upcomingGames: upcomingGamesReducer,
     gamePredictions: gamePredictionsReducer,
     comments: commentReducer,
-    // postDetails: postDetailsReducer,
+    postDetails: postDetailsReducer,
     // postDelete: postDeleteReducer,
 })
 

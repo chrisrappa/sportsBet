@@ -25,11 +25,9 @@ router.get("/mine/:name", async (req, res) => {
   res.send(posts);
 });
 
-
 router.get('/:id', async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id });
     if(post) {
-      console.log(post);
         res.send(post);
     } else {
         res.status(404).send({message: 'Post Not Found.'});
@@ -48,7 +46,6 @@ router.put('/:id', async (req, res) => {
       post.downvotes = req.body.downvote;
       break;
 
-    // Added this for comments
     case "comments" :
       post.comments.push(req.body.comment);
       post.numComments = post.comments.length;

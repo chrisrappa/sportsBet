@@ -5,7 +5,7 @@ import {
   POST_DOWNVOTE_REQUEST, POST_DOWNVOTE_SUCCESS, POST_DOWNVOTE_FAIL,
   POST_COMMENT_REQUEST, POST_COMMENT_SUCCESS, POST_COMMENT_FAIL,
   MY_POST_LIST_REQUEST, MY_POST_LIST_SUCCESS, MY_POST_LIST_FAIL,
-  // POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS, POST_DETAILS_FAIL,
+  POST_DETAILS_REQUEST, POST_DETAILS_SUCCESS, POST_DETAILS_FAIL,
   // POST_DELETE_REQUEST, POST_DELETE_SUCCESS, POST_DELETE_FAIL,
 } from "../constants/postConstants";
 
@@ -85,17 +85,17 @@ export function myPostListReducer(state = { posts: [] }, action) {
 }
 
 
-// export function postDetailsReducer(state = { loading: true }, action) {
-//   switch (action.type) {
-//     case POST_DETAILS_REQUEST:
-//       return { loading: true };
-//     case POST_DETAILS_SUCCESS:
-//       return { loading: false, post: action.payload };
-//     case POST_DETAILS_FAIL:
-//       return { loading: false, error: action.payload };
-//     default: return state;
-//   }
-// }
+export function postDetailsReducer(state = { loading: true }, action) {
+  switch (action.type) {
+    case POST_DETAILS_REQUEST:
+      return { loading: true };
+    case POST_DETAILS_SUCCESS:
+      return { loading: false, post: action.payload };
+    case POST_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    default: return state;
+  }
+}
 
 
 // export function postDeleteReducer(state = { posts: [] }, action) {

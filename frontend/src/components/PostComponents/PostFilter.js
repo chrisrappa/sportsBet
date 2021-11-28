@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFireAlt, faStar, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faFireAlt, faStar, faLevelUpAlt } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux';
 
 export default function PostFilter() {

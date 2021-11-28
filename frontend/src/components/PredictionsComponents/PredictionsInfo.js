@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function PredictionsInfo(props) {
 
   // Entire response from API

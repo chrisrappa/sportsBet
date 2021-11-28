@@ -3,7 +3,6 @@ export default function PredictionsInfoSide(props) {
 
   // Entire response from API
   const predictions = props.prediction;
-  console.log(predictions);
 
   // Get only the first nine bookmakers in the response
   const bookmakers = predictions.bookmakers.slice(0, 4);

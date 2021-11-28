@@ -1,19 +1,18 @@
-// import { useState } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addComments } from '../../actions/postActions';
 
 export default function Comments(props) {
 
-
   const dispatch = useDispatch();
   const comments = props.commentArray;
-  
+  const displayedComments = props.displayComments;
+
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
 
   const [userComment, setUserComment] = useState('');
-  console.log(userComment);
+  
 
   const addComment = () => {
     dispatch(addComments({
@@ -29,7 +28,7 @@ export default function Comments(props) {
       
         ?
       
-        comments.slice(0, 2).map((comment) => (
+        comments.slice(0, displayedComments).map((comment) => (
           <div className = 'user-comment'>
             <p className = 'comment-by'>{comment.user.userInfo.username}</p>
             <p className = 'comment-text'>{comment.comment}</p>

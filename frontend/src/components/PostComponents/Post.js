@@ -1,7 +1,7 @@
 import Comments from "./Comments";
 import Cookie from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowAltCircleUp, faArrowAltCircleDown, faComment, faShare } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleUp, faArrowAltCircleDown, faComment } from '@fortawesome/free-solid-svg-icons'
 import { downVotes, upVotes } from "../../actions/postActions";
 import { useDispatch, useSelector} from "react-redux";
 import { useState, useEffect } from "react";
@@ -21,6 +21,7 @@ export default function Post(props) {
   }, [currentUserInfo])
 
   const postId = props.id;
+  const postLink = `/post/${postId}`;
   const dispatch = useDispatch();
  
   const handleUpvote = () => {
@@ -73,12 +74,16 @@ export default function Post(props) {
         <p>Posted by {props.username}</p>
         <p>{props.time}</p>
       </div>
-      <div className = 'post-header'>
-        <h1>{props.title}</h1>
-      </div>
-      <div className = 'post-img'>
-        <img src = {props.image} alt = '' />
-      </div>
+      <a href = {postLink}>
+        <div className = 'post-header'>
+          <h1>{props.title}</h1>
+        </div>
+      </a>
+      <a href = {postLink}>
+        <div className = 'post-img'>
+          <img src = {props.image} alt = '' />
+        </div>
+      </a>
       <div className = 'post-metrics'>
         <div className = 'post-votes'>
           <button className = 'post-buttons' onClick = {handleUpvote}>
@@ -89,16 +94,18 @@ export default function Post(props) {
             <FontAwesomeIcon icon = { faArrowAltCircleDown } />
             <h5>{downvote}</h5>
           </div>
-          <div className = 'post-buttons'>
-            <FontAwesomeIcon icon = { faComment } />
-            <h5>{props.numComments}</h5>
-          </div>
+          <a href = {postLink}>
+            <div className = 'post-buttons'>
+                <FontAwesomeIcon icon = { faComment } />
+              <h5>{props.numComments}</h5>
+            </div>
+          </a>
         </div>
         <div className = 'post-share'>
-          <div className = 'post-buttons share'>
+          {/* <div className = 'post-buttons share'>
             <FontAwesomeIcon icon = { faShare } />
             <h5>Share</h5>
-          </div>
+          </div> */}
         </div>
         
       </div>
@@ -107,7 +114,7 @@ export default function Post(props) {
       </div>
 
       <div className = 'post-comments'>
-        <Comments postId = {postId} commentArray = {props.comments} />
+        <Comments postId = {postId} commentArray = {props.comments} displayComments = {props.displayedComments} />
       </div>
       
     </div>
