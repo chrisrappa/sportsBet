@@ -13,3 +13,15 @@
   background-color: #f5c329;
   width: 45%;
 }
+
+@media (max-width: 640px)
+{
+  .upload{
+    width: 100%;
+    justify-self: center;
+  }
+
+  .post-metrics {
+    justify-content: center;
+  }
+}

@@ -147,3 +147,20 @@
   justify-content: space-between;
 
 }
+
+
+@media (max-width: 640px)
+{
+  .post-share{
+    display: none;
+  }
+
+  .post-votes {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .post-info{
+    text-align: center;
+  }
+}

@@ -53,3 +53,15 @@ form {
 .form-container li input {
   height: 3rem;
 }
+
+
+@media (max-width: 640px)
+{
+  .signin-img{
+    display: none!important;
+  }
+
+  .signin-popup{
+    width: 33rem;
+  }
+}

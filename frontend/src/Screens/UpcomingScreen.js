@@ -3,6 +3,7 @@ import { useState } from "react";
 import UpcomingGames from "../components/UpcomingComponents/UpcomingGames";
 import { upcomingGamesApi } from "../actions/sportsAPIActions";
 import { useDispatch } from "react-redux";
+import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
 
 export default function UpcomingScreen() {
 
@@ -20,37 +21,42 @@ export default function UpcomingScreen() {
   
 
   return (
-    <div className = 'upcoming-main'>
-      <div className = 'upcoming-links'>
-        <div className = 'upcoming-popular'>
+    <>
+      <div className = 'upcoming-main upcoming-full'>
+        <div className = 'upcoming-links'>
+          <div className = 'upcoming-popular'>
 
-          <button onClick = {() => {
-            setSportType('baseball'); 
-            setLeague('1');
-            setSeason('2022')}
-            }>
+            <button onClick = {() => {
+              setSportType('baseball'); 
+              setLeague('1');
+              setSeason('2022')}
+              }>
 
-            MLB
+              MLB
 
-          </button>
+            </button>
 
-          <button onClick = {() => {
-            setSportType('basketball'); 
-            setLeague('12');
-            setSeason('2021-2022')}
-            }>
+            <button onClick = {() => {
+              setSportType('basketball'); 
+              setLeague('12');
+              setSeason('2021-2022')}
+              }>
 
-            NBA
-          </button>
+              NBA
+            </button>
 
+          </div>
+        </div>
+        <UpcomingGames 
+        sport = {sportType}
+        league = {league} />
+        <div className = 'upcoming-right'>
+          <button>Full Predictions</button> 
         </div>
       </div>
-      <UpcomingGames 
-      sport = {sportType}
-      league = {league} />
-      <div className = 'upcoming-right'>
-        <button>Full Predictions</button> 
+      <div className = 'upcoming-mobile mr-5 ml-5'>
+        <UpcomingGamesSide />
       </div>
-    </div>
+    </>
   )
 }

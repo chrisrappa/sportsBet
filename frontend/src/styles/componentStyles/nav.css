@@ -1,3 +1,7 @@
+nav {
+  z-index: 10;
+}
+
 .register {
   align-items: center;
   color: black;
@@ -59,4 +63,46 @@
 
 .close {
   transform: translateX(-35);
+}
+
+.mobile-menu{
+  position: fixed;
+  transform: translateY(-35rem);
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  transition: all 0.5s;
+  z-index: 7;
+  filter: drop-shadow(0rem 0rem 0.75rem rgb(71, 71, 71));
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.mobile-menu div{
+  width: 100%;
+}
+
+.mobile-menu a {
+  color: rgb(73, 73, 73);
+  background-color: white;
+  border: 1px solid #2029372c;
+}
+
+
+
+.open {
+  transform: translateY(0);
+}
+
+.register-mobile-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.register-mobile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5c329;
 }

@@ -24,4 +24,16 @@
   justify-content: center;
   align-items: center;
   flex: 1.5;
+  max-width: 100%;
+}
+
+@media (max-width: 640px)
+{
+  .register-img{
+    display: none!important;
+  }
+
+  .register-popup{
+    width: 33rem;
+  }
 }

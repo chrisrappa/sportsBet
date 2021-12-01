@@ -158,3 +158,18 @@
 .upcoming-team-name {
   padding: 0.5rem;
 }
+
+
+@media (max-width: 1000px)
+{
+  .upcoming-full{
+    display: none;
+  }
+}
+
+@media (min-width: 1000px)
+{
+  .upcoming-mobile{
+    display: none;
+  }
+}
