@@ -31,11 +31,13 @@
 }
 
 .post-img {
-  max-width: stretch;
+  max-width: 100%;
+  justify-content: center;
 }
 
 .post-img img{
   border-radius: 0.5rem;
+  max-height: 20rem;
   width: 100%;
   border: 1px solid rgb(223, 223, 223);
 }
