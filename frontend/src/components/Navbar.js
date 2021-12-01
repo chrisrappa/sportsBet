@@ -51,7 +51,7 @@ function Navbar(props) {
         <div className="relative flex items-center justify-between h-16">
           
           {/* Mobile Menu Button */}
-          <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          {/* <div className="absolute inset-y-0 left-0 flex items-center sm:hidden"> */}
             <button type="button" onClick = {() => toggleMenu()} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
               <span className="sr-only">Open main menu</span>
               <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -61,11 +61,11 @@ function Navbar(props) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-          </div>
+          {/* </div> */}
           
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <div className="flex-shrink-0 flex items-center">
-              <img className="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
+            <div className="flex-shrink-0 flex items-center w-50">
+              <img className="block lg:hidden h-8 w-full" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
               <img className="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
             </div>
             <div className="hidden md:block lg:block sm:ml-6">
@@ -102,7 +102,7 @@ function Navbar(props) {
                   <button type="button" className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                     <span className="sr-only"></span>
                     <a href='/profile'>
-                      <h1 className = 'invisible md:visible lg:visible xl:visible text-white text-lg'>{userInfo.name}</h1>
+                      <h1 className = 'hidden md:block lg:block xl:block text-white text-lg'>{userInfo.name}</h1>
                     </a>
                   </button>
                 </div>

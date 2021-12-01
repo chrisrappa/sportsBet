@@ -36,6 +36,8 @@
 
 .post-img img{
   border-radius: 0.5rem;
+  width: 100%;
+  border: 1px solid rgb(223, 223, 223);
 }
 
 .post-metrics {
