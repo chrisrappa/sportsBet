@@ -90,8 +90,6 @@ nav {
   border: 1px solid #2029372c;
 }
 
-
-
 .open {
   transform: translateY(0);
 }
@@ -107,4 +105,8 @@ nav {
   justify-content: center;
   align-items: center;
   background-color: #f5c329;
+}
+
+.mobile-button {
+  cursor: pointer;
 }
