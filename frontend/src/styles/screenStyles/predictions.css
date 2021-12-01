@@ -109,10 +109,3 @@
     display: none;
   }
 }
-
-@media (min-width: 1000px)
-{
-  .predictions-mobile{
-    display: none;
-  }
-}

@@ -169,7 +169,7 @@
 
 @media (min-width: 1000px)
 {
-  .upcoming-mobile{
+  .upcoming-main-mobile{
     display: none;
   }
 }
