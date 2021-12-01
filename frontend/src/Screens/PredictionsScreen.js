@@ -13,6 +13,7 @@ export default function PredictionsScreen() {
         </div>
         <Predictions /> 
       </div>
+      
       <div className = 'upcoming-main-mobile ml-5 mr-5'>
       <PredictionsSide className = 'predictions-mobile' />
     </div>

@@ -4,8 +4,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
+  width: 80%;
   margin-bottom: 5rem;
+}
+
+.post-container a{
+  width: 100%;
 }
 
 .post-info{
@@ -21,6 +25,7 @@
 .post-header{
   width: 100%;
   justify-content: flex-start;
+  align-items: flex-start;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -130,7 +135,7 @@
 .user-comment {
   padding: 1rem;
   background-color: rgba(240, 240, 240, 0.486);
-  margin: 0.25rem;
+  margin-top: 0.5rem;
   border-radius: 0.5rem;
   font-size: 1rem;
 }
@@ -162,5 +167,14 @@
 
   .post-info{
     text-align: center;
+  }
+
+  .post-metrics{
+    justify-content: flex-start;
+    width: 60%;
+  }
+
+  .post-comments {
+    font-size: 1rem;
   }
 }
