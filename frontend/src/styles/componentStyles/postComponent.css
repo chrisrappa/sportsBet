@@ -99,7 +99,7 @@
 
 .post-description {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   justify-content: flex-start;
   align-items: flex-start;
@@ -160,18 +160,12 @@
     display: none;
   }
 
-  .post-votes {
-    justify-content: center;
-    align-items: center;
-  }
-
   .post-info{
     text-align: center;
   }
 
   .post-metrics{
-    justify-content: flex-start;
-    width: 60%;
+    width: 100%;
   }
 
   .post-comments {

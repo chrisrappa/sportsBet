@@ -84,32 +84,32 @@ export default function Post(props) {
           <img src = {props.image} alt = '' />
         </div>
       </a>
-      <div className = 'post-metrics'>
-        <div className = 'post-votes'>
-          <button className = 'post-buttons' onClick = {handleUpvote}>
-            <FontAwesomeIcon icon = { faArrowAltCircleUp } />
-            <h5>{upvote}</h5>
-          </button>
-          <div className = 'post-buttons' onClick = {handleDownvote}>
-            <FontAwesomeIcon icon = { faArrowAltCircleDown } />
-            <h5>{downvote}</h5>
-          </div>
-          <a href = {postLink}>
-            <div className = 'post-buttons'>
-                <FontAwesomeIcon icon = { faComment } />
-              <h5>{props.numComments}</h5>
-            </div>
-          </a>
-        </div>
-        <div className = 'post-share'>
-          {/* <div className = 'post-buttons share'>
-            <FontAwesomeIcon icon = { faShare } />
-            <h5>Share</h5>
-          </div> */}
-        </div>
-        
-      </div>
       <div className = 'post-description'>
+        <div className = 'post-metrics'>
+          <div className = 'post-votes'>
+            <button className = 'post-buttons' onClick = {handleUpvote}>
+              <FontAwesomeIcon icon = { faArrowAltCircleUp } />
+              <h5>{upvote}</h5>
+            </button>
+            <div className = 'post-buttons' onClick = {handleDownvote}>
+              <FontAwesomeIcon icon = { faArrowAltCircleDown } />
+              <h5>{downvote}</h5>
+            </div>
+            <a href = {postLink}>
+              <div className = 'post-buttons'>
+                  <FontAwesomeIcon icon = { faComment } />
+                <h5>{props.numComments}</h5>
+              </div>
+            </a>
+          </div>
+          <div className = 'post-share'>
+            {/* <div className = 'post-buttons share'>
+              <FontAwesomeIcon icon = { faShare } />
+              <h5>Share</h5>
+            </div> */}
+          </div>
+          
+        </div>
         <p>{props.description}</p>
       </div>
 
