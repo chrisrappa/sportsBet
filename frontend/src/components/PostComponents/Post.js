@@ -71,7 +71,7 @@ export default function Post(props) {
   return (
     <div className = 'post-container'>
       <div className = 'post-info'>
-        <p>Posted by {props.username}</p>
+        <p>{props.username}</p>
         <p>{props.time}</p>
       </div>
       <a href = {postLink}>

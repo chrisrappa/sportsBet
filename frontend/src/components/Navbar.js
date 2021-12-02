@@ -51,13 +51,13 @@ function Navbar(props) {
         <div className="relative flex items-center justify-between h-16">
           
           {/* Mobile Menu Button */}
-            <button onClick = {() => toggleMenu()} type="button" className="inline-flex items-center justify-center p-4 rounded-md text-gray-400">
-              <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+          <button onClick = {() => toggleMenu()} type="button" className="inline-flex items-center justify-center p-4 rounded-md text-gray-400 md:hidden lg:hidden xl:hidden">
+            <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"  stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
           
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex-1 flex sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center w-50">
               <img className="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
               <img className="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
