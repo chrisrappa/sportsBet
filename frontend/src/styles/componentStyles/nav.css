@@ -73,7 +73,7 @@ nav {
   background-color: rgb(255, 255, 255);
   width: 100%;
   transition: all 0.5s;
-  z-index: 7;
+  z-index: 15;
   filter: drop-shadow(0rem 0rem 0.75rem rgb(71, 71, 71));
   display: flex;
   justify-content: stretch;
