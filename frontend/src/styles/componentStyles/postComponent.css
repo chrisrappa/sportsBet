@@ -37,7 +37,7 @@
 
 .post-img img{
   border-radius: 0.5rem;
-  max-height: 25rem;
+  max-height: 40rem;
   width: 100%;
   border: 1px solid rgb(223, 223, 223);
 }
@@ -174,5 +174,9 @@
 
   .post-comments {
     font-size: 1rem;
+  }
+
+  .post-img img{
+    max-height: 20rem;
   }
 }
