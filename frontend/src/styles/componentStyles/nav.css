@@ -28,7 +28,10 @@ nav {
   z-index: 50;
   background-color: rgb(255, 255, 255);
   border-radius: 0.5rem;
-  border: 1px solid gray;
+  box-shadow: 0.25rem 0.25rem 2rem rgba(170, 169, 169, 0.404);
+  overflow-y: scroll;
+  overflow: auto;
+  height: 80vh;
 }
 
 .register-container {
@@ -58,6 +61,7 @@ nav {
   padding-right: 1rem;
   color: rgb(119, 119, 119);
 }
+
 
 .open {
   transform: translateX(0);
@@ -138,7 +142,6 @@ nav {
   .register-popup {
     width: 100vw;
     height: 90vh;
-    overflow-y: scroll;
   }
   
 }

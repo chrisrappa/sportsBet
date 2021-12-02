@@ -33,11 +33,21 @@ function Navbar(props) {
 
   const signinPopup = () => {
     setRegister(false);
-    toggleMenu();
     setSignin(!signin);
   }
 
   const registerPopup = () => {
+    setRegister(!register);
+    setSignin(false);
+  }
+
+  const signinMobilePopup = () => {
+    setRegister(false);
+    toggleMenu();
+    setSignin(!signin);
+  }
+
+  const registerMobilePopup = () => {
     setRegister(!register);
     toggleMenu();
     setSignin(false);
@@ -166,7 +176,7 @@ function Navbar(props) {
       </div>
 
       {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-      <div className="mobile-menu" id="mobile-menu">
+      <div className="mobile-menu md:hidden lg:hidden xl:hidden" id="mobile-menu">
         <div className="px-2 pt-2 pb-3 space-y-1">
           {/* <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" --> */}
           <a href="/" className="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Memes</a>
@@ -187,10 +197,10 @@ function Navbar(props) {
             : 
 
             <div className = 'register-mobile-container'>
-              <button type="button" onClick = {signinPopup} className="register-mobile flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <button type="button" onClick = {signinMobilePopup} className="register-mobile flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 Login
               </button>
-              <button type="button" onClick = {registerPopup} className="register-mobile flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+              <button type="button" onClick = {registerMobilePopup} className="register-mobile flex w-28 h-9 justify-center m-8 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                 Register
               </button>
             </div>
