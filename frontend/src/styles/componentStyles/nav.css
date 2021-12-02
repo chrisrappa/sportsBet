@@ -19,7 +19,7 @@ nav {
   display: block;
   position: absolute;
   width: 75rem;
-  transform: translateY(50%);
+  transform: translateY(60%);
   border-radius: 0.5rem;
   z-index: 20;
 }
@@ -131,11 +131,11 @@ nav {
 @media (max-width: 640px)
 {
   .signin-popup {
-    width: 93vw;
+    width: 100vw;
   }
 
   .register-popup {
-    width: 93vw;
+    width: 100vw;
     height: 90vh;
     overflow-y: scroll;
   }
