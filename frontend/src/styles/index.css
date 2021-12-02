@@ -60,4 +60,16 @@ h1, h2, h3 {
   font-size: 1rem;
 }
 
+body::-webkit-scrollbar-track {
+  background-color: #1f2937;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #f5c329;
+  /* outline: 1px solid #f5c329; */
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
 
