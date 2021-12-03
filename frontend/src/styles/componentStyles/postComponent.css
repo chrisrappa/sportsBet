@@ -161,7 +161,10 @@
 @media (max-width: 640px)
 {
   .post-share{
-    display: none;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    /* display: none; */
   }
 
   .post-info{
