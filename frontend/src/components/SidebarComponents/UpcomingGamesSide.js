@@ -10,10 +10,11 @@ export default function UpcomingGamesSide() {
   const [sportType, setSportType] = useState('basketball');
   const [league, setLeague] = useState('12');
   const [season, setSeason] = useState('2021-2022');
+  const [versionNum, setVersionNum] = useState('1')
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 2, 'games'));
+    dispatch(upcomingGamesApi(`${versionNum}`, `${league}`, `${season}`, `${sportType}`, 2, 'games'));
     return () => {
     //
     }

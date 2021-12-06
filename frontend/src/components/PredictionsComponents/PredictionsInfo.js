@@ -4,7 +4,11 @@ export default function PredictionsInfo(props) {
   const predictions = props.prediction;
 
   // Get only the first nine bookmakers in the response
-  const bookmakers = predictions.bookmakers.slice(0, 9);
+  // With only the amount of entries that the parent calls for
+  const numCalls = props.numCalls;
+
+  // ERROR!! Soccer predictions fail here, check the actions for the necessary
+  const bookmakers = predictions.bookmakers.slice(0, numCalls);
 
   // Grab the bets array from each object in the bookmakers array
   const bets = bookmakers.map((i) => i.bets);
@@ -63,7 +67,7 @@ export default function PredictionsInfo(props) {
             {
               bookmakers.map((bookmaker) => (
                 <div>
-                <p>{bookmaker.name}</p>
+                <p>{bookmaker ? bookmaker.name : 'unknown'}</p>
                 </div>
               ))
             }
@@ -72,14 +76,14 @@ export default function PredictionsInfo(props) {
           <div className = 'team-one-odds'>
             { 
               homeOdds.map((home) => (
-                <p>{home.odd}</p>
+                <p>{home ? home.odd : 0}</p>
               ))
             }
           </div>
           <div className = 'team-two-odds'>
             {
               awayOdds.map((away) => (
-                <p>{away.odd}</p>
+                <p>{away ? away.odd : 0}</p>
               ))
             }
           </div>

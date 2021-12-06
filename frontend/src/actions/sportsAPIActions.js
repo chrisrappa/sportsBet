@@ -4,12 +4,12 @@ import {
 } from '../constants/sportsAPIConstants';
 import axios from 'axios';
 
-export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
+export const upcomingGamesApi = (versionNum, leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
 
   dispatch({type: UPCOMING_GAMES_REQUEST});
 
   try {
-    const params = `${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
+    const params = `${versionNum}/${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
     const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
       { 
         mode: 'cors' 
@@ -32,11 +32,11 @@ export const upcomingGamesApi = (leagueNum, seasonYear, sportType, numCalls, req
 
 }
 
-export const gamePredictionsApi = (leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
+export const gamePredictionsApi = (versionNum, leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
 
   dispatch({type: GAME_PREDICTIONS_REQUEST});
-  const params = `${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
-
+  const params = `${versionNum}/${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
+  console.log(params);
   try {
     const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
       { 
@@ -45,6 +45,10 @@ export const gamePredictionsApi = (leagueNum, seasonYear, sportType, numCalls, r
     );
 
     console.log(data);
+
+    // I'm hitting a weird endpoint here because the postman response gives me bookmakers
+    // but this response is giving me "fixtures" for some reason when passing soccer predictions
+
     var objsToArray = [];
 
     for(let i = 0; i < numCalls; i++){

@@ -1,78 +1,80 @@
-import { useEffect } from "react";
 import { useState } from "react";
-import { gamePredictionsApi } from "../../actions/sportsAPIActions";
-import { useDispatch, useSelector } from "react-redux";
-import PredictionsInfoSide from './PredictionsInfoSide';
+import Predictions from "../PredictionsComponents/Predictions";
+import { useSelector } from "react-redux";
 
 export default function PredictionsSide() {
 
-  const [sportType, 
-    // setSportType
-  ] = useState('basketball');
-  const [league,
-    //  setLeague
-    ] = useState('12');
-  const [season,
-    //  setSeason
-    ] = useState('2021-2022');
-  const dispatch = useDispatch();
-
-  const gamePredictions = useSelector(state => state.gamePredictions);
-  const {predictions, loading, error} = gamePredictions;
-
-  useEffect(() => {
-    dispatch(gamePredictionsApi(`${league}`, `${season}`, `${sportType}`, 2, 'odds'));
-  }, [dispatch, league, season, sportType])
+  const [sportType, setSportType] = useState('basketball');
+  const [league, setLeague] = useState('12');
+  const [season, setSeason] = useState('2021-2022');
+  const [versionNum, setVersionNum] = useState('1');
+  const [reqType, setReqType] = useState('odds');
+  const numCalls = 4;
 
   return (
     <div className = 'predictions-side-container'>
-    <div className = 'predictions-side-header'>
-      <h3>Predictions</h3>
-    </div>
     <div className = 'predictions-side-sports'>
-      <p>NBA</p>
-    </div>
-    <div className = 'predictions-side-day'>
-      <div className = 'predictions-side-day-text'>
-        <p>Today</p>
-      </div>
-      <div className = 'predictions-side-day-space'></div>
+      <button onClick = {() => {
+        setSportType('basketball'); 
+        setLeague('12');
+        setSeason('2021-2022');
+        setVersionNum('1');
+        setReqType('odds');
+        }}>
+        <h3>NBA</h3>
+      </button>
+      <button onClick = {() => {
+        setReqType('odds');
+        setSportType('baseball'); 
+        setLeague('1');
+        setSeason('2022');
+        setVersionNum('1');
+      }}>
+
+      <h3>MLB</h3>
+      </button>
+      <button onClick = {() => {
+        setReqType('odds');
+        setSportType('hockey'); 
+        setLeague('57');
+        setSeason('2021');
+        setVersionNum('1');
+      }}>
+
+      <h3>Hockey</h3>
+      </button>
+      <button onClick = {() => {
+        setReqType('odds');
+        setSportType('volleyball'); 
+        setLeague('180');
+        setSeason('2021');
+        setVersionNum('1');
+      }}>
+
+      <h3>Volleyball</h3>
+      </button>
+      <button onClick = {() => {
+        setReqType('odds');
+        setSportType('rugby'); 
+        setLeague('44');
+        setSeason('2021');
+        setVersionNum('1');
+      }}>
+
+      <h3>Rugby</h3>
+      </button>
     </div>
     <div className = 'predictions-side-all-btn'>
-    { loading 
-
-      ?
-
-        (<div><h1>Loading...</h1></div>)
-
-      :
-
-       error 
-
-      ? 
-
-        (<div><h1>{error}</h1></div>)
-
-      :
-
-        predictions 
-
-      ?
-
-        <div>
-          {
-            predictions.map((prediction) => (
-              <PredictionsInfoSide prediction = {prediction} />
-            ))
-
-          }
-        </div>
-
-      :
-
-        <div><h1>No Predictions Available</h1></div>
-      }
-
+      <div>
+        <Predictions
+        sportType = {sportType}
+        league = {league}
+        season = {season}
+        versionNum = {versionNum}
+        reqType = {reqType}
+        numCalls = {numCalls}
+        />
+      </div>
     </div>
   </div>
   )

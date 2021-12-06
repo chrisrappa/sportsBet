@@ -14,6 +14,15 @@
   flex: 1;
 }
 
+.upcoming-links h3{
+  text-align: left;
+}
+
+.upcoming-links h3:hover {
+  color: #f5c329;
+  transition: ease-in-out 250ms;
+}
+
 .upcoming-popular {
   padding-top: 2.5rem;
   display: flex;

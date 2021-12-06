@@ -10,14 +10,17 @@ export default function UpcomingScreen() {
   const [sportType, setSportType] = useState('basketball');
   const [league, setLeague] = useState('12');
   const [season, setSeason] = useState('2021-2022');
+  const [versionNum, setVersionNum] = useState('1');
+  const [reqType, setReqType] = useState('games');
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(upcomingGamesApi(`${league}`, `${season}`, `${sportType}`, 10, 'games'));
+    console.log(versionNum);
+    dispatch(upcomingGamesApi(`${versionNum}`,`${league}`, `${season}`, `${sportType}`, 10, `${reqType}`));
     return () => {
     //
     }
-  }, [dispatch, league, sportType, season])
+  }, [reqType, versionNum, dispatch, league, sportType, season])
   
 
   return (
@@ -27,22 +30,66 @@ export default function UpcomingScreen() {
           <div className = 'upcoming-popular'>
 
             <button onClick = {() => {
+              setReqType('games');
               setSportType('baseball'); 
               setLeague('1');
-              setSeason('2022')}
-              }>
+              setSeason('2022');
+              setVersionNum('1');
+            }}>
 
-              MLB
-
+            <h3>MLB</h3>
             </button>
 
             <button onClick = {() => {
+              setReqType('games');
               setSportType('basketball'); 
               setLeague('12');
-              setSeason('2021-2022')}
-              }>
+              setSeason('2021-2022');
+              setVersionNum('1');
+            }}>
 
-              NBA
+            <h3>NBA</h3>
+            </button>
+
+            <button onClick = {() => {
+              setReqType('fixtures');
+              setSportType('football'); 
+              setLeague('253');
+              setSeason('2021');
+              setVersionNum('3');
+            }}>
+
+            <h3>Soccer</h3>
+            </button>
+            <button onClick = {() => {
+              setReqType('games');
+              setSportType('hockey'); 
+              setLeague('57');
+              setSeason('2021');
+              setVersionNum('1');
+            }}>
+
+            <h3>Hockey</h3>
+            </button>
+            <button onClick = {() => {
+              setReqType('games');
+              setSportType('volleyball'); 
+              setLeague('180');
+              setSeason('2021');
+              setVersionNum('1');
+            }}>
+
+            <h3>Volleyball</h3>
+            </button>
+            <button onClick = {() => {
+              setReqType('games');
+              setSportType('rugby'); 
+              setLeague('44');
+              setSeason('2021');
+              setVersionNum('1');
+            }}>
+
+            <h3>Rugby</h3>
             </button>
 
           </div>
