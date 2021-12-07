@@ -1,8 +1,5 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import UpcomingGames from "../components/UpcomingComponents/UpcomingGames";
-import { upcomingGamesApi } from "../actions/sportsAPIActions";
-import { useDispatch } from "react-redux";
 import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
 
 export default function UpcomingScreen() {
@@ -12,16 +9,7 @@ export default function UpcomingScreen() {
   const [season, setSeason] = useState('2021-2022');
   const [versionNum, setVersionNum] = useState('1');
   const [reqType, setReqType] = useState('games');
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(versionNum);
-    dispatch(upcomingGamesApi(`${versionNum}`,`${league}`, `${season}`, `${sportType}`, 10, `${reqType}`));
-    return () => {
-    //
-    }
-  }, [reqType, versionNum, dispatch, league, sportType, season])
-  
+  const numCalls = 10;
 
   return (
     <>
@@ -95,15 +83,20 @@ export default function UpcomingScreen() {
           </div>
         </div>
         <UpcomingGames 
-        sport = {sportType}
-        league = {league} />
+        sportType = {sportType}
+        league = {league} 
+        season = {season}
+        versionNum = {versionNum}
+        reqType = {reqType}
+        numCalls = {numCalls}
+        />
         <div className = 'upcoming-right'>
-          <button>Full Predictions</button> 
+          <button><a href = '/predictions'>Full Predictions</a></button> 
         </div>
       </div>
-      <div className = 'upcoming-mobile mr-5 ml-5'>
+      {/* <div className = 'upcoming-mobile mr-5 ml-5'>
         <UpcomingGamesSide />
-      </div>
+      </div> */}
     </>
   )
 }

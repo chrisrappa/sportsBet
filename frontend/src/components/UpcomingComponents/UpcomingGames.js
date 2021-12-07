@@ -1,15 +1,30 @@
 import UpcomingInfo from "./UpcomingInfo";
-
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { upcomingGamesApi } from "../../actions/sportsAPIActions";
+import { useDispatch } from "react-redux";
 
 
 export default function UpcomingGames(props) {
 
+  const sportType = props.sportType;
+  const league= props.league;
+  const season = props.season;
+  const versionNum = props.versionNum;
+  const reqType = props.reqType;
+  const numCalls = props.numCalls;
+
+  const dispatch = useDispatch();
+
   const upcomingGames = useSelector(state => state.upcomingGames);
   const { games, loading, error } = upcomingGames;
 
-
-  console.log(games);
+  useEffect(() => {
+    dispatch(upcomingGamesApi(`${versionNum}`,`${league}`, `${season}`, `${sportType}`, numCalls, `${reqType}`));
+    return () => {
+    //
+    }
+  }, [reqType, versionNum, dispatch, league, sportType, season])
 
   return (
     <>

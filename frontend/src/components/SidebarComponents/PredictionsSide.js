@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Predictions from "../PredictionsComponents/Predictions";
-import { useSelector } from "react-redux";
 
 export default function PredictionsSide() {
 

@@ -1,93 +1,90 @@
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { upcomingGamesApi } from "../../actions/sportsAPIActions";
-import UpcomingInfoSide from "./UpcomingInfoSide";
+import { useState } from "react";
+import UpcomingGames from "../UpcomingComponents/UpcomingGames";
 
 export default function UpcomingGamesSide() {
-
-  const upcomingGames = useSelector(state => state.upcomingGames);
-  const { games, loading, error } = upcomingGames;
+  
   const [sportType, setSportType] = useState('basketball');
   const [league, setLeague] = useState('12');
   const [season, setSeason] = useState('2021-2022');
-  const [versionNum, setVersionNum] = useState('1')
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(upcomingGamesApi(`${versionNum}`, `${league}`, `${season}`, `${sportType}`, 2, 'games'));
-    return () => {
-    //
-    }
-  }, [dispatch, league, sportType, season])
+  const [versionNum, setVersionNum] = useState('1');
+  const [reqType, setReqType] = useState('games');
+  const numCalls = 2;
 
   return (
     <div className = 'upcoming-side-container'>
-      <div className = 'upcoming-side-header'>
-        <h3>Upcoming Games</h3>
-      </div>
       <div className = 'upcoming-side-sports'>
         <button onClick = {() => {
+          setReqType('games');
           setSportType('baseball'); 
           setLeague('1');
-          setSeason('2022')}
-          }>
+          setSeason('2022')
+          setVersionNum('1');
+        }}>
 
           MLB
 
         </button>
 
         <button onClick = {() => {
+          setReqType('games');
           setSportType('basketball'); 
           setLeague('12');
-          setSeason('2021-2022')}
-          }>
+          setSeason('2021-2022');
+          setVersionNum('1');
+          }}>
 
-          NBA
+          <h3>NBA</h3>
+        </button>
+        <button onClick = {() => {
+          setReqType('fixtures');
+          setSportType('football'); 
+          setLeague('253');
+          setSeason('2021');
+          setVersionNum('3');
+          }}>
+
+          <h3>Soccer</h3>
+        </button>
+        <button onClick = {() => {
+          setReqType('games');
+          setSportType('hockey'); 
+          setLeague('57');
+          setSeason('2021');
+          setVersionNum('1');
+          }}>
+
+          <h3>Hockey</h3>
+        </button>
+        <button onClick = {() => {
+          setReqType('games');
+          setSportType('volleyball'); 
+          setLeague('180');
+          setSeason('2021');
+          setVersionNum('1');
+          }}>
+
+          <h3>Volleyball</h3>
+        </button>
+        <button onClick = {() => {
+          setReqType('games');
+          setSportType('rugby'); 
+          setLeague('44');
+          setSeason('2021');
+          setVersionNum('1');
+          }}>
+
+          <h3>Rugby</h3>
         </button>
       </div>
-      <div className = 'upcoming-side-day'>
-        <div className = 'upcoming-side-day-text'>
-          <p>2021</p>
-        </div>
-        <div className = 'upcoming-side-day-space'></div>
-      </div>
-      { loading
-      
-      ? 
 
-        (<div><h1>Loading...</h1></div>)
-    
-      :
-
-      error
-
-      ?
-
-        (<div><h1>{error}</h1></div>)
-
-      :
-
-      games[0] !== undefined 
-
-      ?
-      
-      <div>
-      {games.map((game) => (
-        <UpcomingInfoSide 
-        home = {game.teams.home.name}
-        homeImg = {game.teams.home.logo} 
-        away = {game.teams.away.name}
-        awayImg = {game.teams.away.logo}
-        time = {game.time}
-        date = {game.date}/>
-      ))}
-
-      </div>
-
-      :
-
-      <div>No games</div>
-    }
+      <UpcomingGames
+        sportType = {sportType}
+        league = {league} 
+        season = {season}
+        versionNum = {versionNum}
+        reqType = {reqType}
+        numCalls = {numCalls}
+      />
       
       <div className = 'upcoming-side-all-btn'>
 
