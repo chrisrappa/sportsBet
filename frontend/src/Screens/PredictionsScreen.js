@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Predictions from "../components/PredictionsComponents/Predictions";
+import PredictionsSide from "../components/SidebarComponents/PredictionsSide";
 // import PredictionsSide from "../components/SidebarComponents/PredictionsSide";
 
 export default function PredictionsScreen() {
@@ -10,6 +11,7 @@ export default function PredictionsScreen() {
   const [versionNum, setVersionNum] = useState('1');
   const [reqType, setReqType] = useState('odds');
   const numCalls = 10;
+  const numBookmakers = 9;
 
   return (
     <>
@@ -75,12 +77,13 @@ export default function PredictionsScreen() {
           versionNum = {versionNum}
           reqType = {reqType}
           numCalls = {numCalls}
+          numBookmakers = {numBookmakers}
         /> 
       </div>
         
-      {/* <div className = 'upcoming-main-mobile ml-5 mr-5'> */}
-      {/* <PredictionsSide className = 'predictions-mobile' /> */}
-      {/* </div> */}
+      <div className = 'upcoming-main-mobile ml-5 mr-5'> 
+        <PredictionsSide className = 'predictions-mobile' numCalls = { 10 } numBookmakers = { 4 } />
+      </div>
     </>
   )
 }

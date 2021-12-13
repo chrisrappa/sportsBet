@@ -6,7 +6,7 @@ export default function Sidebar() {
   return (
     <div className = 'sidebar-container'>
       <div>
-        <UpcomingGamesSide />
+        <UpcomingGamesSide numCalls = { 2 } />
       </div>
       <div>
         <Adsense.Google 
@@ -19,7 +19,7 @@ export default function Sidebar() {
         />
       </div>
       <div>
-        <PredictionsSide />
+        <PredictionsSide numCalls = { 2 } numBookmakers = { 4 }/>
       </div>
       <div>
         <Adsense.Google

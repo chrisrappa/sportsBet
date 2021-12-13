@@ -1,14 +1,15 @@
 import { useState } from "react";
 import Predictions from "../PredictionsComponents/Predictions";
 
-export default function PredictionsSide() {
+export default function PredictionsSide(props) {
 
   const [sportType, setSportType] = useState('basketball');
   const [league, setLeague] = useState('12');
   const [season, setSeason] = useState('2021-2022');
   const [versionNum, setVersionNum] = useState('1');
   const [reqType, setReqType] = useState('odds');
-  const numCalls = 4;
+  const numCalls = props.numCalls;
+  const numBookmakers = props.numBookmakers;
 
   return (
     <div className = 'predictions-side-container'>
@@ -72,6 +73,7 @@ export default function PredictionsSide() {
         versionNum = {versionNum}
         reqType = {reqType}
         numCalls = {numCalls}
+        numBookmakers = {numBookmakers}
         />
       </div>
     </div>

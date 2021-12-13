@@ -1,4 +1,5 @@
 import { useState } from "react";
+import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
 import UpcomingGames from "../components/UpcomingComponents/UpcomingGames";
 // import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
 
@@ -94,9 +95,9 @@ export default function UpcomingScreen() {
           <button><a href = '/predictions'>Full Predictions</a></button> 
         </div>
       </div>
-      {/* <div className = 'upcoming-mobile mr-5 ml-5'>
-        <UpcomingGamesSide />
-      </div> */}
+      <div className = 'upcoming-mobile mr-5 ml-5'>
+        <UpcomingGamesSide numCalls = { 10 } />
+      </div>
     </>
   )
 }

@@ -5,10 +5,10 @@ export default function PredictionsInfo(props) {
 
   // Get only the first nine bookmakers in the response
   // With only the amount of entries that the parent calls for
-  const numCalls = props.numCalls;
+  const numBookmakers = props.numBookmakers;
 
   // ERROR!! Soccer predictions fail here, check the actions for the necessary
-  const bookmakers = predictions.bookmakers.slice(0, numCalls);
+  const bookmakers = predictions.bookmakers.slice(0, numBookmakers);
 
   // Grab the bets array from each object in the bookmakers array
   const bets = bookmakers.map((i) => i.bets);

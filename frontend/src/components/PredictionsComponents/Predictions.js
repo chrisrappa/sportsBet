@@ -11,6 +11,7 @@ export default function Predictions(props) {
   const versionNum = props.versionNum;
   const reqType = props.reqType;
   const numCalls = props.numCalls;
+  const numBookmakers = props.numBookmakers;
 
   const dispatch = useDispatch();
 
@@ -55,7 +56,7 @@ export default function Predictions(props) {
         <div>
         {
           predictions.map((prediction) => (
-            <PredictionsInfo prediction = {prediction} numCalls = {numCalls} />
+            <PredictionsInfo prediction = {prediction} numBookmakers = {numBookmakers} />
           ))
 
         }

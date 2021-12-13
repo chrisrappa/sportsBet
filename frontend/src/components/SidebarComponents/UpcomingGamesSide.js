@@ -1,14 +1,14 @@
 import { useState } from "react";
 import UpcomingGames from "../UpcomingComponents/UpcomingGames";
 
-export default function UpcomingGamesSide() {
+export default function UpcomingGamesSide(props) {
   
   const [sportType, setSportType] = useState('basketball');
   const [league, setLeague] = useState('12');
   const [season, setSeason] = useState('2021-2022');
   const [versionNum, setVersionNum] = useState('1');
   const [reqType, setReqType] = useState('games');
-  const numCalls = 2;
+  const numCalls = props.numCalls;
 
   return (
     <div className = 'upcoming-side-container'>
