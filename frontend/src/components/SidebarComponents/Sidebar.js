@@ -8,7 +8,7 @@ export default function Sidebar() {
       <div>
         <UpcomingGamesSide numCalls = { 2 } />
       </div>
-      <div>
+      {/* <div>
         <Adsense.Google 
           client = 'ca-pub-7486514602731792'
           slot = '9215095216'
@@ -17,11 +17,11 @@ export default function Sidebar() {
           responsive='true'
           layoutKey='-gw-1+2a-9x+5c'
         />
-      </div>
+      </div> */}
       <div>
         <PredictionsSide numCalls = { 2 } numBookmakers = { 4 }/>
       </div>
-      <div>
+      {/* <div>
         <Adsense.Google
           client = 'ca-pub-7486514602731792'
           slot = '6196381333'
@@ -30,7 +30,7 @@ export default function Sidebar() {
           responsive='true'
           layoutKey='-gw-1+2a-9x+5c'
         />
-      </div>
+      </div> */}
     </div>
   )
 }
