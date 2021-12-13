@@ -36,18 +36,13 @@ export const gamePredictionsApi = (versionNum, leagueNum, seasonYear, sportType,
 
   dispatch({type: GAME_PREDICTIONS_REQUEST});
   const params = `${versionNum}/${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
-  console.log(params);
+  
   try {
     const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
       { 
         mode: 'cors' 
       }
     );
-
-    console.log(data);
-
-    // I'm hitting a weird endpoint here because the postman response gives me bookmakers
-    // but this response is giving me "fixtures" for some reason when passing soccer predictions
 
     var objsToArray = [];
 

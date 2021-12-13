@@ -19,7 +19,7 @@ export default function Predictions(props) {
 
   useEffect(() => {
     dispatch(gamePredictionsApi(`${versionNum}`,`${league}`, `${season}`, `${sportType}`, numCalls, `${reqType}`));
-  }, [versionNum, dispatch, league, season, sportType, reqType])
+  }, [versionNum, dispatch, league, season, sportType, reqType, numCalls])
 
   return (
     <div className = 'upcoming-container'>
@@ -28,7 +28,7 @@ export default function Predictions(props) {
       </div>
       <div className = 'upcoming-day'>
         <div className = 'upcoming-day-text'>
-          <p>Today</p>
+          <p>{props.sportType}</p>
         </div>
         <div className = 'upcoming-day-space'></div>
       </div>

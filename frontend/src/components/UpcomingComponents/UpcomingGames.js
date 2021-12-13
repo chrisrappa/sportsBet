@@ -21,10 +21,8 @@ export default function UpcomingGames(props) {
 
   useEffect(() => {
     dispatch(upcomingGamesApi(`${versionNum}`,`${league}`, `${season}`, `${sportType}`, numCalls, `${reqType}`));
-    return () => {
-    //
-    }
-  }, [reqType, versionNum, dispatch, league, sportType, season])
+    
+  }, [reqType, versionNum, dispatch, league, sportType, season, numCalls])
 
   return (
     <>
@@ -35,7 +33,7 @@ export default function UpcomingGames(props) {
         </div>
         <div className = 'upcoming-day'>
           <div className = 'upcoming-day-text'>
-            <p>2022</p>
+            <p>{props.sportType}</p>
           </div>
           <div className = 'upcoming-day-space'></div>
         </div>

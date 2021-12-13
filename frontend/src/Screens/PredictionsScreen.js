@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Predictions from "../components/PredictionsComponents/Predictions";
-import PredictionsSide from "../components/SidebarComponents/PredictionsSide";
+// import PredictionsSide from "../components/SidebarComponents/PredictionsSide";
 
 export default function PredictionsScreen() {
 

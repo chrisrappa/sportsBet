@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UpcomingGames from "../components/UpcomingComponents/UpcomingGames";
-import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
+// import UpcomingGamesSide from "../components/SidebarComponents/UpcomingGamesSide";
 
 export default function UpcomingScreen() {
 
