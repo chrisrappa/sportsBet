@@ -1,4 +1,4 @@
-import Adsense from 'react-adsense';
+// import Adsense from 'react-adsense';
 import PredictionsSide from "./PredictionsSide";
 import UpcomingGamesSide from "./UpcomingGamesSide";
 

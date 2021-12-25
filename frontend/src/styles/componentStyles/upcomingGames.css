@@ -38,6 +38,26 @@
   padding-bottom: 0.5rem;
 }
 
+
+.upcoming-side-all-btn{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 1rem;
+}
+
+.upcoming-side-all-btn button {
+  background-color: #f5c329; 
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #002147;
+}
+
+.all-upcoming-side h1 {
+  font-weight: 600;
+}
+
 /* Upcoming-side Info Component */
 
 .upcoming-side-time {

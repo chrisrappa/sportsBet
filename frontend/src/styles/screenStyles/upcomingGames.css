@@ -11,8 +11,12 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  height: 100%;
   flex: 1;
+  margin-right: 3rem;
+  border-right: 1px solid rgba(128, 128, 128, 0.288);
 }
+  
 
 .upcoming-links h3{
   text-align: left;
@@ -34,7 +38,7 @@
 }
 
 .upcoming-container {
-  padding-right: 2rem;
+  /* padding-right: 2rem; */
   flex: 2;
   padding-left: 1rem;
   border-left: 1px solid gray;
@@ -42,6 +46,21 @@
 
 .upcoming-right {
   flex: 1;
+}
+
+.upcoming-right button{
+  background-color: #002147;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-family: Montserrat;
+  font-size: 1rem;
+  transition: 0.15s ease-in-out;
+}
+
+.upcoming-right button:hover{
+  background-color: #002147c2;
+
 }
 
 /* From upcoming side */
@@ -56,6 +75,8 @@
   flex-direction: column;
   justify-content: flex-start;
   margin-top: 1rem;
+  border: none;
+  padding-left: 0;
 }
 
 .upcoming-sports {

@@ -12,6 +12,7 @@
 @import './screenStyles/predictions.css';
 @import './componentStyles/nav.css';
 @import './componentStyles/createPost.css';
+@import './componentStyles/footer.css';
 
 #root {
   height: 100%;
@@ -60,6 +61,12 @@ h1, h2, h3 {
   font-size: 1rem;
 }
 
+.footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
 body::-webkit-scrollbar-track {
   background-color: #1f2937;
 }
@@ -72,4 +79,5 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar {
   width: 0.25rem;
 }
+
 

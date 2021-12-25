@@ -56,7 +56,7 @@ function Navbar(props) {
 
   return (
     <div>
-    <nav className="bg-gray-800 z-10">
+    <nav className="navbar z-10">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           
@@ -69,8 +69,10 @@ function Navbar(props) {
           
           <div className="flex-1 flex sm:items-stretch sm:justify-start">
             <div className="flex-shrink-0 flex items-center w-50">
-              <img className="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
-              <img className="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
+              <a href='/'>
+                <img className="block lg:hidden h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
+                <img className="hidden lg:block h-8 w-auto" src="https://res.cloudinary.com/djrbfvpit/image/upload/v1636235242/sportsBook/SportsbookMemes_Web_v2__0_1x_vovnuc.png" alt="" />
+              </a>
             </div>
             <div className="hidden md:block lg:block sm:ml-6">
               <div className="flex space-x-4">

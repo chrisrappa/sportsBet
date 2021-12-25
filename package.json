@@ -1,14 +1,14 @@
 {
   "name": "rappasite",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a reddit style meme website that utilzes an external API for sports information such as upcoming sports games and predictions.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "build": "rm -rf dist && babel backend -d dist && cd frontend && npm install && npm run build",
     "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
   },
-  "author": "",
+  "author": "chrisrappa",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.13.0",
@@ -34,5 +34,13 @@
   "engines": {
     "node": "15.0.1",
     "npm": "6.14.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisrappa/sportsBet.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisrappa/sportsBet/issues"
+  },
+  "homepage": "https://github.com/chrisrappa/sportsBet#readme"
 }

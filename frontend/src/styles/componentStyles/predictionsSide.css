@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 .predictions-side-sports {
@@ -48,10 +48,6 @@
   flex: 1;
   border-right: 0.25rem solid #f5c329;
   height: 100%;
-}
-
-.predictions-side-average {
-  
 }
 
 .predictions-side-game {
@@ -129,10 +125,6 @@
   padding: 0rem 1rem 0rem 1rem;
 }
 
-.predictions-side-at {
-
-}
-
 .predictions-side-team-two {
   flex: 1;
   display: flex;
@@ -143,4 +135,34 @@
 
 .predictions-side-team-name {
   padding: 0.5rem;
+}
+
+
+/* Sports names */
+
+.predictions-sports-header{
+  font-family: Montserrat;
+  font-weight: 600;
+}
+
+.predictions-sports-options{
+  margin-top: 1.5rem;
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-left: 0!important;
+
+}
+
+.predictions-sports-options button{
+  padding-left: 0!important;
+
+}
+
+.predictions-sports-options button h3{
+  padding: 0.5rem;
+  padding-left: 0!important;
 }

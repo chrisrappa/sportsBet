@@ -1,0 +1,66 @@
+.main-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 100%;
+  padding-top: 2.5rem;
+  padding-bottom: 8rem;
+  background-color:#002147;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  border-bottom: 1px solid rgba(245,195,41, 0.5);
+
+}
+
+.footer-headers {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  font-family: 'Baloo Bhaijaan 2', cursive;
+  font-weight: 400;
+}
+
+.company-follow {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+}
+
+.sub-footer {
+  display: flex;
+  justify-content: space-between;
+  background-color:#002147;
+
+}
+
+.left-sub-footer {
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+  justify-content: space-between;
+  width: 25rem;
+  margin-left: 5rem;
+  color: gray;
+  font-size: 1rem;
+}
+
+.right-sub-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+  font-size: 1rem;
+  color: gray;
+}

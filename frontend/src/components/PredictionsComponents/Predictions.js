@@ -13,6 +13,8 @@ export default function Predictions(props) {
   const numCalls = props.numCalls;
   const numBookmakers = props.numBookmakers;
 
+  const displayInnerHeader = props.displayHeader;
+
   const dispatch = useDispatch();
 
   const gamePredictions = useSelector(state => state.gamePredictions);
@@ -23,10 +25,13 @@ export default function Predictions(props) {
   }, [versionNum, dispatch, league, season, sportType, reqType, numCalls])
 
   return (
-    <div className = 'upcoming-container'>
-      <div className = 'upcoming-header'>
-        <h3>Predictions</h3>
-      </div>
+    <div className = 'predictions-container'>
+      { displayInnerHeader ? 
+        <div className = 'predictions-header'>
+          <h3>Predictions</h3>
+        </div>
+        : <></>
+      }
       <div className = 'upcoming-day'>
         <div className = 'upcoming-day-text'>
           <p>{props.sportType}</p>

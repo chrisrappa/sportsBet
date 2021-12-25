@@ -12,6 +12,9 @@ export default function UpcomingGamesSide(props) {
 
   return (
     <div className = 'upcoming-side-container'>
+      <div className = 'side-header'>
+        <h3>Upcoming Games</h3>
+      </div>
       <div className = 'upcoming-side-sports'>
         <button onClick = {() => {
           setReqType('games');
@@ -84,10 +87,15 @@ export default function UpcomingGamesSide(props) {
         versionNum = {versionNum}
         reqType = {reqType}
         numCalls = {numCalls}
+        displayHeader = {false}
       />
       
       <div className = 'upcoming-side-all-btn'>
-
+          <a href = '/upcoming'>
+            <button className="all-upcoming-side">
+              <h1>See All Upcoming Games</h1>
+            </button>
+          </a>
       </div>
     </div>
   )

@@ -4,6 +4,10 @@ nav {
   width: 100%;
 }
 
+.navbar {
+  background-color: #002147;
+}
+
 .register {
   align-items: center;
   color: black;

@@ -14,6 +14,8 @@ export default function UpcomingGames(props) {
   const reqType = props.reqType;
   const numCalls = props.numCalls;
 
+  const displayInnerHeader = props.displayHeader;
+
   const dispatch = useDispatch();
 
   const upcomingGames = useSelector(state => state.upcomingGames);
@@ -26,11 +28,14 @@ export default function UpcomingGames(props) {
 
   return (
     <>
-      
       <div className = 'upcoming-container'>
-        <div className = 'upcoming-header'>
-          <h3>Upcoming Games</h3>
-        </div>
+        { displayInnerHeader ? 
+          <div className = 'upcoming-header'>
+            <h3>Upcoming Games</h3>
+          </div>
+          : <></>
+        }
+        
         <div className = 'upcoming-day'>
           <div className = 'upcoming-day-text'>
             <p>{props.sportType}</p>
@@ -75,8 +80,8 @@ export default function UpcomingGames(props) {
           <div>No games</div>
         }
 
-        <div className = 'upcoming-all-btn'>
-        </div>
+        {/* <div className = 'upcoming-all-btn'>
+        </div> */}
       </div>
     </>
   )

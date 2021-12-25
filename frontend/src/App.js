@@ -6,6 +6,8 @@ import PredictionsScreen from './Screens/PredictionsScreen';
 import UpcomingScreen from './Screens/UpcomingScreen';
 import CreatePostScreen from './Screens/CreatePostScreen';
 import InnerPostScreen from './Screens/InnerPostScreen';
+import Footer from './components/Footer/Footer';
+import SubFooter from './components/Footer/SubFooter';
 
 // import { useState } from 'react';
 
@@ -26,7 +28,8 @@ function App() {
           <Route path="/create" component={CreatePostScreen} />
       </main>
       <footer className = 'footer'>
-
+        <Footer />
+        <SubFooter />
       </footer>
     </div>
   </BrowserRouter>
