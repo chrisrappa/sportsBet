@@ -13,10 +13,10 @@ export default function Footer() {
           <h1 className="footer-headers">Company</h1>
           <div>
             <div>
-              <a href=''><h1 className="footer-links">About</h1></a>
+              <a href='/'><h1 className="footer-links">About</h1></a>
             </div>
             <div>
-              <a href=''><h1 className="footer-links">Contact</h1></a>
+              <a href='/'><h1 className="footer-links">Contact</h1></a>
             </div>
           </div>
         </div>
@@ -32,13 +32,13 @@ export default function Footer() {
         <h1 className="footer-headers">Community</h1>
           <div>
             <div>
-              <a href=''><h1 className="footer-links">Memes</h1></a>
+              <a href='/'><h1 className="footer-links">Memes</h1></a>
             </div>
             <div>
-              <a href=''><h1 className="footer-links">Upcoming Games</h1></a>
+              <a href='/'><h1 className="footer-links">Upcoming Games</h1></a>
             </div>
             <div>
-              <a href=''><h1 className="footer-links">Predictions</h1></a>
+              <a href='/'><h1 className="footer-links">Predictions</h1></a>
             </div>
           </div>
       </div>
@@ -47,13 +47,13 @@ export default function Footer() {
           <h1 className="footer-headers">Legal</h1>
             <div>
               <div>
-                <a href=''><h1 className="footer-links">Lorem</h1></a>
+                <a href='/'><h1 className="footer-links">Lorem</h1></a>
               </div>
               <div>
-                <a href=''><h1 className="footer-links">Ipsum</h1></a>
+                <a href='/'><h1 className="footer-links">Ipsum</h1></a>
               </div>
               <div>
-                <a href=''><h1 className="footer-links">Dolor</h1></a>
+                <a href='/'><h1 className="footer-links">Dolor</h1></a>
               </div>
             </div>
         </div>
