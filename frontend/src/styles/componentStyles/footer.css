@@ -33,7 +33,7 @@
 .social-links {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: gray;
 }
@@ -58,9 +58,14 @@
 
 .right-sub-footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  padding: 1rem;
   margin-right: 2rem;
   font-size: 1rem;
   color: gray;
+}
+
+.right-sub-footer h3 {
+  padding-left: 1rem;
 }

@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 export default function Footer() {
   return (
@@ -13,18 +15,18 @@ export default function Footer() {
           <h1 className="footer-headers">Company</h1>
           <div>
             <div>
-              <a href='/'><h1 className="footer-links">About</h1></a>
+              <a href='/about'><h1 className="footer-links">About</h1></a>
             </div>
             <div>
-              <a href='/'><h1 className="footer-links">Contact</h1></a>
+              <a href='/contact'><h1 className="footer-links">Contact</h1></a>
             </div>
           </div>
         </div>
         <div>
           <h1 className="footer-headers">Follow Us</h1>
           <div className="social-links">
-            <h5>Facebook</h5>
-            <h5>Instagram</h5>
+            <a href = 'www.facebook.com'><FontAwesomeIcon icon = {faFacebook} /></a>
+            <a href = 'www.instagram.com'><FontAwesomeIcon icon = {faInstagram} /></a>
           </div>
         </div>
       </div>
@@ -35,10 +37,10 @@ export default function Footer() {
               <a href='/'><h1 className="footer-links">Memes</h1></a>
             </div>
             <div>
-              <a href='/'><h1 className="footer-links">Upcoming Games</h1></a>
+              <a href='/upcoming'><h1 className="footer-links">Upcoming Games</h1></a>
             </div>
             <div>
-              <a href='/'><h1 className="footer-links">Predictions</h1></a>
+              <a href='/predictions'><h1 className="footer-links">Predictions</h1></a>
             </div>
           </div>
       </div>
