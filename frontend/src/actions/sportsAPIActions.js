@@ -9,17 +9,21 @@ export const upcomingGamesApi = (versionNum, leagueNum, seasonYear, sportType, n
   dispatch({type: UPCOMING_GAMES_REQUEST});
 
   try {
-    const params = `${versionNum}/${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
-    const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
-      { 
-        mode: 'cors' 
+    const endpoint = `https://v${versionNum}.${sportType}.api-sports.io/${reqType}?league=${leagueNum}&season=${seasonYear}`;
+    const apiKey = '3f0e7a4b1daa7be241ac12e59e43f8a5';
+    const data = await axios.get(endpoint, { 
+      headers: {
+        'x-rapidapi-key': apiKey,
+        'x-rapidapi-host': `v${versionNum}.${sportType}.api-sports.io`
       }
-    );
+    });
+    
+    const games = data.data;
 
     var objsToArray = [];
 
     for(let i = 0; i < numCalls; i++){
-      const json = (data.response[i]);
+      const json = (games.response[i]);
       objsToArray.push(json);
     }
 
@@ -35,19 +39,24 @@ export const upcomingGamesApi = (versionNum, leagueNum, seasonYear, sportType, n
 export const gamePredictionsApi = (versionNum, leagueNum, seasonYear, sportType, numCalls, reqType) => async (dispatch) => {
 
   dispatch({type: GAME_PREDICTIONS_REQUEST});
-  const params = `${versionNum}/${sportType}/${leagueNum}/${seasonYear}/${reqType}`;
   
   try {
-    const {data} = await axios.get('http://localhost:5000/api/sportsApi/' + params, 
-      { 
-        mode: 'cors' 
+
+    const endpoint = `https://v${versionNum}.${sportType}.api-sports.io/${reqType}?league=${leagueNum}&season=${seasonYear}`;
+    const apiKey = '3f0e7a4b1daa7be241ac12e59e43f8a5';
+    const data = await axios.get(endpoint, { 
+      headers: {
+        'x-rapidapi-key': apiKey,
+        'x-rapidapi-host': `v${versionNum}.${sportType}.api-sports.io`
       }
-    );
+    });
+    
+    const games = data.data;
 
     var objsToArray = [];
 
     for(let i = 0; i < numCalls; i++){
-      const json = (data.response[i]);
+      const json = (games.response[i]);
       objsToArray.push(json);
     }
 

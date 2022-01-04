@@ -63,8 +63,9 @@ export default function UpcomingGames(props) {
           ?
 
           <div>
-          {games.map((game) => (
+          {games.map((game, index) => (
             <UpcomingInfo 
+            key = {index}
             home = {game.teams.home.name}
             homeImg = {game.teams.home.logo} 
             away = {game.teams.away.name}

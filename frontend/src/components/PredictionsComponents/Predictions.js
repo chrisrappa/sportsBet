@@ -60,8 +60,12 @@ export default function Predictions(props) {
 
         <div>
         {
-          predictions.map((prediction) => (
-            <PredictionsInfo prediction = {prediction} numBookmakers = {numBookmakers} />
+          predictions.map((prediction, index) => (
+            <PredictionsInfo  
+              key = {index} 
+              prediction = {prediction} 
+              numBookmakers = {numBookmakers} 
+            />
           ))
 
         }

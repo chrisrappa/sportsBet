@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 
 app.use('/api/users', userRoute);
 app.use('/api/posts', postRoute);
-app.use('/api/sportsApi', sportsApi);
+// app.use('/api/sportsApi', sportsApi);
 
 app.use(express.static(path.join(__dirname, '/../frontend/build')));
 
@@ -35,6 +35,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen (config.PORT || 5000, () => {
+app.listen (config.PORT || 5001, () => {
     console.log (`Server started at PORT:${config.PORT}`)
 })

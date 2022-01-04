@@ -65,9 +65,9 @@ export default function PredictionsInfo(props) {
         <div className = 'predictions-info'>
           <div className = 'providers'>
             {
-              bookmakers.map((bookmaker) => (
-                <div>
-                <p>{bookmaker ? bookmaker.name : 'unknown'}</p>
+              bookmakers.map((bookmaker, index) => (
+                <div key = {index}>
+                  <p>{bookmaker ? bookmaker.name : 'unknown'}</p>
                 </div>
               ))
             }
@@ -75,15 +75,15 @@ export default function PredictionsInfo(props) {
           </div>
           <div className = 'team-one-odds'>
             { 
-              homeOdds.map((home) => (
-                <p>{home ? home.odd : 0}</p>
+              homeOdds.map((home, index) => (
+                <p key = {index}>{home ? home.odd : 0}</p>
               ))
             }
           </div>
           <div className = 'team-two-odds'>
             {
-              awayOdds.map((away) => (
-                <p>{away ? away.odd : 0}</p>
+              awayOdds.map((away, index) => (
+                <p key = {index}>{away ? away.odd : 0}</p>
               ))
             }
           </div>
