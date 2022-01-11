@@ -10,6 +10,7 @@ export default function CreatePostScreen() {
   const { success: successCreate } = postCreate;
 
   const history = useHistory();
+
   useEffect(() => {
     if(successCreate){
       history.push('/profile');

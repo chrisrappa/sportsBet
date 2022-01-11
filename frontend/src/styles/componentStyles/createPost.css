@@ -33,13 +33,14 @@
   align-content: center;
   align-self: center;
   max-width: 30%;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   border: 1px solid #adadad5b;
   border-radius: 0.15rem;
   transition: all 0.15s ease-in-out;
 }
 
 .create button:hover {
+  cursor: pointer;
   background-color: #f5c22956;
   transition: all 0.15s ease-in-out;
   border: 1px solid #adadad5b;
@@ -63,4 +64,20 @@
 
 .create label {
   margin-bottom: 0.5rem;
+}
+
+.uploadButton {
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 0.5rem;
+  background-color: rgb(196, 195, 195);
+  height: 25rem;
+  max-width: 95%;
+}
+
+.uploadButton img{
+  max-height: 100%;
+}
+
+.ulParent {
+  width: 50%;
 }

@@ -7,6 +7,7 @@ export default function SignIn(props) {
   const userSignin = useSelector(state => state.userSignin);
   const { userInfo } =  userSignin;
 
+  // Can we allow users to login with just their username?
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
