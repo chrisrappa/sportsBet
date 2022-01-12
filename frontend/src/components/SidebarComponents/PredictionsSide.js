@@ -82,7 +82,7 @@ export default function PredictionsSide(props) {
           <div className = 'upcoming-side-all-btn'>
             <a href = '/predictions'>
               <button className="all-upcoming-side">
-                <h1>See All Upcoming Games</h1>
+                <h1>See All Predictions</h1>
               </button>
             </a>
           </div>
