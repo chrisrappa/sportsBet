@@ -23,7 +23,8 @@ Setup:
 
 Useful notes:
 
-The API calls are done in the frontend to keep from CORs issues. They are located in the sportsAPIActions.js. They will be configured with Trevor's account apiKey.
-The cloudinary widget is an npm package and can be configured in the CreatePost.js in the Post Components directory. It is copy paste with all the comments from their site preserved for easy understanding.
+- The API calls are done in the frontend to keep from CORs issues. They are located in the sportsAPIActions.js. They will be configured with Trevor's account apiKey.
 
-I did not have time for the following, JWT Token, PUT (on posts and users), and DELETE (also on posts and users). The way this is set up, it shouldn't be hard to implement, it is just time consuming. I would do this in the userRoutes. If you'd like to see how I've implemented this in a past project you can view this public repo: https://github.com/chrisrappa/onlinestore/tree/main/backend. 
+- The cloudinary widget is an npm package and can be configured in the CreatePost.js in the Post Components directory. It is copy paste with all the comments from their site preserved for easy understanding.
+
+- I did not have time for the following, JWT Token, PUT (on posts and users), and DELETE (also on posts and users). The way this is set up, it shouldn't be hard to implement, it is just time consuming. I would do this in the userRoutes. If you'd like to see how I've implemented this in a past project you can view this public repo: https://github.com/chrisrappa/onlinestore/tree/main/backend. 
