@@ -71,7 +71,7 @@ export default function Post(props) {
     
   }
 
-  const daysSincePost = dateHandler(props.time);
+  const daysSincePost = Math.round(dateHandler(props.time));
 
   return (
     <div className = 'post-container'>
