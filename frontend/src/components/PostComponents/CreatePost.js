@@ -80,7 +80,7 @@ export default function CreatePost () {
                       resourceType={'image'} // optionally set with 'auto', 'image', 'video' or 'raw' -> default = 'auto'
                       cloudName={"sportsbookmemes"} // your cloudinary account cloud name. 
                       // Located on https://cloudinary.com/console/
-                      uploadPreset={'hkzdsner'} // check that an upload preset exists and check mode is signed or unisgned
+                      uploadPreset={'teuenmqm'} // check that an upload preset exists and check mode is signed or unisgned
                       buttonText={'Upload Image'} // default 'Upload Files'
                       style={{
                             color: 'black',
@@ -94,7 +94,7 @@ export default function CreatePost () {
                             alignItems: 'center',
                             fontSize: '1rem',
                           }} // inline styling only or style id='cloudinary_upload_button'
-                      folder={'sportsBook'} // set cloudinary folder name to send file
+                      folder={'memePosts'} // set cloudinary folder name to send file
                       cropping={false} // set ability to crop images -> default = true
                       onSuccess={(e) => successCallBack(e)} // add success callback -> returns result
                       onFailure={(e) => failureCallBack(e)} // add failure callback -> returns 'response.error' + 'response.result'
