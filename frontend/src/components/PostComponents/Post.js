@@ -6,6 +6,7 @@ import { downVotes, upVotes } from "../../actions/postActions";
 import { useDispatch, useSelector} from "react-redux";
 import { useState, useEffect } from "react";
 import { vote } from "../../actions/userActions";
+import dateHandler from "../dateHandler";
 
 export default function Post(props) {
 
@@ -70,12 +71,13 @@ export default function Post(props) {
     
   }
 
+  const daysSincePost = dateHandler(props.time);
 
   return (
     <div className = 'post-container'>
       <div className = 'post-info'>
         <p>{props.username}</p>
-        <p>{props.time}</p>
+        <p>{daysSincePost < 1 ? 'Today' : daysSincePost + ' days ago'}</p>
       </div>
       <a href = {postLink}>
         <div className = 'post-header'>

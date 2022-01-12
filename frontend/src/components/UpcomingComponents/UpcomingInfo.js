@@ -1,6 +1,21 @@
 
 
 export default function UpcomingInfo(props) {
+
+  var newDate = '';
+
+  if(props.date){
+    var date = props.date;
+    const parseDate = (input) => {
+      var parts = input.match(/(\d+)/g);
+      const newDate = new Date(parts[0], parts[1]-1, parts[2]); 
+      return newDate.toDateString();
+    }
+  
+    newDate = parseDate(date);
+  }
+  
+
   return (
     <div className = 'upcoming-game'>
       <div className = 'upcoming-time'>
@@ -8,7 +23,7 @@ export default function UpcomingInfo(props) {
       </div>
       <div className = 'upcoming-info'>
         <div className = 'upcoming-info-title'>
-          <h6>{props.date}</h6>
+          <h6>{props.date ? newDate : ''}</h6>
         </div>
         <div className = 'upcoming-teams'>
           <div className = 'upcoming-team-one'>
