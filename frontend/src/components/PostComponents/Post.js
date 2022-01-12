@@ -17,8 +17,11 @@ export default function Post(props) {
   const [currentUserInfo, setCurrentUserInfo] = useState({});
 
   useEffect(() => {
-    setCurrentUserInfo(Cookie.getJSON("userInfo"));
-  }, [currentUserInfo])
+    if(userInfo){
+      setCurrentUserInfo(Cookie.getJSON("userInfo"));
+    }
+    
+  }, [userInfo])
 
   const postId = props.id;
   const postLink = `/post/${postId}`;

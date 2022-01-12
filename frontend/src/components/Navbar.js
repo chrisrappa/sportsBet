@@ -2,13 +2,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import  Signin  from './RegisterSignIn/SignIn';
 import  Register  from './RegisterSignIn/Register';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from 'react-router';
 
-
-function Navbar(props) {
+function Navbar() {
 
   const userSignin = useSelector(state => state.userSignin);
-  const { userInfo } =  userSignin;
+  const {userInfo}=  userSignin;
+
+  const userRegister = useSelector(state => state.userRegister);
+  const newUser = userRegister;
 
   const [register, setRegister] = useState(false);
   const [signin, setSignin] = useState(false);
@@ -16,6 +19,15 @@ function Navbar(props) {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    if(userInfo || newUser){
+      setRegister(false);
+      setSignin(false);
+      history.push('/');
+    }
+  }, [userInfo, newUser, history])
 
   const toggleMenu = () => {
     if(menuVisible === false){
@@ -29,6 +41,7 @@ function Navbar(props) {
 
   const submitHandler = () => {
     dispatch(logout())
+    console.log('logout pressed')
   }
 
   const signinPopup = () => {
@@ -53,6 +66,7 @@ function Navbar(props) {
     setSignin(false);
   }
 
+  
 
   return (
     <div>

@@ -41,6 +41,7 @@ const reducer = combineReducers({
     // postDelete: postDeleteReducer,
 })
 
+console.log(userInfo);
 
 
 

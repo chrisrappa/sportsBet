@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/userActions';
 
-export default function Register(props) {
+
+export default function Register() {
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -12,25 +13,37 @@ export default function Register(props) {
   const [gender, setGender] = useState('');
   const [zipCode, setZipCode] = useState ('');
 
+  const [passwordLength, setPasswordLength] = useState(false);
+
   const userRegister = useSelector(state => state.userRegister || {});
   const { userInfo } = userRegister;
 
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(
-      register(
-        username,
-        email, 
-        password, 
-        name,
-        dob,
-        gender,
-        zipCode
+    if(passwordLength === true){
+      e.preventDefault();
+      dispatch(
+        register(
+          username,
+          email, 
+          password, 
+          name,
+          dob,
+          gender,
+          zipCode
+        )
       )
-    )
+    }
   }
+  
+  useEffect(() => {
+    if(password.length > 8){
+      setPasswordLength(true);
+    } else {
+      setPasswordLength(false);
+    }
+  }, [password])
 
   return (
     <>
@@ -42,7 +55,7 @@ export default function Register(props) {
             <form onSubmit = {submitHandler}>
               <ul className="form-container">
                 <li>
-                    <h2>Become A Member</h2>
+                    <h2>Register</h2>
                 </li>
                 <li>
                     <label htmlFor="username">
@@ -61,6 +74,16 @@ export default function Register(props) {
                       Password
                     </label>
                     <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} className = 'h-full py-0 pl-2 pr-7  bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                    {passwordLength === false ?
+                      <label className='passwordLength'>
+                        Please enter a password at least 8 characters long.
+                      </label>
+
+                      :
+
+                      null
+                    }
+                    
                 </li>
                 <li>
                     <label htmlFor="name">
@@ -69,39 +92,35 @@ export default function Register(props) {
                     <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
                 </li>
                 <li>
-                    <label htmlFor="dob">
+                    <label htmlFor="date">
                       Date of Birth
                     </label>
-                    <input type="dob" name="dob" id="dob" onChange={(e) => setDob(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                    <input type="date" name="dob" id="dob" onChange={(e) => setDob(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
                 </li>
                 <li>
                     <label htmlFor="gender">
                       Gender
                     </label>
-                    <input type="gender" name="gender" id="gender" onChange={(e) => setGender(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                    <select type="gender" name="gender" id="gender" onChange={(e) => setGender(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-md rounded-md'>
+                      <option>Select Option</option>
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
                 </li>
                 <li>
                     <label htmlFor="zipCode">
-                      ZipCode
+                      ZipCode (Must be 5 numbers)
                     </label>
-                    <input type="zipCode" name="zipCode" id="zipCode" onChange={(e) => setZipCode(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
+                    <input id="zip" name="zip" type="text" pattern="[0-9]{5}" maxLength="5" minLength="5" onChange={(e) => setZipCode(e.target.value)} className = 'h-full py-0 pl-2 pr-7 bg-gray-100 text-gray-500 sm:text-sm rounded-md'></input>
                 </li>
                 <li>
                     <button type="submit" className="button primary"> Register</button>
                 </li>
-                <li>
-                  Already have an account?
-                </li>
-                  <li>
-                      {/* <Link to={redirect === "/" ? "register" : "registers?redirect=" + redirect} className="button text-center secondary">Create your account!</Link> */}
-                  </li>
               </ul>
             </form>
           </div>
 
-        :
-
-        <div className = 'register-form'><h1>Successfully Registered!</h1></div>
+        : null
       }
         
     </>

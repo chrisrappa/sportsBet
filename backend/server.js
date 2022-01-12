@@ -35,6 +35,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen (config.PORT || 5001, () => {
+app.listen (config.PORT || 5000, () => {
     console.log (`Server started at PORT:${config.PORT}`)
 })

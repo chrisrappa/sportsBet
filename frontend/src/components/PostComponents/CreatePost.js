@@ -78,9 +78,9 @@ export default function CreatePost () {
                       // and ID's as an object. More information on their use can be found at 
                       // https://cloudinary.com/documentation/upload_widget#the_sources_parameter
                       resourceType={'image'} // optionally set with 'auto', 'image', 'video' or 'raw' -> default = 'auto'
-                      cloudName={'djrbfvpit'} // your cloudinary account cloud name. 
+                      cloudName={"sportsbookmemes"} // your cloudinary account cloud name. 
                       // Located on https://cloudinary.com/console/
-                      uploadPreset={'ttotjoct'} // check that an upload preset exists and check mode is signed or unisgned
+                      uploadPreset={'hkzdsner'} // check that an upload preset exists and check mode is signed or unisgned
                       buttonText={'Upload Image'} // default 'Upload Files'
                       style={{
                             color: 'black',
@@ -110,7 +110,7 @@ export default function CreatePost () {
 
                       // generateSignatureUrl={'http://my_domain.com/api/v1/media/generate_signature'} // pass the api 
                       // endpoint for generating a signature -> check cloudinary docs and SDK's for signing uploads
-                      apiKey={713115678661528} // cloudinary API key -> number format
+                      apiKey={566639373629529} // cloudinary API key -> number format
                       accepts={'application/json'} // for signed uploads only -> default = 'application/json'
                       contentType={'application/json'} // for signed uploads only -> default = 'application/json'
                       withCredentials={true} // default = true -> check axios documentation for more information
