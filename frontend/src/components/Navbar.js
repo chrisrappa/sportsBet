@@ -25,9 +25,8 @@ function Navbar() {
     if(userInfo || newUser){
       setRegister(false);
       setSignin(false);
-      history.push('/');
     }
-  }, [userInfo, newUser, history])
+  }, [userInfo, newUser])
 
   const toggleMenu = () => {
     if(menuVisible === false){
