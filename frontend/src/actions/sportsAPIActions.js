@@ -20,6 +20,8 @@ export const upcomingGamesApi = (versionNum, leagueNum, seasonYear, sportType, n
     
     const games = data.data;
 
+    console.log(games);
+    
     var objsToArray = [];
 
     for(let i = 0; i < numCalls; i++){
