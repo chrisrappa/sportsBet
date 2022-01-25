@@ -10,7 +10,7 @@ export const upcomingGamesApi = (versionNum, leagueNum, seasonYear, sportType, n
 
   try {
     const endpoint = `https://v${versionNum}.${sportType}.api-sports.io/${reqType}?league=${leagueNum}&season=${seasonYear}`;
-    const apiKey = '057efa989d6f9bc3d8d37c07e2b351f8';
+    const apiKey = 'ed3794d50a5e412f17a8c2c44c81e9f7';
     const data = await axios.get(endpoint, { 
       headers: {
         'x-rapidapi-key': apiKey,
@@ -45,7 +45,7 @@ export const gamePredictionsApi = (versionNum, leagueNum, seasonYear, sportType,
   try {
 
     const endpoint = `https://v${versionNum}.${sportType}.api-sports.io/${reqType}?league=${leagueNum}&season=${seasonYear}`;
-    const apiKey = '057efa989d6f9bc3d8d37c07e2b351f8';
+    const apiKey = 'ed3794d50a5e412f17a8c2c44c81e9f7';
     const data = await axios.get(endpoint, { 
       headers: {
         'x-rapidapi-key': apiKey,
